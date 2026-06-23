@@ -1,0 +1,1 @@
+// 로컬 스토리지(localStorage)나 세션 스토리지 안전하게 Get/Set 하는 함수

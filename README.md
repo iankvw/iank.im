@@ -81,3 +81,22 @@ This project uses Vuetify - an MIT licensed Open Source project. We are glad to 
 - Request enterprise support: https://support.vuetifyjs.com/
 - Sponsor on GitHub: https://github.com/sponsors/vuetifyjs
 - Support on Open Collective: https://opencollective.com/vuetify
+
+## 폴더 구조
+
+- /components
+  - 여러 곳에서 재사용되는 작은 UI 조각
+    - 버튼
+    - 모달
+- /views
+  - 라우터에 연결되는 각 페이지 단위 컴포넌트
+- /stores
+  - Pinia 상태 관리 파일
+- /assets
+  - 이미지
+  - 폰트
+  - 글로벌 CSS
+- /utils
+  - 공통으로 쓰는 함수
+- /composables
+  - Vue 컴포저블 훅

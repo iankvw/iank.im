@@ -1,0 +1,175 @@
+name: Production-grade CI-CD Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # ==================================================
+  # [STAGE 1] Build & Bundling Optimization
+  # ==================================================
+  build:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - name: Fetch Source Code Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Node.js Development Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install Dependencies and Execute Production Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload and Persist Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
+
+  # ==================================================
+  # [STAGE 2] Automated Canary Environment Deployment
+  # ==================================================
+  deploy-canary:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
+
+      - name: Inject Cloudflare Zero Trust Client and SSH Key
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 3
+          max_attempts: 3
+          retry_on: error
+          command: |
+            sudo rm -f /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock
+            curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+            sudo dpkg -i cloudflared.deb || (sudo apt-get install -f -y && sudo dpkg -i cloudflared.deb)
+            
+            mkdir -p ~/.ssh
+            cat << 'EOF' > ~/.ssh/id_ed25519
+            ${{ secrets.SSH_KEY }}
+            EOF
+            chmod 700 ~/.ssh
+            chmod 600 ~/.ssh/id_ed25519
+            
+            truncate -s 0 ~/.ssh/config
+            cat >> ~/.ssh/config << 'EOF'
+            Host ${{ secrets.CANARY_HOST }}
+              IdentityFile ~/.ssh/id_ed25519
+              StrictHostKeyChecking no
+              ProxyCommand /usr/local/bin/cloudflared access ssh --id "${{ secrets.CF_ACCESS_CLIENT_ID }}" --secret "${{ secrets.CF_ACCESS_CLIENT_SECRET }}" --hostname %h
+            EOF
+
+      - name: Transmit Artifacts to Canary Infrastructure Via Cloudflare Tunnel
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 60
+          max_attempts: 2
+          retry_on: error
+          command: rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@${{ secrets.CANARY_HOST }}:/home/ubuntu/docker/iank.im/
+
+  # ==================================================
+  # [STAGE 3] Orchestrated Production Multi-Server Deployment (Manual Approval Gate Enabled)
+  # ==================================================
+  deploy-production:
+    needs: deploy-canary
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    strategy:
+      matrix:
+        server:
+          - id: ampere
+            secret_name: AMPERE_HOST
+
+    steps:
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
+
+      - name: Inject Cloudflare Zero Trust Client and SSH Key
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 3
+          max_attempts: 3
+          retry_on: error
+          command: |
+            sudo rm -f /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock
+            curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+            sudo dpkg -i cloudflared.deb || (sudo apt-get install -f -y && sudo dpkg -i cloudflared.deb)
+            
+            mkdir -p ~/.ssh
+            cat << 'EOF' > ~/.ssh/id_ed25519
+            ${{ secrets.SSH_KEY }}
+            EOF
+            chmod 700 ~/.ssh
+            chmod 600 ~/.ssh/id_ed25519
+            
+            truncate -s 0 ~/.ssh/config
+            cat >> ~/.ssh/config << EOF
+            Host $TARGET_HOST
+              IdentityFile ~/.ssh/id_ed25519
+              StrictHostKeyChecking no
+              ProxyCommand /usr/local/bin/cloudflared access ssh --id "${{ secrets.CF_ACCESS_CLIENT_ID }}" --secret "${{ secrets.CF_ACCESS_CLIENT_SECRET }}" --hostname %h
+            EOF
+        env:
+          TARGET_HOST: ${{ secrets[matrix.server.secret_name] }}
+
+      - name: Parallel Deployment and Syncing to Production Servers
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 60
+          max_attempts: 2
+          retry_on: error
+          command: rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@$TARGET_HOST:/home/ubuntu/docker/iank.im/
+        env:
+          TARGET_HOST: ${{ secrets[matrix.server.secret_name] }}
+
+      # 최종 배포까지 성공했을 때 알림 발송
+      - name: Notify Discord on Success
+        if: success()
+        run: |
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git fetch --depth=1 origin ${{ github.ref_name }}
+          git reset --hard FETCH_HEAD
+          
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --format=%s)
+
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{
+                 "username": "GitHub",
+                 "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+                 "embeds": [{
+                   "author": {
+                     "name": "${{ github.actor }}",
+                     "url": "https://github.com/${{ github.actor }}",
+                     "icon_url": "https://github.com/${{ github.actor }}.png"
+                   },
+                   "title": "[${{ github.event.repository.name }}:${{ github.ref_name }}] Deploy Succeeded",
+                   "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                   "description": "[`'"$SHORT_SHA"'`](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) '"$COMMIT_MSG"'",
+                   "color": 2329020
+                 }]
+               }' \
+               ${{ secrets.DISCORD_WEBHOOK }}
