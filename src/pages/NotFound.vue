@@ -1,114 +1,66 @@
-<script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
-
-const currentPath = computed(() => {
-  return route.path + (route.fullPath.includes('?') ? route.fullPath.substring(route.path.length) : '')
-})
-</script>
-
 <template>
-  <div class="not-found-wrapper">
-    <main class="error-container">
-      <h1 class="error-code">404</h1>
-      <h2 class="error-title">That’s an error.</h2>
-      <p class="error-description">
+  <div class="not-found-page">
+    <div class="error-container">
+      <div class="error-code mb-6" aria-hidden="true">404</div>
+      <h1 class="text-h4 font-weight-bold mb-3 text-primary">That's an error.</h1>
+      <p class="text-body-1 text-medium-emphasis mb-8">
         The requested URL
-        <span class="highlight-url">{{ currentPath }}</span>
+        <code class="highlight-url">{{ route.fullPath }}</code>
         was not found on this server.<br>
-        That’s all we know.
+        That's all we know.
       </p>
-      <router-link to="/" class="btn-home">Return to Home</router-link>
-    </main>
+      <v-btn color="primary" variant="tonal" size="x-large" rounded="xl" to="/">
+        Return to Home
+      </v-btn>
+    </div>
   </div>
 </template>
 
+<script setup>
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+</script>
+
 <style scoped>
-.not-found-wrapper {
-  --color-bg: #F8F9FA;
-  --color-main: #A91D3A;
-  --color-main-hover: #C12745;
-  --color-main-active: #8E1831;
-  --color-text: #212529;
-  --color-white: #FFFFFF;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-bg);
-  z-index: 9999;
-
+.not-found-page {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 24px;
 }
 
 .error-container {
-  font-family: 'Pretendard', -apple-system, sans-serif;
-  max-width: 500px;
-  width: 90%;
-  padding: 50px 30px;
+  max-width: 560px;
+  width: 100%;
   text-align: center;
 }
 
 .error-code {
-  font-size: 5rem;
-  font-weight: 800;
-  color: var(--color-text);
-  margin: 0;
+  font-size: clamp(100px, 20vw, 200px);
   line-height: 1;
-}
-
-.error-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 15px 0 10px;
-  color: var(--color-main);
-}
-
-.error-description {
-  font-size: 1rem;
-  color: var(--color-text);
-  opacity: 0.7;
-  margin-bottom: 35px;
-  line-height: 1.5;
-}
-
-.btn-home {
-  display: inline-block;
-  background-color: var(--color-white);
-  color: var(--color-main);
-  border: 2px solid var(--color-main);
-  text-decoration: none;
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-home:hover {
-  background-color: var(--color-main);
-  color: var(--color-white);
-}
-
-.btn-home:active {
-  background-color: var(--color-main-active);
-  border-color: var(--color-main-active);
-  color: var(--color-white);
-  transform: scale(0.98);
+  letter-spacing: -0.05em;
+  font-weight: 900;
+  user-select: none;
+  background: linear-gradient(135deg,
+      rgb(var(--v-theme-primary)) 0%,
+      rgba(var(--v-theme-primary), 0.6) 50%,
+      rgba(var(--v-theme-primary), 0.3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .highlight-url {
-  font-family: 'Cascadia Code', Consolas, monospace;
-  font-weight: bold;
-  color: var(--color-main);
-  background-color: rgba(169, 29, 58, 0.05);
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: rgb(var(--v-theme-primary));
+  background: rgba(var(--v-theme-primary), 0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+  word-break: break-all;
 }
 </style>
