@@ -2,7 +2,7 @@
   <div class="not-found-page">
     <div class="error-container">
       <div class="error-code mb-6" aria-hidden="true">404</div>
-      <h1 class="text-h4 font-weight-bold mb-3 text-primary">That's an error.</h1>
+      <h1 class="text-h4 font-weight-bold mb-3 text-primary">Page Not Found</h1>
       <p class="text-body-1 text-medium-emphasis mb-8">
         The requested URL
         <code class="highlight-url">{{ route.fullPath }}</code>

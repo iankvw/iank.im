@@ -33,6 +33,7 @@ jobs:
         with:
           name: dist-files
           path: dist/
+          retention-days: 1 
 
   # ==================================================
   # [STAGE 2] Automated Canary Environment Deployment

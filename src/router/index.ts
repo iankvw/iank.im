@@ -24,6 +24,12 @@ const router = createRouter({
       component: () => import('@/pages/NavView.vue'),
       meta: { title: 'Navigation | Ian Kim', usePlain: true },
     },
+    {
+      path: '/timer',
+      name: 'timer',
+      component: () => import('@/pages/Timer.vue'),
+      meta: { title: 'Timer & Counter | Ian Kim' },
+    },
     ...designRoutes,
     ...skhuRoutes,
     {
