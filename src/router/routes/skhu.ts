@@ -2,6 +2,12 @@ import type { RouteRecordRaw } from 'vue-router';
 
 const skhuRoutes: Array<RouteRecordRaw> = [
   {
+    path: '/practice',
+    name: 'practice',
+    component: () => import('@/pages/skhu/practice.vue'),
+    meta: { title: '실습 | Ian Kim' },
+  },
+  {
     path: '/web',
     name: 'web',
     component: () => import('@/pages/skhu/ServerView.vue'),

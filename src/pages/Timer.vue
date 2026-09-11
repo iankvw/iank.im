@@ -1,13 +1,13 @@
 <template>
   <v-container class="fill-height d-flex align-center justify-center pa-4">
-    <v-row class="app-container" justify="center" align="stretch">
+    <v-row class="app-container align-stretch justify-center">
       <!-- 1. Timer Section (Left) -->
       <v-col cols="12" sm="6">
         <v-card class="timer-card fill-height d-flex flex-column justify-space-between rounded-xl px-8 px-md-12 py-7"
           :class="timerCardStateClass" elevation="1">
           <!-- Card Header -->
           <div class="d-flex justify-space-between align-center">
-            <span class="text-subtitle-1 font-weight-medium text-uppercase text-medium-emphasis">
+            <span class="text-body-large font-weight-medium text-uppercase text-medium-emphasis">
               Timer
             </span>
             <v-btn icon variant="text" density="comfortable" :aria-label="isMuted ? '음소거 해제' : '알림음 끄기'"
@@ -19,9 +19,10 @@
           <!-- Card Content (Time Display & Shift-Buffer Input) -->
           <div class="d-flex align-center justify-center my-8 flex-grow-1">
             <div class="timer-input-group d-flex align-baseline justify-center" tabindex="0" role="spinbutton"
-              :aria-label="`타이머 시간 설정: ${displayHours}시간 ${displayMinutes}분 ${displaySeconds}초`"
-              :class="{ 'is-interactive': !isTimerActive, 'is-locked': isTimerActive }" @focus="handleFocus"
-              @blur="handleBlur" @keydown="handleKeydown">
+              :aria-label="`타이머 시간 설정: ${displayHours}시간 ${displayMinutes}분 ${displaySeconds}초`" :class="{
+                'is-interactive': !isTimerActive,
+                'is-locked': isTimerActive,
+              }" @focus="handleFocus" @blur="handleBlur" @keydown="handleKeydown">
               <span class="time-digit">{{ displayHours }}</span>
               <span class="time-separator text-medium-emphasis">:</span>
               <span class="time-digit">{{ displayMinutes }}</span>
@@ -76,21 +77,21 @@
           elevation="1">
           <!-- Card Header -->
           <div class="d-flex align-center" style="min-height: 40px;">
-            <span class="text-subtitle-1 font-weight-medium text-uppercase text-medium-emphasis">
+            <span class="text-body-large font-weight-medium text-uppercase text-medium-emphasis">
               Counter
             </span>
           </div>
 
           <!-- Counter Controls -->
           <div class="d-flex align-center justify-center my-8 flex-grow-1 ga-4">
-            <v-btn icon size="default" color="secondary" elevation="1" aria-label="감소" @click="modifyCounter(-1)">
+            <v-btn icon size="default" color="secondary" elevation="1" aria-label="감소" @click="modifyCounter(-1);">
               <v-icon>mdi-minus</v-icon>
             </v-btn>
 
             <input v-model.number="counter" type="number" class="counter-input" aria-label="카운터 값"
-              @blur="sanitizeCounter" />
+              @blur="sanitizeCounter">
 
-            <v-btn icon size="default" color="secondary" elevation="1" aria-label="증가" @click="modifyCounter(1)">
+            <v-btn icon size="default" color="secondary" elevation="1" aria-label="증가" @click="modifyCounter(1);">
               <v-icon>mdi-plus</v-icon>
             </v-btn>
           </div>

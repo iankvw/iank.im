@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-compass-outline" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           COMPONENTS · NAVIGATION
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Navigation</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Navigation</h1>
       <p class="section-description">
         애플리케이션 내부의 유기적인 이동과 정보 계층 구조를 안내합니다.
         Material Design 3의 위계적 라우팅 가이드와 사용자 중심의 인터랙션 흐름을 반영합니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Tabs</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Tabs</h2>
+        <p class="text-body-medium text-medium-emphasis">
           동일한 컨텍스트 내에서 연관된 하위 콘텐츠 그룹을 전환할 때 사용합니다.
         </p>
       </div>
@@ -34,7 +34,7 @@
         <v-tabs-window v-model="activeTab">
           <v-tabs-window-item v-for="tab in tabItems" :key="tab.value" :value="tab.value">
             <v-card-text class="pa-6">
-              <p class="text-body-2 text-medium-emphasis">{{ tab.content }}</p>
+              <p class="text-body-medium text-medium-emphasis">{{ tab.content }}</p>
             </v-card-text>
           </v-tabs-window-item>
         </v-tabs-window>
@@ -43,15 +43,15 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Breadcrumbs & Pagination</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Breadcrumbs & Pagination</h2>
+        <p class="text-body-medium text-medium-emphasis">
           현재 위치를 표시하거나 많은 양의 데이터를 나누어 탐색할 때 사용합니다.
         </p>
       </div>
 
       <v-card class="bordered-card pa-6">
         <div class="mb-6">
-          <div class="text-subtitle-2 font-weight-bold mb-3">Breadcrumbs</div>
+          <div class="text-title-small font-weight-bold mb-3">Breadcrumbs</div>
           <v-breadcrumbs :items="breadcrumbsItems" color="primary" class="pa-0">
             <template v-slot:divider>
               <v-icon icon="mdi-chevron-right" size="small" aria-hidden="true" />
@@ -62,7 +62,7 @@
         <v-divider class="mb-6" />
 
         <div>
-          <div class="text-subtitle-2 font-weight-bold mb-3">Pagination</div>
+          <div class="text-title-small font-weight-bold mb-3">Pagination</div>
           <v-pagination v-model="page" :length="15" :total-visible="7" color="primary" rounded="circle" />
         </div>
       </v-card>
@@ -70,15 +70,15 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Chips</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Chips</h2>
+        <p class="text-body-medium text-medium-emphasis">
           필터, 태그, 작은 액션을 표현하는 컴팩트한 요소입니다.
         </p>
       </div>
 
       <v-card class="bordered-card pa-6">
         <div class="mb-6">
-          <div class="text-subtitle-2 font-weight-bold mb-3">Variants</div>
+          <div class="text-title-small font-weight-bold mb-3">Variants</div>
           <div class="d-flex flex-wrap ga-3">
             <v-chip color="primary" variant="flat">Flat</v-chip>
             <v-chip color="primary" variant="tonal">Tonal</v-chip>
@@ -90,7 +90,7 @@
         <v-divider class="my-6" />
 
         <div class="mb-6">
-          <div class="text-subtitle-2 font-weight-bold mb-3">With Icons & Closable</div>
+          <div class="text-title-small font-weight-bold mb-3">With Icons & Closable</div>
           <div class="d-flex flex-wrap ga-3">
             <v-chip color="success" prepend-icon="mdi-check" variant="tonal">Success</v-chip>
             <v-chip color="error" prepend-icon="mdi-alert" variant="tonal">Error</v-chip>
@@ -102,7 +102,7 @@
         <v-divider class="my-6" />
 
         <div>
-          <div class="text-subtitle-2 font-weight-bold mb-3">Chip Group (Filter)</div>
+          <div class="text-title-small font-weight-bold mb-3">Chip Group (Filter)</div>
           <v-chip-group v-model="selectedFilters" column multiple color="primary">
             <v-chip v-for="filter in filters" :key="filter" :value="filter" variant="tonal" filter>
               {{ filter }}
@@ -114,14 +114,14 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Bottom Navigation</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Bottom Navigation</h2>
+        <p class="text-body-medium text-medium-emphasis">
           모바일 환경에서 최상위 목적지 간의 이동을 제어합니다.
         </p>
       </div>
 
       <v-card class="bordered-card overflow-hidden mx-auto position-relative" max-width="360">
-        <div class="mock-viewport d-flex align-center justify-center text-caption text-medium-emphasis">
+        <div class="mock-viewport d-flex align-center justify-center text-body-small text-medium-emphasis">
           Mobile Viewport
         </div>
 

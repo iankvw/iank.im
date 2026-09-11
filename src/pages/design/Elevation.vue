@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-layers-outline" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           FOUNDATION · ELEVATION
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Elevation & Surface</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Elevation & Surface</h1>
       <p class="section-description">
         <strong>Glassmorphism</strong> 기반의 투명한 표면과 깊이감을 표현합니다.
         배경의 블러 효과와 미묘한 보더가 레이어를 구분합니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Glass Effect</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Glass Effect</h2>
+        <p class="text-body-medium text-medium-emphasis">
           VCard, VSheet 등 컨테이너 컴포넌트에 전역으로 적용되는 기본 표면입니다.
           배경을 투과시키며 왜곡하는 방식으로 입체감을 부여합니다.
         </p>
@@ -32,8 +32,8 @@
 
         <v-card class="sample-card pa-8 text-center" hover>
           <v-icon icon="mdi-blur" size="40" color="primary" class="mb-4" aria-hidden="true" />
-          <div class="text-h5 font-weight-bold mb-2 text-on-surface">Glass Layer</div>
-          <div class="text-body-2 text-medium-emphasis mb-6">
+          <div class="text-headline-small font-weight-bold mb-2 text-on-surface">Glass Layer</div>
+          <div class="text-body-medium text-medium-emphasis mb-6">
             backdrop-filter: blur(24px) saturate(180%)
           </div>
         </v-card>
@@ -41,7 +41,7 @@
 
       <v-card class="mt-6">
         <v-card-text>
-          <div class="text-caption text-medium-emphasis mb-3">CSS CODE</div>
+          <div class="text-body-small text-medium-emphasis mb-3">CSS CODE</div>
           <pre class="code-block mb-0"><code>{{ glassCode }}</code></pre>
         </v-card-text>
       </v-card>
@@ -49,8 +49,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Mesh Background</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Mesh Background</h2>
+        <p class="text-body-medium text-medium-emphasis">
           페이지 전체에 적용되는 그라디언트 배경입니다.
           Primary 색상의 미세한 그라디언트가 공간감을 연출합니다.
         </p>
@@ -59,8 +59,8 @@
       <div class="mesh-demo">
         <v-card class="sample-card pa-8 text-center" hover>
           <v-icon icon="mdi-gradient-vertical" size="40" color="primary" class="mb-4" aria-hidden="true" />
-          <div class="text-h5 font-weight-bold mb-2 text-on-surface">Mesh Background</div>
-          <div class="text-body-2 text-medium-emphasis mb-6">
+          <div class="text-headline-small font-weight-bold mb-2 text-on-surface">Mesh Background</div>
+          <div class="text-body-medium text-medium-emphasis mb-6">
             3개의 radial-gradient가 결합된 그라디언트 배경
           </div>
         </v-card>
@@ -68,7 +68,7 @@
 
       <v-card class="mt-6">
         <v-card-text>
-          <div class="text-caption text-medium-emphasis mb-3">CSS CODE</div>
+          <div class="text-body-small text-medium-emphasis mb-3">CSS CODE</div>
           <pre class="code-block mb-0"><code>{{ meshCode }}</code></pre>
         </v-card-text>
       </v-card>
@@ -76,8 +76,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Grid Background</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Grid Background</h2>
+        <p class="text-body-medium text-medium-emphasis">
           24px 간격의 도트 패턴으로 구성된 배경입니다.
           기술적/모던한 느낌을 부여하며, 대시보드나 개발자 도구 페이지에 적합합니다.
         </p>
@@ -86,8 +86,8 @@
       <div class="grid-demo">
         <v-card class="sample-card pa-8 text-center" hover>
           <v-icon icon="mdi-dots-grid" size="40" color="primary" class="mb-4" aria-hidden="true" />
-          <div class="text-h5 font-weight-bold mb-2 text-on-surface">Grid Background</div>
-          <div class="text-body-2 text-medium-emphasis mb-6">
+          <div class="text-headline-small font-weight-bold mb-2 text-on-surface">Grid Background</div>
+          <div class="text-body-medium text-medium-emphasis mb-6">
             <code>meta: { useGrid: true }</code>로 도트 패턴 배경 적용
           </div>
         </v-card>
@@ -95,7 +95,7 @@
 
       <v-card class="mt-6">
         <v-card-text>
-          <div class="text-caption text-medium-emphasis mb-3">CSS CODE</div>
+          <div class="text-body-small text-medium-emphasis mb-3">CSS CODE</div>
           <pre class="code-block mb-0"><code>{{ gridCode }}</code></pre>
         </v-card-text>
       </v-card>
@@ -103,8 +103,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Surface Comparison</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Surface Comparison</h2>
+        <p class="text-body-medium text-medium-emphasis">
           Glass Surface는 배경을 투과시키는 반면, 일반 Surface는 불투명한 배경을 사용합니다.
         </p>
       </div>
@@ -113,12 +113,12 @@
         <div class="comparison-item">
           <div class="d-flex align-center ga-2 mb-3">
             <v-chip color="primary" variant="tonal" size="small">Glass</v-chip>
-            <span class="text-subtitle-2 font-weight-bold">bg-glass</span>
+            <span class="text-title-small font-weight-bold">bg-glass</span>
           </div>
           <v-card hover>
             <v-card-text>
-              <div class="text-h6 font-weight-bold mb-2">Glass Card</div>
-              <div class="text-body-2 text-medium-emphasis">
+              <div class="text-title-large font-weight-bold mb-2">Glass Card</div>
+              <div class="text-body-medium text-medium-emphasis">
                 블러 효과가 적용된 글래스 카드입니다.
               </div>
             </v-card-text>
@@ -128,12 +128,12 @@
         <div class="comparison-item">
           <div class="d-flex align-center ga-2 mb-3">
             <v-chip color="primary" variant="flat" size="small">Default</v-chip>
-            <span class="text-subtitle-2 font-weight-bold">bg-surface</span>
+            <span class="text-title-small font-weight-bold">bg-surface</span>
           </div>
           <v-card class="bg-surface" hover>
             <v-card-text>
-              <div class="text-h6 font-weight-bold mb-2">Default Card</div>
-              <div class="text-body-2 text-medium-emphasis">
+              <div class="text-title-large font-weight-bold mb-2">Default Card</div>
+              <div class="text-body-medium text-medium-emphasis">
                 Vuetify의 기본 카드 스타일입니다.
               </div>
             </v-card-text>
@@ -144,8 +144,8 @@
 
     <section class="component-section">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Elevation Levels</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Elevation Levels</h2>
+        <p class="text-body-medium text-medium-emphasis">
           Vuetify의 기본 elevation 시스템 (0~24). iankim 테마에서는 <strong>elevation 0</strong>을 기본으로 사용합니다.
         </p>
       </div>

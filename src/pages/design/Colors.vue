@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-palette-outline" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           FOUNDATION · COLORS
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Color System</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Color System</h1>
       <p class="section-description">
         iankim 디자인 시스템의 컬러 팔레트입니다.
         <strong class="text-primary">Primary Red #A91D3A</strong>를 기반으로 한 따뜻한 감성과
@@ -17,8 +17,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Primary Color</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Primary Color</h2>
+        <p class="text-body-medium text-medium-emphasis">
           브랜드의 핵심 색상. CTA 버튼, 링크, 주요 아이콘에 사용됩니다.
         </p>
       </div>
@@ -26,26 +26,26 @@
       <div class="color-showcase">
         <div class="color-hero" :style="heroBackground">
           <div class="color-hero-content hero-content-dark" v-show="isDark">
-            <div class="text-caption text-white mb-1 font-weight-medium">DARK MODE PRIMARY</div>
-            <div class="text-h2 text-white font-weight-black mb-2">{{ darkPrimary.hex }}</div>
-            <div class="text-body-1 text-white text-medium-emphasis">RGB({{ darkPrimary.rgb }})</div>
+            <div class="text-body-small text-white mb-1 font-weight-medium">DARK MODE PRIMARY</div>
+            <div class="text-display-large text-white font-weight-black mb-2">{{ darkPrimary.hex }}</div>
+            <div class="text-body-large text-white text-medium-emphasis">RGB({{ darkPrimary.rgb }})</div>
           </div>
           <div class="color-hero-content hero-content-light">
-            <div class="text-caption text-white mb-1 font-weight-medium">
+            <div class="text-body-small text-white mb-1 font-weight-medium">
               {{ isDark ? 'LIGHT MODE PRIMARY' : 'PRIMARY' }}
             </div>
-            <div class="text-h2 text-white font-weight-black mb-2">{{ lightPrimary.hex }}</div>
-            <div class="text-body-1 text-white text-medium-emphasis">RGB({{ lightPrimary.rgb }})</div>
+            <div class="text-display-large text-white font-weight-black mb-2">{{ lightPrimary.hex }}</div>
+            <div class="text-body-large text-white text-medium-emphasis">RGB({{ lightPrimary.rgb }})</div>
           </div>
         </div>
 
         <v-card class="pa-6 pa-md-8 d-flex flex-column justify-center">
           <div class="detail-row" v-for="detail in primaryDetails" :key="detail.label">
-            <span class="text-caption text-medium-emphasis">{{ detail.label }}</span>
+            <span class="text-body-small text-medium-emphasis">{{ detail.label }}</span>
             <span class="font-weight-bold">{{ detail.value }}</span>
           </div>
           <v-divider class="my-6" />
-          <div class="text-caption text-medium-emphasis mb-3">USAGE</div>
+          <div class="text-body-small text-medium-emphasis mb-3">USAGE</div>
           <div class="d-flex flex-wrap ga-2">
             <v-btn color="primary" variant="flat">Primary Button</v-btn>
             <v-btn color="primary" variant="outlined">Outlined</v-btn>
@@ -57,8 +57,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Surface & Background</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Surface & Background</h2>
+        <p class="text-body-medium text-medium-emphasis">
           컨텐츠가 놓이는 표면 색상. Glassmorphism 효과의 기반이 됩니다.
         </p>
       </div>
@@ -69,9 +69,9 @@
             background: color.isTransparent ? `rgba(${color.rgb}, 0.5)` : color.hex,
           }" :class="color.needsBorder ? 'swatch-border' : ''" />
           <v-card-text class="pa-4">
-            <div class="text-subtitle-1 font-weight-bold mb-1">{{ color.name }}</div>
-            <div class="text-caption text-medium-emphasis mb-2">{{ color.description }}</div>
-            <div class="text-caption font-weight-bold">{{ color.hex }}</div>
+            <div class="text-body-large font-weight-bold mb-1">{{ color.name }}</div>
+            <div class="text-body-small text-medium-emphasis mb-2">{{ color.description }}</div>
+            <div class="text-body-small font-weight-bold">{{ color.hex }}</div>
           </v-card-text>
         </v-card>
       </div>
@@ -79,8 +79,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Semantic Colors</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Semantic Colors</h2>
+        <p class="text-body-medium text-medium-emphasis">
           상태(성공, 경고, 오류, 정보)를 표현하는 의미 있는 색상들입니다.
         </p>
       </div>
@@ -89,9 +89,9 @@
         <v-card v-for="color in semanticColors" :key="color.name" hover>
           <div class="color-swatch" :style="{ background: color.hex }" />
           <v-card-text class="pa-4">
-            <div class="text-subtitle-1 font-weight-bold mb-1">{{ color.name }}</div>
-            <div class="text-caption text-medium-emphasis mb-2">{{ color.description }}</div>
-            <div class="text-caption font-weight-bold">{{ color.hex }}</div>
+            <div class="text-body-large font-weight-bold mb-1">{{ color.name }}</div>
+            <div class="text-body-small text-medium-emphasis mb-2">{{ color.description }}</div>
+            <div class="text-body-small font-weight-bold">{{ color.hex }}</div>
           </v-card-text>
         </v-card>
       </div>
@@ -99,8 +99,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Usage in Context</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Usage in Context</h2>
+        <p class="text-body-medium text-medium-emphasis">
           실제 컴포넌트에서 색상이 어떻게 활용되는지 확인하세요.
         </p>
       </div>
@@ -118,8 +118,8 @@
 
     <section class="component-section">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">CSS Variables Reference</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">CSS Variables Reference</h2>
+        <p class="text-body-medium text-medium-emphasis">
           테마 색상들은 Vuetify의 CSS 변수를 통해 제공됩니다.
         </p>
       </div>

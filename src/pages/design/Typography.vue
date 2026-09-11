@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-format-title" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           FOUNDATION · TYPOGRAPHY
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Typography</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Typography</h1>
       <p class="section-description">
         가독성과 모던함을 고려하여 기본 폰트로 'Pretendard' 시스템 폰트 스택을 사용합니다.
         Vuetify의 기본 타이포그래피 스케일에 맞추어 정의되었습니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Font Family</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Font Family</h2>
+        <p class="text-body-medium text-medium-emphasis">
           시스템 폰트 체인으로 모든 환경에서 최적의 렌더링을 보장합니다.
         </p>
       </div>
@@ -35,8 +35,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Headings Scale</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Headings Scale</h2>
+        <p class="text-body-medium text-medium-emphasis">
           페이지의 구조를 잡고 시선을 유도하는 제목용 타이포그래피입니다.
         </p>
       </div>
@@ -54,19 +54,19 @@
           </div>
           <div class="d-flex flex-column ga-2 min-w-180">
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">CLASS</span>
+              <span class="text-body-small text-medium-emphasis">CLASS</span>
               <code>{{ type.class }}</code>
             </div>
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">SIZE</span>
+              <span class="text-body-small text-medium-emphasis">SIZE</span>
               <strong>{{ type.size }}</strong>
             </div>
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">WEIGHT</span>
+              <span class="text-body-small text-medium-emphasis">WEIGHT</span>
               <strong>{{ type.weight }}</strong>
             </div>
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">LINE HEIGHT</span>
+              <span class="text-body-small text-medium-emphasis">LINE HEIGHT</span>
               <strong>{{ type.lineHeight }}</strong>
             </div>
           </div>
@@ -76,8 +76,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Body & Utilities</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Body & Utilities</h2>
+        <p class="text-body-medium text-medium-emphasis">
           본문, 캡션, 버튼 등 인터페이스의 상세 정보를 전달하는 실용적인 텍스트 스케일입니다.
         </p>
       </div>
@@ -95,19 +95,19 @@
           </div>
           <div class="d-flex flex-column ga-2 min-w-180">
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">CLASS</span>
+              <span class="text-body-small text-medium-emphasis">CLASS</span>
               <code>{{ type.class }}</code>
             </div>
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">SIZE</span>
+              <span class="text-body-small text-medium-emphasis">SIZE</span>
               <strong>{{ type.size }}</strong>
             </div>
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">WEIGHT</span>
+              <span class="text-body-small text-medium-emphasis">WEIGHT</span>
               <strong>{{ type.weight }}</strong>
             </div>
             <div class="meta-chip">
-              <span class="text-caption text-medium-emphasis">LINE HEIGHT</span>
+              <span class="text-body-small text-medium-emphasis">LINE HEIGHT</span>
               <strong>{{ type.lineHeight }}</strong>
             </div>
           </div>
@@ -117,8 +117,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Font Weights</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Font Weights</h2>
+        <p class="text-body-medium text-medium-emphasis">
           Pretendard의 다양한 굵기 변형입니다.
         </p>
       </div>
@@ -129,8 +129,8 @@
             Aa 가
           </div>
           <div class="weight-info">
-            <div class="text-subtitle-1 font-weight-bold">{{ weight.name }}</div>
-            <div class="text-caption text-medium-emphasis">{{ weight.value }}</div>
+            <div class="text-body-large font-weight-bold">{{ weight.name }}</div>
+            <div class="text-body-small text-medium-emphasis">{{ weight.value }}</div>
           </div>
         </v-card>
       </div>
@@ -138,8 +138,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Text Emphasis</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Text Emphasis</h2>
+        <p class="text-body-medium text-medium-emphasis">
           강조 수준에 따른 텍스트 스타일링입니다.
         </p>
       </div>
@@ -151,7 +151,7 @@
             <div :class="emphasis.class" class="emphasis-sample">
               {{ emphasis.text }}
             </div>
-            <code class="text-caption">{{ emphasis.code }}</code>
+            <code class="text-body-small">{{ emphasis.code }}</code>
             <v-divider v-if="emphasis.label !== 'Disabled'" class="my-3" />
           </div>
         </v-card-text>

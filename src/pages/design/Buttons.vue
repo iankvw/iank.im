@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-gesture-tap-button" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           COMPONENTS · BUTTONS
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Buttons</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Buttons</h1>
       <p class="section-description">
         사용자의 즉각적인 동작과 결정을 유도하는 핵심 인터랙션 컴포넌트입니다.
         Material Design 3의 다채로운 변형(Variants) 속성과 iankim 테마의 시그니처 컬러가 유기적으로 결합되어 있습니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Variants</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Variants</h2>
+        <p class="text-body-medium text-medium-emphasis">
           중요도와 화면 내 위계에 따라 6가지 버튼 스타일을 제공합니다.
         </p>
       </div>
@@ -30,11 +30,11 @@
             </v-btn>
           </div>
           <div class="info-area">
-            <div class="text-subtitle-1 font-weight-bold mb-1">{{ variant.name }}</div>
-            <code class="text-caption bg-background px-2 py-1 rounded mb-2 d-inline-block">
+            <div class="text-body-large font-weight-bold mb-1">{{ variant.name }}</div>
+            <code class="text-body-small bg-background px-2 py-1 rounded mb-2 d-inline-block">
               variant="{{ variant.variant }}"
             </code>
-            <div class="text-caption text-medium-emphasis mt-2">
+            <div class="text-body-small text-medium-emphasis mt-2">
               {{ variant.description }}
             </div>
           </div>
@@ -44,8 +44,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Sizes</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Sizes</h2>
+        <p class="text-body-medium text-medium-emphasis">
           5가지 크기 변형으로 다양한 상황에 대응합니다.
         </p>
       </div>
@@ -54,7 +54,7 @@
         <div class="d-flex flex-wrap align-center ga-6">
           <div v-for="size in sizes" :key="size.name" class="d-flex flex-column align-center ga-2">
             <v-btn color="primary" :size="size.name">{{ size.label }}</v-btn>
-            <code class="text-caption text-medium-emphasis">{{ size.code }}</code>
+            <code class="text-body-small text-medium-emphasis">{{ size.code }}</code>
           </div>
         </div>
       </v-card>
@@ -62,8 +62,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">States & Interactions</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">States & Interactions</h2>
+        <p class="text-body-medium text-medium-emphasis">
           사용자 피드백을 위한 다양한 인터랙션 상태를 시각화합니다.
         </p>
       </div>
@@ -71,7 +71,7 @@
       <v-card class="bordered-card pa-6 pa-md-8">
         <div class="state-grid">
           <div v-for="state in states" :key="state.label" class="state-item">
-            <div class="text-caption text-medium-emphasis mb-3 font-weight-bold">{{ state.label }}</div>
+            <div class="text-body-small text-medium-emphasis mb-3 font-weight-bold">{{ state.label }}</div>
             <v-btn color="primary" :variant="state.variant" :loading="state.loading" :disabled="state.disabled">
               {{ state.text }}
             </v-btn>
@@ -82,15 +82,15 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Icons</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Icons</h2>
+        <p class="text-body-medium text-medium-emphasis">
           아이콘을 추가하여 버튼의 의미를 명확히 합니다.
         </p>
       </div>
 
       <div class="size-icon-grid">
         <v-card class="bordered-card pa-6">
-          <div class="text-subtitle-1 font-weight-bold mb-6">With Icons</div>
+          <div class="text-body-large font-weight-bold mb-6">With Icons</div>
           <div class="d-flex flex-wrap ga-3">
             <v-btn v-for="btn in iconButtons" :key="btn.label" :color="btn.color" :variant="btn.variant"
               :prepend-icon="btn.prependIcon" :append-icon="btn.appendIcon" :aria-label="btn.label">
@@ -100,13 +100,13 @@
         </v-card>
 
         <v-card class="bordered-card pa-6">
-          <div class="text-subtitle-1 font-weight-bold mb-6">Icon Buttons</div>
+          <div class="text-body-large font-weight-bold mb-6">Icon Buttons</div>
           <div class="d-flex flex-wrap ga-3 mb-6">
             <v-btn v-for="btn in iconOnlyButtons" :key="btn.icon" :icon="btn.icon" :color="btn.color"
               :variant="btn.variant" :aria-label="btn.ariaLabel" />
           </div>
           <v-divider class="mb-6" />
-          <div class="text-subtitle-1 font-weight-bold mb-6">Sizes</div>
+          <div class="text-body-large font-weight-bold mb-6">Sizes</div>
           <div class="d-flex flex-wrap align-center ga-3">
             <v-btn v-for="size in iconSizes" :key="size" icon="mdi-pencil" :size="size" color="primary" variant="flat"
               :aria-label="`Pencil ${size}`" />
@@ -117,8 +117,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Block Buttons</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Block Buttons</h2>
+        <p class="text-body-medium text-medium-emphasis">
           모바일 환경이나 모달 하단, 폼 제출 영역에서 주로 사용되는 너비 100%의 블록 버튼입니다.
         </p>
       </div>
@@ -133,8 +133,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Floating Action Buttons (FAB)</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Floating Action Buttons (FAB)</h2>
+        <p class="text-body-medium text-medium-emphasis">
           화면의 주요 액션을 강조하는 플로팅 버튼입니다.
         </p>
       </div>
@@ -143,7 +143,7 @@
         <v-card class="bordered-card pa-6">
           <div class="d-flex flex-wrap align-end ga-4">
             <div v-for="fab in fabs" :key="fab.size" class="d-flex flex-column align-center ga-3">
-              <div class="text-caption text-medium-emphasis">
+              <div class="text-body-small text-medium-emphasis">
                 <code>{{ fab.code }}</code>
               </div>
               <v-btn :icon="fab.icon" :size="fab.size" color="primary" variant="flat" :aria-label="`FAB ${fab.size}`" />
@@ -152,7 +152,7 @@
         </v-card>
 
         <v-card class="bordered-card pa-6">
-          <div class="text-subtitle-1 font-weight-bold mb-6">Extended FAB</div>
+          <div class="text-body-large font-weight-bold mb-6">Extended FAB</div>
           <div class="d-flex flex-wrap ga-3">
             <v-btn icon="mdi-plus" color="primary" size="large" aria-label="Create">
               Create
@@ -167,8 +167,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Button Group</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Button Group</h2>
+        <p class="text-body-medium text-medium-emphasis">
           관련 있는 버튼들을 그룹화하여 표시합니다.
         </p>
       </div>
@@ -176,7 +176,7 @@
       <v-card class="bordered-card">
         <v-card-text>
           <div class="mb-6">
-            <div class="text-subtitle-2 font-weight-bold mb-3">Single Select</div>
+            <div class="text-title-small font-weight-bold mb-3">Single Select</div>
             <v-btn-toggle v-model="singleSelect" color="primary" variant="outlined" rounded="xl">
               <v-btn value="left" icon="mdi-format-align-left" aria-label="Align left" />
               <v-btn value="center" icon="mdi-format-align-center" aria-label="Align center" />
@@ -188,7 +188,7 @@
           <v-divider class="mb-6" />
 
           <div class="mb-6">
-            <div class="text-subtitle-2 font-weight-bold mb-3">Multi Select</div>
+            <div class="text-title-small font-weight-bold mb-3">Multi Select</div>
             <v-btn-toggle v-model="multiSelect" multiple color="primary" variant="tonal" rounded="xl">
               <v-btn value="bold" icon="mdi-format-bold" aria-label="Bold" />
               <v-btn value="italic" icon="mdi-format-italic" aria-label="Italic" />
@@ -200,7 +200,7 @@
           <v-divider class="mb-6" />
 
           <div>
-            <div class="text-subtitle-2 font-weight-bold mb-3">Text Group</div>
+            <div class="text-title-small font-weight-bold mb-3">Text Group</div>
             <v-btn-toggle v-model="viewMode" color="primary" variant="flat" rounded="xl">
               <v-btn value="list" prepend-icon="mdi-view-list">List</v-btn>
               <v-btn value="grid" prepend-icon="mdi-view-grid">Grid</v-btn>
@@ -212,8 +212,8 @@
 
     <section class="component-section">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Color Variations</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Color Variations</h2>
+        <p class="text-body-medium text-medium-emphasis">
           의미에 따른 색상 사용 가이드입니다.
         </p>
       </div>
@@ -225,7 +225,7 @@
               <v-btn :color="color.name" variant="flat">
                 {{ color.label }}
               </v-btn>
-              <div class="text-caption text-medium-emphasis mt-2">
+              <div class="text-body-small text-medium-emphasis mt-2">
                 {{ color.usage }}
               </div>
             </div>

@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-form-textbox" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           COMPONENTS · FORMS
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Forms & Inputs</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Forms & Inputs</h1>
       <p class="section-description">
         사용자의 데이터 입력을 받는 폼(Forms) 컴포넌트입니다.
         명확한 상태(State) 피드백과 Material Design 3의 직관적인 상호작용 원칙을 준수하여 설계되었습니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Text Field Variants</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Text Field Variants</h2>
+        <p class="text-body-medium text-medium-emphasis">
           컨텍스트에 맞춰 선택할 수 있는 3가지 주요 입력창 스타일입니다.
         </p>
       </div>
@@ -29,11 +29,11 @@
               color="primary" />
           </div>
           <div class="info-area">
-            <div class="text-subtitle-1 font-weight-bold mb-1">{{ variant.name }}</div>
-            <code class="text-caption bg-background px-2 py-1 rounded mb-2 d-inline-block">
+            <div class="text-body-large font-weight-bold mb-1">{{ variant.name }}</div>
+            <code class="text-body-small bg-background px-2 py-1 rounded mb-2 d-inline-block">
               variant="{{ variant.variant }}"
             </code>
-            <div class="text-caption text-medium-emphasis mt-2">
+            <div class="text-body-small text-medium-emphasis mt-2">
               {{ variant.description }}
             </div>
           </div>
@@ -43,8 +43,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">States & Validation</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">States & Validation</h2>
+        <p class="text-body-medium text-medium-emphasis">
           사용자에게 현재 입력 상태를 명확하게 전달하는 피드백 디자인입니다.
         </p>
       </div>
@@ -52,7 +52,7 @@
       <v-card class="bordered-card pa-6 pa-md-8">
         <div class="form-grid">
           <div v-for="state in states" :key="state.label" class="form-item">
-            <div class="text-caption text-medium-emphasis mb-3 font-weight-bold">{{ state.label }}</div>
+            <div class="text-body-small text-medium-emphasis mb-3 font-weight-bold">{{ state.label }}</div>
             <v-text-field :variant="state.variant" :label="state.label_text" :model-value="state.value"
               :color="state.color" :base-color="state.baseColor" :error="state.error"
               :error-messages="state.errorMessages" :disabled="state.disabled" :focused="state.focused"
@@ -64,8 +64,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Icons & Actions</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Icons & Actions</h2>
+        <p class="text-body-medium text-medium-emphasis">
           입력창의 목적을 직관적으로 알려주거나 부가적인 액션을 제공하는 요소입니다.
         </p>
       </div>
@@ -90,15 +90,15 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Selection Controls</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Selection Controls</h2>
+        <p class="text-body-medium text-medium-emphasis">
           체크박스, 라디오 버튼, 스위치를 통한 옵션 선택 컴포넌트입니다.
         </p>
       </div>
 
       <div class="selection-grid">
         <v-card class="bordered-card pa-6 pa-md-8">
-          <div class="text-subtitle-1 font-weight-bold mb-4">Checkboxes</div>
+          <div class="text-body-large font-weight-bold mb-4">Checkboxes</div>
           <div class="d-flex flex-column ga-2">
             <v-checkbox v-model="checkbox1" label="기본 체크박스" color="primary" hide-details />
             <v-checkbox v-model="checkbox2" label="선택된 체크박스" color="primary" hide-details />
@@ -107,7 +107,7 @@
         </v-card>
 
         <v-card class="bordered-card pa-6 pa-md-8">
-          <div class="text-subtitle-1 font-weight-bold mb-4">Radio Buttons</div>
+          <div class="text-body-large font-weight-bold mb-4">Radio Buttons</div>
           <v-radio-group v-model="radioGroup" color="primary" hide-details>
             <v-radio label="옵션 1 (선택됨)" value="1" />
             <v-radio label="옵션 2" value="2" />
@@ -116,7 +116,7 @@
         </v-card>
 
         <v-card class="bordered-card pa-6 pa-md-8">
-          <div class="text-subtitle-1 font-weight-bold mb-4">Switches</div>
+          <div class="text-body-large font-weight-bold mb-4">Switches</div>
           <div class="d-flex flex-column ga-2">
             <v-switch v-model="switch1" label="기본 스위치" color="primary" inset hide-details />
             <v-switch v-model="switch2" label="활성화된 스위치" color="primary" inset hide-details />
@@ -128,8 +128,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Textarea</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Textarea</h2>
+        <p class="text-body-medium text-medium-emphasis">
           여러 줄의 텍스트를 입력할 수 있는 컴포넌트입니다.
         </p>
       </div>
@@ -145,8 +145,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Select & Autocomplete</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Select & Autocomplete</h2>
+        <p class="text-body-medium text-medium-emphasis">
           드롭다운을 통한 단일 또는 다중 옵션 선택 컴포넌트입니다.
         </p>
       </div>
@@ -167,8 +167,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Slider</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Slider</h2>
+        <p class="text-body-medium text-medium-emphasis">
           연속된 값의 범위를 시각적으로 조절하는 슬라이더 컴포넌트입니다.
         </p>
       </div>
@@ -185,8 +185,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">File Input & Date Picker</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">File Input & Date Picker</h2>
+        <p class="text-body-medium text-medium-emphasis">
           파일 업로드와 날짜 선택 컴포넌트입니다.
         </p>
       </div>

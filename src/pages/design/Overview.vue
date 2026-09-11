@@ -27,7 +27,7 @@
         </div>
 
         <div class="scroll-indicator mt-16" aria-hidden="true">
-          <div class="scroll-text text-caption text-medium-emphasis mb-2">
+          <div class="scroll-text text-body-small text-medium-emphasis mb-2">
             SCROLL TO EXPLORE
           </div>
           <v-icon icon="mdi-chevron-double-down" class="scroll-icon" />
@@ -38,7 +38,7 @@
     <section class="component-section mb-16">
       <div class="section-header mb-6">
         <div class="section-overline">FOUNDATIONS</div>
-        <h2 class="text-h3 font-weight-black mb-4">디자인의 기본 요소들</h2>
+        <h2 class="text-display-medium font-weight-black mb-4">디자인의 기본 요소들</h2>
         <p class="section-description">
           색상, 타이포그래피, 그림자까지. 모든 컴포넌트의 기반이 되는 핵심 요소들을 정의합니다.
         </p>
@@ -50,8 +50,8 @@
             <div class="feature-icon mb-6" :style="{ background: feature.gradient }">
               <v-icon :icon="feature.icon" color="white" size="28" aria-hidden="true" />
             </div>
-            <div class="text-h5 font-weight-bold mb-2">{{ feature.title }}</div>
-            <div class="text-body-2 text-medium-emphasis mb-4">
+            <div class="text-headline-small font-weight-bold mb-2">{{ feature.title }}</div>
+            <div class="text-body-medium text-medium-emphasis mb-4">
               {{ feature.description }}
             </div>
             <div class="feature-link">
@@ -66,7 +66,7 @@
     <section class="component-section mb-16">
       <div class="section-header mb-6">
         <div class="section-overline">COMPONENTS</div>
-        <h2 class="text-h3 font-weight-black mb-4">바로 쓸 수 있는 컴포넌트들</h2>
+        <h2 class="text-display-medium font-weight-black mb-4">바로 쓸 수 있는 컴포넌트들</h2>
         <p class="section-description">
           일관된 디자인 언어로 만들어진 재사용 가능한 컴포넌트 모음입니다.
         </p>
@@ -78,10 +78,10 @@
           <v-card-text class="d-flex align-center ga-4">
             <v-icon :icon="component.icon" size="32" color="primary" aria-hidden="true" />
             <div class="flex-grow-1">
-              <div class="text-subtitle-1 font-weight-bold">
+              <div class="text-body-large font-weight-bold">
                 {{ component.title }}
               </div>
-              <div class="text-caption text-medium-emphasis">
+              <div class="text-body-small text-medium-emphasis">
                 {{ component.description }}
               </div>
             </div>
@@ -96,7 +96,7 @@
         <v-card-text class="d-flex align-center justify-space-between flex-wrap ga-6">
           <div>
             <div class="section-overline">ACTIVE THEME</div>
-            <div class="text-h4 font-weight-bold mb-2">
+            <div class="text-headline-large font-weight-bold mb-2">
               {{ isDark ? '🌙 Dark' : '☀️ Light' }}
             </div>
           </div>

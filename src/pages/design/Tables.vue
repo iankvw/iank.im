@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-table" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           COMPONENTS · DATA TABLES
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Data Tables</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Data Tables</h1>
       <p class="section-description">
         대량의 데이터를 체계적으로 구조화하여 탐색, 정렬, 필터링을 지원합니다.
         Material Design 3의 밀도(Density) 규칙과 직관적인 슬롯 레이아웃을 통해 가독성을 극대화합니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Basic Table</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Basic Table</h2>
+        <p class="text-body-medium text-medium-emphasis">
           기본적인 정렬과 페이징 기능이 포함된 표준 데이터 테이블입니다.
         </p>
       </div>
@@ -29,15 +29,15 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Custom Slots & Layouts</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Custom Slots & Layouts</h2>
+        <p class="text-body-medium text-medium-emphasis">
           아바타, 칩, 액션 버튼 등 커스텀 슬롯을 활용한 복합 데이터 테이블입니다.
         </p>
       </div>
 
       <v-card class="bordered-card overflow-hidden">
         <v-toolbar color="transparent" class="px-2 toolbar-border">
-          <v-toolbar-title class="text-subtitle-1 font-weight-bold">Team Members</v-toolbar-title>
+          <v-toolbar-title class="text-body-large font-weight-bold">Team Members</v-toolbar-title>
           <v-spacer />
           <v-text-field v-model="search" prepend-inner-icon="mdi-magnify" placeholder="Search members..."
             variant="outlined" density="compact" hide-details class="search-field" />
@@ -53,8 +53,8 @@
                 <v-img :src="item.avatar" cover />
               </v-avatar>
               <div>
-                <div class="font-weight-bold text-body-2">{{ item.name }}</div>
-                <div class="text-caption text-medium-emphasis">{{ item.email }}</div>
+                <div class="font-weight-bold text-body-medium">{{ item.name }}</div>
+                <div class="text-body-small text-medium-emphasis">{{ item.email }}</div>
               </div>
             </div>
           </template>
@@ -70,7 +70,7 @@
             <div class="d-flex align-center ga-2">
               <v-progress-linear :model-value="item.progress" :color="getProgressColor(item.progress)" rounded
                 height="6" class="flex-grow-1" />
-              <span class="text-caption font-weight-medium progress-value">{{ item.progress }}%</span>
+              <span class="text-body-small font-weight-medium progress-value">{{ item.progress }}%</span>
             </div>
           </template>
 
@@ -86,8 +86,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Selectable Rows</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Selectable Rows</h2>
+        <p class="text-body-medium text-medium-emphasis">
           다중 선택 기능을 제공하여 일괄 액션 처리에 적합한 테이블입니다.
         </p>
       </div>
@@ -95,7 +95,7 @@
       <v-card class="bordered-card overflow-hidden">
         <v-toolbar :color="selected.length > 0 ? 'primary' : 'transparent'"
           :variant="selected.length > 0 ? 'tonal' : 'default'" class="px-2 transition-smooth">
-          <v-toolbar-title class="text-subtitle-1 font-weight-bold">
+          <v-toolbar-title class="text-body-large font-weight-bold">
             {{ selected.length > 0 ? `${selected.length} items selected` : 'Project List' }}
           </v-toolbar-title>
           <v-spacer />
@@ -110,7 +110,7 @@
           <template v-slot:item.priority="{ item }">
             <v-icon :icon="PRIORITY_CONFIG[item.priority]?.icon || 'mdi-circle-medium'"
               :color="PRIORITY_CONFIG[item.priority]?.color || 'primary'" size="small" class="mr-1" />
-            <span class="text-caption font-weight-medium">{{ item.priority }}</span>
+            <span class="text-body-small font-weight-medium">{{ item.priority }}</span>
           </template>
         </v-data-table>
       </v-card>

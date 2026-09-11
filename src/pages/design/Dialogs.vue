@@ -3,11 +3,11 @@
     <section class="page-hero mb-12">
       <div class="d-flex align-center mb-4">
         <v-icon icon="mdi-message-text-outline" size="28" color="primary" class="mr-3" aria-hidden="true" />
-        <span class="text-overline text-primary font-weight-bold letter-spacing-2">
+        <span class="text-label-medium text-primary font-weight-bold letter-spacing-2">
           COMPONENTS · DIALOGS
         </span>
       </div>
-      <h1 class="text-h3 font-weight-black mb-3">Dialogs & Overlays</h1>
+      <h1 class="text-display-medium font-weight-black mb-3">Dialogs & Overlays</h1>
       <p class="section-description">
         사용자의 주의를 환기하고 중요한 의사결정을 유도합니다.
         필수적인 동작만 수행하도록 설계하여, 사용자의 태스크 흐름을 방해하지 않아야 합니다.
@@ -16,8 +16,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Dialog Types</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Dialog Types</h2>
+        <p class="text-body-medium text-medium-emphasis">
           상황에 맞춰 사용하는 4가지 핵심 다이얼로그입니다.
         </p>
       </div>
@@ -66,7 +66,7 @@
         <v-card-text class="dialog-text pt-8">
           <v-icon icon="mdi-alert-circle-outline" size="64" color="error" class="mb-4" aria-hidden="true" />
           <div class="dialog-title mb-2">정말 삭제하시겠습니까?</div>
-          <div class="text-body-2 text-medium-emphasis">
+          <div class="text-body-medium text-medium-emphasis">
             이 작업은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?
           </div>
         </v-card-text>
@@ -104,8 +104,8 @@
           </v-toolbar-items>
         </v-toolbar>
         <v-container class="pa-8">
-          <div class="text-h4 font-weight-bold mb-4">Settings</div>
-          <p class="text-body-1 text-medium-emphasis">
+          <div class="text-headline-large font-weight-bold mb-4">Settings</div>
+          <p class="text-body-large text-medium-emphasis">
             전체 화면을 사용하는 대형 폼이나 설정을 다룰 때 적합합니다.
           </p>
         </v-container>
@@ -114,8 +114,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Snackbar</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Snackbar</h2>
+        <p class="text-body-medium text-medium-emphasis">
           짧은 메시지를 화면 하단에 표시하는 피드백 컴포넌트입니다.
         </p>
       </div>
@@ -143,8 +143,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Bottom Sheets & Menus</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Bottom Sheets & Menus</h2>
+        <p class="text-body-medium text-medium-emphasis">
           화면 하단에서 슬라이드업되거나, 요소에 부착되는 메뉴입니다.
         </p>
       </div>
@@ -185,11 +185,11 @@
 
       <v-bottom-sheet v-model="bottomSheet">
         <v-card class="bottom-sheet-card text-center pa-8" height="300">
-          <v-card-title class="text-h5 mb-6">Share Content</v-card-title>
+          <v-card-title class="text-headline-small mb-6">Share Content</v-card-title>
           <div class="d-flex justify-center ga-6">
             <div v-for="s in shareItems" :key="s.icon" class="share-item">
               <v-btn :icon="s.icon" :color="s.color" size="large" variant="flat" :aria-label="s.name" />
-              <span class="text-caption mt-2">{{ s.name }}</span>
+              <span class="text-body-small mt-2">{{ s.name }}</span>
             </div>
           </div>
         </v-card>
@@ -198,8 +198,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Tooltip</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Tooltip</h2>
+        <p class="text-body-medium text-medium-emphasis">
           요소에 마우스를 올리면 표시되는 보조 정보입니다.
         </p>
       </div>
@@ -241,8 +241,8 @@
 
     <section class="component-section mb-16">
       <div class="section-header mb-6">
-        <h2 class="text-h4 font-weight-bold mb-2">Rating & Progress</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="text-headline-large font-weight-bold mb-2">Rating & Progress</h2>
+        <p class="text-body-medium text-medium-emphasis">
           평가 및 진행률 표시 컴포넌트입니다.
         </p>
       </div>
@@ -250,20 +250,20 @@
       <v-card class="bordered-card pa-6">
         <div class="demo-grid">
           <div>
-            <div class="text-subtitle-2 font-weight-bold mb-3">Rating</div>
+            <div class="text-title-small font-weight-bold mb-3">Rating</div>
             <v-rating v-model="rating" color="warning" hover />
-            <div class="text-caption text-medium-emphasis mt-2">{{ rating }} / 5</div>
+            <div class="text-body-small text-medium-emphasis mt-2">{{ rating }} / 5</div>
           </div>
 
           <div>
-            <div class="text-subtitle-2 font-weight-bold mb-3">Linear Progress</div>
+            <div class="text-title-small font-weight-bold mb-3">Linear Progress</div>
             <v-progress-linear model-value="65" color="primary" rounded class="mb-3" />
             <v-progress-linear model-value="40" color="success" rounded class="mb-3" />
             <v-progress-linear indeterminate color="primary" rounded />
           </div>
 
           <div>
-            <div class="text-subtitle-2 font-weight-bold mb-3">Circular Progress</div>
+            <div class="text-title-small font-weight-bold mb-3">Circular Progress</div>
             <div class="d-flex align-center ga-6">
               <v-progress-circular model-value="75" color="primary" size="56" />
               <v-progress-circular indeterminate color="primary" size="40" />
