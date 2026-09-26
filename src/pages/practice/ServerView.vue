@@ -8,8 +8,8 @@
             <br>
 
             <div class="link-list">
-                <a href="/server/student2v/">📂 student2v</a>
-                <a href="/server/student2r/">📂 student2r</a>
+                <a href="/practicefiles/server/student2v/">📂 student2v</a>
+                <a href="/practicefiles/server/student2r/">📂 student2r</a>
             </div>
         </div>
     </main>

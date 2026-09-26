@@ -9,7 +9,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Index from '@/pages/index.vue'
 import NotFound from '@/pages/NotFound.vue'
 import designRoutes from './routes/design'
-import skhuRoutes from './routes/skhu'
+import practiceRoutes from './routes/practice'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +31,7 @@ const router = createRouter({
       meta: { title: 'Timer & Counter | Ian Kim' },
     },
     ...designRoutes,
-    ...skhuRoutes,
+    ...practiceRoutes,
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',

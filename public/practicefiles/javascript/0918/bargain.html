@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>할인 가격 구하기</title>
+
+  <link rel="stylesheet" href="https://iank.im/css/global.css">
+	<link rel="stylesheet" href="./css/bargain.css">
+</head>
+
+<body>
+  <div id="contents">
+    <img src="img/sale.png" alt="sale image">
+    <ul>
+      <li class="input-group">
+        <label for="originalPrice">원래 가격</label>
+        <input type="number" id="originalPrice">
+        <span class="unit">원</span>
+      </li>
+      <li class="input-group">
+        <label for="discountRate">할인율</label>
+        <input type="number" id="discountRate">
+        <span class="unit">%</span>
+      </li>
+      <li class="btn-submit-container">
+        <button class="v-btn" onclick="discount()">할인 가격 계산하기</button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="resultModal" class="modal-scrim">
+    <div class="modal-container">
+      <h3 class="modal-title">계산 결과</h3>
+      <div id="showResult"></div>
+      <button class="v-btn v-btn-filled" onclick="closeModal()">돌아가기</button>
+    </div>
+  </div>
+
+  <script>
+    function discount() {
+      let originalPrice = document.querySelector("#originalPrice").value
+      if (originalPrice == "") { return 1 }
+      let discountRate = document.querySelector("#discountRate").value / 100 || 0
+      let discountAmount = originalPrice * discountRate
+      let discountedPrice = originalPrice - discountAmount
+      
+      let returnText = `상품의 원래 가격은 ${originalPrice}원이고, 할인율은 ${discountRate * 100}%입니다. ${discountAmount}원을 절약한 ${discountedPrice}원에 살 수 있습니다.`
+      document.getElementById("showResult").innerHTML = returnText
+      document.getElementById("resultModal").classList.add("show")
+    }
+
+    function closeModal() {
+      document.getElementById("resultModal").classList.remove("show")
+    }
+  </script>
+</body>
+
+</html>

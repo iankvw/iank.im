@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+div.title {
+  margin: 100 auto;
+  text-align: center;
+  line-height: 300px;
+  border-radius: 50%;
+
+  color: yellow;
+  background-color: black;
+  font-size: 50px;
+  width: 300px;
+  height: 300px;
+}
+
+#page1 {
+  display: none;
+}
+
+button {
+  width: 40%;
+
+}
+
+.intro {
+  border-radius: 20px;
+  background-color: lemonchiffon;
+  padding: 10px;
+  margin-top: 30px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/variable.js" defer></script>
+    <script>
+        function showMajor() {
+            var major = document.getElementById("major").value
+            document.getElementById("majorResult").innerHTML = major + "학부 "
+        }
+        // 한 줄 주석
+        /*
+         * 여러 줄 주석
+         */
+        add = (x, y) => { return x + y }
+        console.log("add(3,4) == " + add(3, 4))
+
+        var myArr = [1, 2, 3, 4, 5]
+        myArr.forEach(element => console.log("꽃심기" + element))
+    </script>
+</head>
+
+<body>
+    <button onclick="showPage1()">실습</button>
+    <button onclick="showPage2()">소개</button>
+    <br><br>
+    <div id="page1">
+        <h1 style="color: yellow; background-color: black;">자바스크립트</h1>
+        김이언
+        <br><br>
+        <script>
+            var name = prompt("이름을 입력하세요.")
+            var age = prompt("나이: ")
+            document.write("<span id='majorResult'></span><b><big>" + name + "</big></b>님, 환영합니다.<br>나이: " + age)
+            console.log(name + "님, 어서오세요!" + ` age: ${age}`)
+        </script>
+        <br><br>
+        <input type="text" id="major">
+        <button onclick="showMajor()">학부입력</button>
+    </div>
+    <div id="page2">
+        <div class="title">김이언_소개</div>
+        <div class="intro">
+            <span>
+                <script>
+                    name = "김이언"
+                    let univ = "성공회대학교"
+                    let year = 2026
+                    let sub = "자바스크립트"
+
+                    document.write(`${name}은 ${univ}에 다니며 ${year}학년도에는 ${sub}를 배우고 있습니다.<br><br>`)
+                </script>
+            </span>
+            <span id="introArea"></span>
+        </div>
+    </div>
+</body>
+
+</html>

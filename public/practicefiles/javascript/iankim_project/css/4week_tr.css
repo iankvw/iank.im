@@ -1,0 +1,86 @@
+/* ============================================
+	컴포넌트 전용 토큰 정의
+============================================ */
+:root {
+	--outline-variant: 220, 220, 225;
+}
+
+/* ============================================
+	뷰포트 중앙 배치를 위한 레이아웃
+============================================ */
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+}
+
+/* ============================================
+  타이틀
+============================================ */
+h1 {
+	font-size: clamp(100px, 5vw, 200px);
+	line-height: 1;
+	letter-spacing: -0.05em;
+	font-weight: 900;
+	user-select: none;
+	background: linear-gradient(135deg,
+			rgb(var(--primary)) 0%,
+			rgba(var(--primary), 0.6) 50%,
+			rgba(var(--primary), 0.3) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+  버튼 컴포넌트
+============================================ */
+.btn-container {
+	margin-top: 12px;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+}
+
+.v-btn {
+	width: 20%;
+	height: 52px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0.15px;
+	color: rgb(var(--primary));
+	background: rgba(var(--primary), 0.12);
+	border: none;
+	border-radius: 26px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.1s ease;
+	user-select: none;
+	outline: none;
+	margin: 6px;
+}
+
+.v-btn:hover {
+	background: rgba(var(--primary), 0.18);
+}
+
+.v-btn:active {
+	transform: scale(0.98);
+}
+
+.v-btn-filled {
+	background: rgb(var(--primary));
+	color: #ffffff;
+}
+
+.v-btn-filled:hover {
+	background: rgba(var(--primary), 0.9);
+}

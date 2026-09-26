@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>템플릿 문자열</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th, td {
+      border: 1px solid gray;
+      padding: 5px;
+    }
+
+    th {
+      background: darkgray;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="show"></div>
+  <script>
+    let name = "김이언"
+    let age = 25
+    let univ = "성공회대학교"
+
+    let text = "<table border='1'>" +
+      "<tr><th>이름</th><th>나이</th><th>학교</th></tr>" +
+      `<tr><td>${name}</td><td>${age}</td><td>${univ}</td></tr>` +
+      "</table>"
+
+    document.getElementById("show").innerHTML = text
+  </script>
+</body>
+
+</html>
