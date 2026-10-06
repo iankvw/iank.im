@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - test
 
 jobs:
   # ==================================================
@@ -84,11 +85,42 @@ jobs:
           retry_on: error
           command: rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@${{ secrets.CANARY_HOST }}:/home/ubuntu/docker/iank.im/
 
+      - name: Notify Discord on Canary Deployment Success
+        if: success()
+        run: |
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git fetch --depth=1 origin ${{ github.ref_name }}
+          git reset --hard FETCH_HEAD
+          
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --format=%s)
+
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{
+                 "username": "GitHub",
+                 "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+                 "embeds": [{
+                   "author": {
+                     "name": "${{ github.actor }}",
+                     "url": "https://github.com/${{ github.actor }}",
+                     "icon_url": "https://github.com/${{ github.actor }}.png"
+                   },
+                   "title": "[${{ github.event.repository.name }}:${{ github.ref_name }}] Deploy Succeeded",
+                   "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                   "description": "[`'"$SHORT_SHA"'`](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) '"$COMMIT_MSG"'",
+                   "color": 16766720
+                 }]
+               }' \
+               ${{ secrets.DISCORD_CANARY_WEBHOOK || secrets.DISCORD_WEBHOOK }}
+
   # ==================================================
   # [STAGE 3] Orchestrated Production Multi-Server Deployment (Manual Approval Gate Enabled)
   # ==================================================
   deploy-production:
     needs: deploy-canary
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     env:
@@ -144,7 +176,7 @@ jobs:
         env:
           TARGET_HOST: ${{ secrets[matrix.server.secret_name] }}
 
-      # 최종 배포까지 성공했을 때 알림 발송
+      # 최종 프로덕션 배포 성공 알림 발송
       - name: Notify Discord on Success
         if: success()
         run: |

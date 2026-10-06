@@ -24,6 +24,12 @@ const router = createRouter({
       component: () => import('@/pages/Timer.vue'),
       meta: { title: 'Timer & Counter | Ian Kim' },
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('@/pages/test.vue'),
+      meta: { title: 'Test | Ian Kim' },
+    },
     ...designRoutes,
     ...practiceRoutes,
     {
