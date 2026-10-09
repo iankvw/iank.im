@@ -6,6 +6,8 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import Navigation from '@/pages/Navigation.vue'
+import Test from '@/pages/Test.vue'
 import Index from '@/pages/Index.vue'
 import NotFound from '@/pages/NotFound.vue'
 import designRoutes from './routes/design'
@@ -15,6 +17,18 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/navigation',
+      name: 'navigation',
+      component: Navigation,
+      meta: { title: 'Navigation | Ian Kim', usePlain: true },
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test,
+      meta: { title: 'Test | Ian Kim' },
+    },
+    {
       path: '/',
       component: Index,
     },
@@ -23,12 +37,6 @@ const router = createRouter({
       name: 'timer',
       component: () => import('@/pages/Timer.vue'),
       meta: { title: 'Timer & Counter | Ian Kim' },
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import('@/pages/test.vue'),
-      meta: { title: 'Test | Ian Kim' },
     },
     ...designRoutes,
     ...practiceRoutes,

@@ -51,6 +51,25 @@ const toggleTheme = () => {
     <i-card class="card" variant="clear">i-card</i-card>
     <i-card class="card">i-card</i-card>
     <i-card class="card" variant="clear">i-card</i-card>
+    <i-card>
+          <div class="d-flex flex-wrap flex-md-no-wrap justify-space-between align-center">
+            <div class="flex-grow-1">
+              <v-card-item>
+                <v-card-title class="text-title-large font-weight-bold">System Architecture</v-card-title>
+                <v-card-subtitle>Documentation v4.0</v-card-subtitle>
+              </v-card-item>
+              <v-card-text class="text-body-medium">
+                컴포넌트 기반의 설계는 재사용성과 유지보수성을 극대화합니다.
+              </v-card-text>
+              <v-card-actions class="px-4">
+                <v-btn size="small" variant="outlined" rounded="lg">Read Docs</v-btn>
+              </v-card-actions>
+            </div>
+            <v-avatar class="ma-4 flex-shrink-0" size="125" rounded="lg">
+              <v-img src="https://picsum.photos/id/20/300/300" cover />
+            </v-avatar>
+          </div>
+        </i-card>
     <div class="bg-glass card">bg-glass</div>
     <div class="bg-glass-clear card">bg-glass-clear</div>
   </div>
