@@ -6,7 +6,7 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from '@/pages/index.vue'
+import Index from '@/pages/Index.vue'
 import NotFound from '@/pages/NotFound.vue'
 import designRoutes from './routes/design'
 import practiceRoutes from './routes/practice'
@@ -17,12 +17,6 @@ const router = createRouter({
     {
       path: '/',
       component: Index,
-    },
-    {
-      path: '/navigation',
-      name: 'navigation',
-      component: () => import('@/pages/NavView.vue'),
-      meta: { title: 'Navigation | Ian Kim', usePlain: true },
     },
     {
       path: '/timer',
