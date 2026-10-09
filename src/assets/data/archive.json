@@ -1,0 +1,1019 @@
+[
+  {
+    "semester": "2025-1",
+    "subjectId": "IS00007-01",
+    "subjectName": {
+      "ko": "웹개발입문",
+      "en": "Introduction to Web Development"
+    },
+    "professor": "김덕봉",
+    "main": "IS00007-01.21",
+    "archive": [
+      {
+        "id": "IS00007-01.1",
+        "title": {
+          "ko": "웹 페이지의 구성 요소",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/test1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.2",
+        "title": {
+          "ko": "웹 페이지 타이틀 달기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/2-1%20%EC%9B%B9%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%ED%83%80%EC%9D%B4%ED%8B%80%20%EB%8B%AC%EA%B8%B0.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.3",
+        "title": {
+          "ko": "기본 표 만들기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/2.16%20%EA%B8%B0%EB%B3%B8%20%ED%91%9C%20%EB%A7%8C%EB%93%A4%EA%B8%B0.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.4",
+        "title": {
+          "ko": "나의 홈 페이지",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/first.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.5",
+        "title": {
+          "ko": "나의 대학생활 소개 (1)",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/myLife.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.6",
+        "title": {
+          "ko": "학기계획",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/myPlan.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.7",
+        "title": {
+          "ko": "데이터 목록을 가진 텍스트 입력",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/3-7%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%AA%A9%EB%A1%9D%EC%9D%84%20%EA%B0%80%EC%A7%84%20%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EC%9E%85%EB%A0%A5.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.8",
+        "title": {
+          "ko": "자기소개",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/myIntro.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.9",
+        "title": {
+          "ko": "태그 셀렉터 만들기와 텍스트 꾸미기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/css.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.10",
+        "title": {
+          "ko": "셀렉터 만들기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/4-04.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.11",
+        "title": {
+          "ko": "나의 대학생활 소개 (2)",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/myLife2.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.12",
+        "title": {
+          "ko": "웹개발입문 스터디그룹 참여 신청서",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/myServey.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.13",
+        "title": {
+          "ko": "HTML5 기본 문서 만들기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%9B%B9%EA%B0%9C%EB%B0%9C%EC%9E%85%EB%AC%B8.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.14",
+        "title": {
+          "ko": "나의 대학생활 소개 (웹과제1)",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EA%B9%80%EC%9D%B4%EC%96%B8_%EC%9B%B9%EA%B3%BC%EC%A0%9C1/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.15",
+        "title": {
+          "ko": "마우스를 올려 보세요",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/6-3.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.16",
+        "title": {
+          "ko": "[ ] 로 배열 만들기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/7-2%20[]%EB%A1%9C%20%EB%B0%B0%EC%97%B4%20%EB%A7%8C%EB%93%A4%EA%B8%B0.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.17",
+        "title": {
+          "ko": "Math",
+          "en": "Math"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/7-8%20math.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.18",
+        "title": {
+          "ko": "객체 만들기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/7-9.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.19",
+        "title": {
+          "ko": "겜블링 게임",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/Open%20Challenge%2008.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.20",
+        "title": {
+          "ko": "기말고사",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EC%8B%A4%EC%8A%B5/test2.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00007-01.21",
+        "title": {
+          "ko": "나의 대학생활 소개 (웹과제2)",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/web/%EA%B9%80%EC%9D%B4%EC%96%B8_%EC%9B%B9%EA%B3%BC%EC%A0%9C2/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      }
+    ]
+  },
+  {
+    "semester": "2025-2",
+    "subjectId": "IS00018-02",
+    "subjectName": {
+      "ko": "서버구축및형상관리",
+      "en": "Server Construction and Configuration Management"
+    },
+    "professor": "이승진",
+    "main": "",
+    "archive": [
+      {
+        "id": "IS00018-02.1",
+        "title": {
+          "ko": "student2v - Vue 프론트엔드",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/server/student2v/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00018-02.2",
+        "title": {
+          "ko": "student2r - React 프론트엔드",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/server/student2r/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      }
+    ]
+  },
+  {
+    "semester": "2026-1",
+    "subjectId": "IS00031-01",
+    "subjectName": {
+      "ko": "프론트엔드프로그래밍",
+      "en": "Front End Programming"
+    },
+    "professor": "이승진",
+    "main": "",
+    "archive": [
+      {
+        "id": "IS00031-01.1",
+        "title": {
+          "ko": "Vue 프로젝트",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.2",
+        "title": {
+          "ko": "vue_app1-1",
+          "en": "vue_app1-1"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.3",
+        "title": {
+          "ko": "Vue.js 기초 #1",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.4",
+        "title": {
+          "ko": "Vue.js 기초 #2",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.5",
+        "title": {
+          "ko": "props",
+          "en": "props"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.6",
+        "title": {
+          "ko": "20260401 프론 구현시험",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.7",
+        "title": {
+          "ko": "v-show v-if",
+          "en": "v-show v-if"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.8",
+        "title": {
+          "ko": "목록 출력",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.9",
+        "title": {
+          "ko": "modifier",
+          "en": "modifier"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.10",
+        "title": {
+          "ko": "Vue Router",
+          "en": "Vue Router"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.11",
+        "title": {
+          "ko": "todo 앱",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "https://iankvw.github.io/todo1/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.12",
+        "title": {
+          "ko": "Clock 컴포넌트",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.13",
+        "title": {
+          "ko": "todo 앱 #2",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.14",
+        "title": {
+          "ko": "20260513 프론 구현시험",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.15",
+        "title": {
+          "ko": "JSON server와 axios",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.16",
+        "title": {
+          "ko": "axios와 student2 앱",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.17",
+        "title": {
+          "ko": "axios와 student3 앱",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00031-01.18",
+        "title": {
+          "ko": "20260610 프론 구현시험",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      }
+    ]
+  },
+  {
+    "semester": "2026-1",
+    "subjectId": "IS00032-01",
+    "subjectName": {
+      "ko": "하이브리드앱프로그래밍",
+      "en": "Hybrid Mobile Programming"
+    },
+    "professor": "문성현",
+    "main": "IS00032-01.6",
+    "archive": [
+      {
+        "id": "IS00032-01.1",
+        "title": {
+          "ko": "CSS3 기본",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw3_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.2",
+        "title": {
+          "ko": "CSS Box model",
+          "en": "CSS Box model"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw3_2.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.3",
+        "title": {
+          "ko": "미디어쿼리",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw4_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.4",
+        "title": {
+          "ko": "Jquery Mobile 헤더 푸터",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw6_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.5",
+        "title": {
+          "ko": "Jquery Mobile 버튼 리스트뷰",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw7_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.6",
+        "title": {
+          "ko": "중간고사",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/midterm.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.7",
+        "title": {
+          "ko": "Jquery Mobile 리스트뷰, 숨김패널",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw7_2.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.8",
+        "title": {
+          "ko": "Jquery Mobile 인풋 컨트롤",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw8_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.9",
+        "title": {
+          "ko": "jquery (1)",
+          "en": "jquery (1)"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw9_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.10",
+        "title": {
+          "ko": "jquery (2)",
+          "en": "jquery (2)"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw9_2.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.11",
+        "title": {
+          "ko": "jquery (3)",
+          "en": "jquery (3)"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw9_3.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.12",
+        "title": {
+          "ko": "jquery (4)",
+          "en": "jquery (4)"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw10_1.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.13",
+        "title": {
+          "ko": "jquery event",
+          "en": "jquery event"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw10_2.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.14",
+        "title": {
+          "ko": "jquery each",
+          "en": "jquery each"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/hw10_3.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00032-01.15",
+        "title": {
+          "ko": "dokdo",
+          "en": "dokdo"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/hybrid/ch13_dokdoApp2/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      }
+    ]
+  },
+  {
+    "semester": "2026-2",
+    "subjectId": "IS00001-01",
+    "subjectName": {
+      "ko": "Javascript프로그래밍",
+      "en": "Javascript Programming"
+    },
+    "professor": "이해신",
+    "main": "",
+    "archive": [
+      {
+        "id": "IS00001-01.1",
+        "title": {
+          "ko": "자바스크립트 실습",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/javascript/0904/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00001-01.2",
+        "title": {
+          "ko": "2주차과제",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/javascript/0911_hw/2week_hw.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00001-01.3",
+        "title": {
+          "ko": "2week",
+          "en": "2week"
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/javascript/0911_hw/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00001-01.4",
+        "title": {
+          "ko": "템플릿 문자열",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/javascript/0918/",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00001-01.5",
+        "title": {
+          "ko": "할인 가격 구하기",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/javascript/0918/bargain.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      },
+      {
+        "id": "IS00001-01.6",
+        "title": {
+          "ko": "김이언의홈페이지",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "/archivefiles/javascript/iankim_project/index_java.html",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      }
+    ]
+  },
+  {
+    "semester": "2026-2",
+    "subjectId": "IS00015-02",
+    "subjectName": {
+      "ko": "백엔드프로그래밍",
+      "en": "Backend Programming"
+    },
+    "professor": "김선형",
+    "main": "",
+    "archive": [
+      {
+        "id": "",
+        "title": {
+          "ko": "",
+          "en": ""
+        },
+        "type": "",
+        "week": 0,
+        "filePath": "",
+        "description": {
+          "ko": "",
+          "en": ""
+        },
+        "tags": []
+      }
+    ]
+  }
+]

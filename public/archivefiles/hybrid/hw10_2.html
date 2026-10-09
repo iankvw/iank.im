@@ -1,0 +1,70 @@
+<!--
+학번 : 202214038
+
+이름 : 김이언
+
+과제작성일: 2026-05-26
+
+과제설명 : [hw10_2] jquery event
+-->
+
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title>Jquery Event </title>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+       // 이부분에  jquery, javascript 작성
+
+       var currentFontSize = 16
+       $('.zoom button').click(function() {
+        var buttonClicked = $(this).text()
+
+        // + 버튼을 누르면 font-size가 1 증가
+        if (buttonClicked == '+') { $('#txt_wrap').css('font-size', (++currentFontSize) + 'px') }
+        // - 버튼을 누르면 font-size가 1 감소
+        else if (buttonClicked == '-') { $('#txt_wrap').css('font-size', (--currentFontSize) + 'px') }
+        // 0 버튼을 누르면 기본값 16로
+        else { $('#txt_wrap').css('font-size', (currentFontSize = 16) + 'px') }
+       })
+
+       // select 색상을 변경하면 색상을 변경
+       $('#fs').change(function() {
+        $('#txt_wrap').css('color', $(this).val())
+       })
+    });
+//]]>
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+ <div id="f_wrap">
+    <dl>
+      <dt>글자크기</dt>
+      <dd class="zoom">
+        <button>+</button>
+        <button>0</button>
+        <button>-</button>
+      </dd>
+      <dt>글자모양</dt>
+      <dd class="f_style">
+          <select name="fs" id="fs">
+            <option value="black">검정</option>
+            <option value="blue">파랑</option>
+            <option value="red">빨강</option>
+            <option value="yellow">노랑</option>
+           </select>
+      </dd>
+    </dl>
+ </div>
+ <p id="txt_wrap">
+  송충이는 솔잎을 먹어야 산다.
+   </p>
+</body>
+</html>

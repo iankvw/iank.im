@@ -1,0 +1,44 @@
+<!--
+학번 : 202214038
+
+이름 : 김이언
+
+과제작성일: 2026-05-26
+
+과제설명 : [hw10_3] jquery each
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[hw10_3] jquery each</title>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            // each 메소드를 이용하여 m의 하위 li태그의 내용을 순서대로 리스트3, 리스트2, 리스트1로 변경하시오.
+            $('#m li').each(function(index) {
+                $(this).text("리스트" + (3 - index))
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="m">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+    </ul>
+    <ul id="n">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+    </ul>
+</body>
+
+</html>

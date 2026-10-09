@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Material Design 3 & Glassmorphism Input Form Component
+   ========================================================================== */
+
+/* 카드 레이아웃 보정: M3의 둥근 모서리 곡률(24px) 및 플렉스 정렬 */
+.card {
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: rgb(var(--on-surface));
+  letter-spacing: -0.02em;
+}
+
+/* 폼 컨트롤 래퍼 (M3 Row Layout) */
+.m3-field-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   M3 Outlined / Frosted Glass Text Field
+   -------------------------------------------------------------------------- */
+.m3-text-field {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 인풋 필드: 반투명 글래스 배경 + M3 곡률(16px) */
+.glass-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: rgb(var(--on-surface));
+  background-color: rgba(var(--v-theme-surface), 0.45);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1.5px solid rgba(var(--v-theme-on-surface), 0.15);
+  border-radius: 16px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s ease;
+}
+
+/* 넘버 인풋 기본 스피너 제거 (깔끔한 UI 유지) */
+.glass-input::-webkit-outer-spin-button,
+.glass-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.glass-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* 포커스 상태: 프라이머리 컬러 하이라이트 및 은은한 글로우 효과 */
+.glass-input:focus {
+  background-color: rgba(var(--v-theme-surface), 0.7);
+  border-color: rgb(var(--primary));
+  box-shadow: 0 0 0 3px rgba(var(--primary), 0.15),
+              0 4px 16px rgba(var(--primary), 0.08);
+}
+
+/* 플로팅 라벨 스타일 (M3 Outlined Label 동작) */
+.floating-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: rgba(var(--on-surface), 0.55);
+  pointer-events: none;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              font-size 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s ease;
+  padding: 0 4px;
+}
+
+/* 인풋에 포커스되거나 값이 채워졌을 때 라벨 상단 이동 */
+.glass-input:focus ~ .floating-label,
+.glass-input:not(:placeholder-shown) ~ .floating-label {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+  font-weight: 600;
+  color: rgb(var(--primary));
+  background-color: rgb(var(--background));
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   M3 Filled Glass Button
+   -------------------------------------------------------------------------- */
+.m3-button {
+  height: 52px;
+  padding: 0 24px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  /* 프라이머리 컬러 기반 그라데이션 및 반투명 광택 레이어 */
+  background: linear-gradient(135deg,
+      rgba(var(--primary), 0.95) 0%,
+      rgba(var(--primary), 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px; /* M3 Pill(9999px) 또는 16px 권장 */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(var(--primary), 0.28),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.15s ease,
+              box-shadow 0.2s ease,
+              background-color 0.2s ease,
+              filter 0.2s ease;
+  user-select: none;
+}
+
+/* 호버 시: 살짝 위로 뜨며 발광 강도 증가 */
+.m3-button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px rgba(var(--primary), 0.38),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* 액티브(클릭) 시: 머티리얼 프레스 피드백 (스케일 다운) */
+.m3-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(var(--primary), 0.25);
+  filter: brightness(0.95);
+}
+
+/* 모바일 화면 반응형 대응 */
+@media (max-width: 600px) {
+  .m3-field-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .m3-button {
+    width: 100%;
+  }
+}

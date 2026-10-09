@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/5week.css">
+  <link rel="stylesheet" href="./css/5week_form.css">
+  <script src="./js/if_else.js"></script>
+</head>
+
+<body>
+  <!-- 입력 영역 -->
+  <div class="bg-glass1 card">
+    <h2 class="card-title">성적 등급 산출</h2>
+
+    <div class="m3-field-group">
+      <div class="m3-text-field">
+        <input type="number" id="score-input" class="glass-input" placeholder=" " min="0" max="100" autocomplete="off">
+        <label for="score-input" class="floating-label">점수 입력 (0 - 100)</label>
+      </div>
+
+      <button type="button" id="calc-button" class="m3-button">
+        <span class="button-label">등급 확인</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 출력 영역 -->
+  <div class="bg-glass1 card">
+    <h3>평가 결과</h3>
+    <p id="result-display">점수를 입력하고 확인 버튼을 눌러주세요.</p>
+  </div>
+</body>
+
+</html>

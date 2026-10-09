@@ -1,0 +1,44 @@
+<!--
+학번 : 202214038
+
+이름 : 김이언
+
+과제작성일: 2026-05-26
+
+과제설명 : [hw10_1] jquery
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[hw10_1] jquery</title>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            // id=wrap 요소의 img 태그의 src 속성의 값을 불러와 id=txt에 텍스트로 생성.
+            $('#txt').text($('#wrap img').attr('src'))
+            // id=wrap 요소의 img의 너비를 200으로 변경
+            $('#wrap img').attr('width', '200')
+            // id=box 요소의 img의 border를 제거
+            $('#box img').removeAttr('border')
+        });
+    </script>
+</head>
+
+<body>
+    <h1>객체 조작 및 생성</h1>
+    <p id="wrap">
+        <img src="math_img_1.jpg" alt="가위" width="100" />
+    </p>
+    <p id="txt"></p>
+    <p id="box">
+        <img src="math_img_3.jpg" alt="보" width="100" border="2" />
+    </p>
+</body>
+
+</html>
