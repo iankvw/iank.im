@@ -33,12 +33,6 @@ const router = createRouter({
       path: '/',
       component: Index,
     },
-    {
-      path: '/timer',
-      name: 'timer',
-      component: () => import('@/pages/Timer.vue'),
-      meta: { title: 'Timer & Counter | Ian Kim' },
-    },
     ...designRoutes,
     ...archiveRoutes,
     ...toolsRoutes,
