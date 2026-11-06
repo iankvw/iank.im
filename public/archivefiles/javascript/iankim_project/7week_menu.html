@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 만들기</title>
+    <!-- 최신 웹폰트 Pretendard 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-light: rgba(99, 102, 241, 0.15);
+            --bg-dark: #090d16;
+            --nav-bg: rgba(18, 24, 38, 0.7);
+            --sub-bg: rgba(22, 30, 49, 0.95);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 50% 0%, rgba(99, 102, 241, 0.2) 0px, transparent 60%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%);
+            color: var(--text-main);
+            padding: 100px 20px 40px;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* 링크 기본 설정 */
+        a,
+        a:visited {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+        }
+
+        /* 네비게이션 메인 테이블 뼈대 스타일링 */
+        table {
+            border-collapse: separate;
+            border-spacing: 14px 0;
+            margin: auto;
+            position: relative;
+        }
+
+        /* 뼈대: .mainMenu 메인 네비게이션 아이템 */
+        .mainMenu {
+            width: 190px;
+            height: 52px;
+            margin: 0;
+            border: 1px solid var(--border-glass);
+            text-align: center;
+            vertical-align: middle;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 14px;
+            color: #e2e8f0;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        /* 호버 시 부드러운 하이라이트 */
+        .mainMenu:hover {
+            background: rgba(99, 102, 241, 0.22);
+            border-color: rgba(99, 102, 241, 0.45);
+            color: #ffffff;
+            box-shadow: 0 8px 25px -3px rgba(99, 102, 241, 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* 마우스가 서브메뉴로 이동할 때 갭을 채워주는 보이지 않는 히트박스 브릿지 */
+        .mainMenu::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 16px;
+        }
+
+        /* 뼈대: .subMenu 서브 드롭다운 테이블 */
+        .subMenu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 180px;
+            background: var(--sub-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 
+                0 20px 40px -10px rgba(0, 0, 0, 0.7),
+                0 0 1px 1px rgba(255, 255, 255, 0.08);
+            visibility: hidden; /* 기본 숨김 상태 */
+            opacity: 0;
+            transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                        visibility 0.22s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* 활성화 시 부드러운 등장 */
+        .subMenu.active {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* 서브메뉴 항목 행/셀 스타일링 (세로 리스트 형태로 정렬) */
+        .subMenu tr {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .subMenu td {
+            border: none;
+            padding: 0;
+            border-collapse: collapse;
+            background: transparent;
+            color: var(--text-main);
+            text-align: left;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .subMenu td a {
+            padding: 10px 14px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .subMenu td a::after {
+            content: "›";
+            font-size: 16px;
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all 0.2s ease;
+            color: #818cf8;
+        }
+
+        /* 서브메뉴 항목 호버 효과 */
+        .subMenu td:hover {
+            background: rgba(99, 102, 241, 0.18);
+        }
+
+        .subMenu td:hover a {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .subMenu td:hover a::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+
+    <script type="text/javascript">
+        // PDF 7주차 2페이지: Strict Mode
+        'use strict';
+
+        /**
+         * PDF 7주차 학습 내용 반영:
+         * - 매개변수(parameter) 함수 정의 (PDF p.8, 16)
+         * - setTimeout 콜백을 활용한 매끄러운 UX (PDF p.32)
+         */
+
+        const hideTimers = {};
+
+        function showSub(param) {
+            if (hideTimers[param]) {
+                clearTimeout(hideTimers[param]);
+                delete hideTimers[param];
+            }
+
+            const targetSub = document.getElementById(param);
+            if (targetSub) {
+                targetSub.style.visibility = "visible";
+                targetSub.classList.add('active');
+            }
+        }
+
+        function hideSub(param) {
+            const targetSub = document.getElementById(param);
+            if (targetSub) {
+                hideTimers[param] = setTimeout(() => {
+                    targetSub.classList.remove('active');
+                    setTimeout(() => {
+                        targetSub.style.visibility = "hidden";
+                    }, 200);
+                }, 120);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>눈에 띄는 메뉴 만들기</h1>
+    <table>
+        <tr>
+            <td class="mainMenu" onmouseover="showSub('sub1')" onmouseout="hideSub('sub1')">
+                학과 소개
+                <!-- 마우스 커서를 메뉴에 올려놓거나 빠질때 메뉴가 나타나고 사라지게 한다. -->
+                <table class="subMenu" id="sub1">
+                    <tr>
+                        <td class="sub"><a href="#">개요</a></td>
+                        <td class="sub"><a href="#">인사말</a></td>
+                        <td class="sub"><a href="#">학생회</a></td>
+                        <td class="sub"><a href="#">찾아오시는 길</a></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="mainMenu" onmouseover="showSub('sub2')" onmouseout="hideSub('sub2')">
+                학사 안내
+                <table class="subMenu" id="sub2">
+                    <tr>
+                        <td><a href="#">교과과정</a></td>
+                        <td><a href="#">강의시간표</a></td>
+                        <td><a href="#">세미나 안내</a></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="mainMenu" onmouseover="showSub('sub3')" onmouseout="hideSub('sub3')">
+                학과 활동
+                <table class="subMenu" id="sub3">
+                    <tr>
+                        <td><a href="#">학과 MT</a></td>
+                        <td><a href="#">체육대회</a></td>
+                        <td><a href="#">학과내 동아리</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
+

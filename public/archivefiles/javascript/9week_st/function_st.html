@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!--
+    <script>
+        sayHello();
+        sayHello();
+        sayHello();
+        function sayHello() {
+            console.log("안녕");
+            console.log("hi");
+            console.log("Hello");
+        }
+
+    </script>
+-->
+
+    <script>
+        function main(x) {
+            console.log(x);
+        }
+        main(1);
+    </script>
+    <script>
+        function main(x) {
+            console.log(x);
+        }
+        function sayHi() {
+            console.log("안녕");
+        }
+        main(sayHi);
+    </script>
+    <script>
+        function main(x) {
+            x();
+        }
+        function sayHi() {
+            console.log("안녕");
+        }
+        main(sayHi);
+    </script>
+
+    <script>
+        console.log("===== 추가 작업 =====")
+        function main(x) {
+            x();
+        }
+        function myName() {
+            console.log("김이언");
+        }
+        main(myName);
+    </script>
+
+    <script>
+        function main(x) {
+            console.log('준비작업....')
+            console.log('정리작업....')
+            x();
+
+        }
+        function sayHi() {
+            console.log("안녕");
+        }
+        main(sayHi);
+    </script>
+    <script>
+        function main(x) {
+            console.log('준비작업....')
+            console.log('정리작업....')
+            x();
+
+        }
+        function sayHi() {
+            console.log("안녕");
+        }
+        main(sayHi());
+    </script>
+    <script>
+        function main(x) {
+
+            console.log(x)
+
+
+        }
+        function sayHi() {
+
+        }
+        main(sayHi);
+    </script>
+    <script>
+        function main(x) {
+            x();
+        }
+        main(function sayHi() {
+            console.log("안녕");
+        });
+
+    </script>
+    <script>
+        function main(x) {
+            x();
+        }
+        main(function () {
+            console.log("안녕");
+        });
+
+    </script>
+    <script>
+        function main(x) {
+            x();
+        }
+        main(() => {
+            console.log("안녕");
+        });
+
+    </script>
+
+    <script>
+        function greeToUser(greet) {
+            const name = '프로그래머';
+            greet(name);
+        }
+        function greetInKorean(name) {
+            console.log(name + '님, 안녕하세요');
+        }
+        function greetInEnglish(name) {
+            console.log('Hi,' + name);
+        }
+        greeToUser(greetInEnglish)
+    </script>
+
+    <script>
+        function discoverMenu(eat) {
+            const menu = '떡볶이';
+            eat(menu);
+        }
+        function lunch(menu) {
+            console.log("점심메뉴: " + menu);
+        }
+        function dinner(menu) {
+            console.log('저녁메뉴: ' + menu);
+        }
+        discoverMenu(lunch)
+    </script>
+</body>
+
+</html>

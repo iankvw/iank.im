@@ -1,0 +1,749 @@
+/* ==========================================================================
+   대항해시대(Age of Discovery) 선장 크로노미터 & 스큐어모피즘 스타일링
+   Antique Nautical Marine Chronometer & Captain's Notice Board
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=IM+Fell+English+SC&family=Pirata+One&family=MedievalSharp&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cinzel', 'IM Fell English SC', serif;
+    user-select: none;
+    overflow-x: hidden;
+    position: relative;
+    /* 대항해시대 고지도 양피지 (Antique Nautical Map Parchment) 배경 */
+    background: radial-gradient(ellipse at 50% 45%, #eedfc1 0%, #dabf92 38%, #b3915e 70%, #63431f 92%, #2c1a0a 100%);
+}
+
+/* 고지도 해도의 항로선(Rhumb Lines) 및 경위도 그리드 오버레이 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* 경위도 격자 + 나침반 방위 방사선 패턴 */
+    background-image: 
+        radial-gradient(circle at 50% 50%, transparent 0%, transparent 180px, rgba(120, 85, 45, 0.12) 181px, transparent 182px, transparent 340px, rgba(120, 85, 45, 0.1) 341px, transparent 342px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(100, 70, 35, 0.07) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(100, 70, 35, 0.07) 60px),
+        repeating-conic-gradient(from 0deg, transparent 0deg, transparent 22.4deg, rgba(120, 80, 35, 0.08) 22.5deg, transparent 22.6deg);
+    opacity: 0.95;
+    z-index: 0;
+}
+
+/* 지도 주변부 타버린 양피지 비네팅(Vignette) 효과 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    box-shadow: inset 0 0 120px rgba(35, 20, 8, 0.8), inset 0 0 200px rgba(20, 10, 4, 0.9);
+    z-index: 1;
+}
+
+/* ==========================================================================
+   1. 메인 챔버 콘솔 (선장실 오크 원목 데스크 & 황동 마운트)
+   ========================================================================== */
+.container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 38px 42px;
+    border-radius: 36px;
+    width: 90%;
+    max-width: 440px;
+    /* 고지도 양피지와 자연스럽게 블렌딩되는 마호가니/오크 원목 질감 */
+    background: linear-gradient(145deg, rgba(65, 36, 20, 0.96) 0%, rgba(45, 23, 11, 0.97) 55%, rgba(27, 13, 6, 0.98) 100%);
+    backdrop-filter: blur(4px);
+    /* 앤틱 황동 테두리 (Antique Brass Frame) */
+    border: 3px solid #b8860b;
+    /* 붕 떠있는 느낌을 없애고 배경 지도에 착 달라붙는 자연스러운 안착 그림자 (Grounded Contact Shadow) */
+    box-shadow:
+        0 14px 35px rgba(35, 18, 6, 0.45),
+        0 4px 10px rgba(30, 15, 5, 0.35),
+        0 0 0 8px rgba(75, 42, 20, 0.35),
+        0 0 0 10px rgba(184, 134, 11, 0.45),
+        inset 0 2px 4px rgba(255, 230, 160, 0.35),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+    transition: all 0.35s ease;
+}
+
+/* 배경 지도와 경계를 부드럽게 이어주는 앰비언트 블렌딩 비네팅 */
+.container::after {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: -24px;
+    right: -24px;
+    bottom: -24px;
+    border-radius: 48px;
+    background: transparent;
+    box-shadow: 0 0 65px 25px rgba(45, 25, 10, 0.32);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 모서리 황동 보강 브래킷(Brass Corner Brackets) 장식 */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+    border-radius: 28px;
+    pointer-events: none;
+}
+    bottom: 8px;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+    border-radius: 28px;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   2. 디지털 시계 (선박 원목 게시판 / Ship's Wooden Notice Board)
+   ========================================================================== */
+.clock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 14px;
+    position: relative;
+    /* 고풍스러운 나무 판자 결 (Dark Oak Plank Grain) */
+    background: repeating-linear-gradient(
+        180deg,
+        #3e2213 0px,
+        #341b0e 16px,
+        #271308 30px,
+        #1d0d05 32px
+    );
+    border: 3px solid #573319;
+    box-shadow:
+        inset 0 8px 18px rgba(0, 0, 0, 0.95),
+        inset 0 2px 4px rgba(0, 0, 0, 0.8),
+        0 4px 8px rgba(0, 0, 0, 0.7),
+        0 1px 1px rgba(255, 215, 0, 0.25);
+    overflow: hidden;
+}
+
+/* 게시판 좌우를 고정하는 앤틱 황동 리벳 못 (Brass Studs) */
+.clock::before, .clock::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff2be, #c59737 45%, #664911 85%, #2a1b02 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    border: 1px solid #4a340c;
+    z-index: 3;
+}
+.clock::before { left: 14px; }
+.clock::after  { right: 14px; }
+
+/* 디지털 시간 표시 텍스트 */
+#time {
+    margin: 0;
+    font-family: 'IM Fell English SC', 'Cinzel', serif;
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    position: relative;
+    z-index: 2;
+    font-variant-numeric: tabular-nums;
+    /* 1) 시간 흐를 경우: 게시판 색에 어울리는 따뜻한 황토색 계열 (Rich Ochre / Antique Amber) */
+    color: #e5a752;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 14px rgba(229, 167, 82, 0.6),
+        0 -1px 0 rgba(255, 235, 180, 0.4);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+/* 2) 멈출 경우 (STOP 상태): 짙은 빨강색 (Deep Crimson / Sealing Wax Burgundy) */
+#time.paused {
+    color: #940a0a;
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.95),
+        0 0 18px rgba(180, 10, 10, 0.75),
+        0 0 32px rgba(130, 0, 0, 0.45),
+        0 -1px 0 rgba(255, 120, 120, 0.35);
+}
+
+/* ==========================================================================
+   3. 아날로그 시계 (대항해시대 선장 마린 크로노미터 / Marine Chronometer)
+   ========================================================================== */
+.analog-clock {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    position: relative;
+    /* 중후하고 눈부신 앤틱 황동 짐벌 베젤 (Aged Marine Brass Bezel) */
+    background: conic-gradient(
+        from 45deg,
+        #e3be75 0deg,
+        #875e20 40deg,
+        #fff6ce 80deg,
+        #52360b 120deg,
+        #d8ad5e 160deg,
+        #9c6f2a 200deg,
+        #fff9d8 240deg,
+        #492f08 280deg,
+        #e3be75 360deg
+    );
+    padding: 16px;
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.9),
+        0 10px 22px rgba(0, 0, 0, 0.7),
+        inset 0 3px 6px rgba(255, 245, 200, 0.9),
+        inset 0 -4px 9px rgba(0, 0, 0, 0.9);
+}
+
+/* 크로노미터 내부 다이얼 (빈티지 에나멜 양피지 페이스) */
+.dial {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* 깊고 고풍스러운 아이보리/양피지 톤 */
+    background: radial-gradient(circle at 45% 42%, #fcf7e8 0%, #eee0c0 55%, #cbb184 88%, #9e7f50 100%);
+    box-shadow:
+        inset 0 14px 28px rgba(60, 36, 10, 0.85),
+        inset 0 0 14px rgba(0, 0, 0, 0.6),
+        0 1px 2px rgba(255, 245, 200, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 다이얼 중앙 은은한 나침반 장미(Compass Rose) 워터마크 */
+.dial::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px dashed rgba(110, 78, 38, 0.35);
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(140, 100, 48, 0.08) 0deg 22.5deg,
+        transparent 22.5deg 45deg
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 12개 앤틱 눈금 마커 */
+.marker {
+    position: absolute;
+    width: 3px;
+    height: 11px;
+    background: linear-gradient(to bottom, #2b180a, #5c3917);
+    left: calc(50% - 1.5px);
+    top: 9px;
+    transform-origin: 50% 135px; /* (288 / 2) - 9px = 135px */
+    border-radius: 1px;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.m1  { transform: rotate(30deg); }
+.m2  { transform: rotate(60deg); }
+.m3  {
+    transform: rotate(90deg);
+    width: 5px;
+    height: 14px;
+    left: calc(50% - 2.5px);
+    background: linear-gradient(to bottom, #b8860b, #5a3c00);
+}
+.m4  { transform: rotate(120deg); }
+.m5  { transform: rotate(150deg); }
+.m6  {
+    transform: rotate(180deg);
+    width: 5px;
+    height: 14px;
+    left: calc(50% - 2.5px);
+    background: linear-gradient(to bottom, #b8860b, #5a3c00);
+}
+.m7  { transform: rotate(210deg); }
+.m8  { transform: rotate(240deg); }
+.m9  {
+    transform: rotate(270deg);
+    width: 5px;
+    height: 14px;
+    left: calc(50% - 2.5px);
+    background: linear-gradient(to bottom, #b8860b, #5a3c00);
+}
+.m10 { transform: rotate(300deg); }
+.m11 { transform: rotate(330deg); }
+.m12 {
+    transform: rotate(360deg);
+    width: 6px;
+    height: 16px;
+    left: calc(50% - 3px);
+    background: linear-gradient(to bottom, #d4af37, #7c5806);
+}
+
+/* 로마자 숫자 (XII, III, VI, IX) 음각/양각 고전 캘리그라피 */
+.num {
+    position: absolute;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: #271407;
+    /* 고전 잉크 인쇄 + 미세 하이라이트 */
+    text-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.8),
+        0 2px 3px rgba(60, 30, 10, 0.5);
+    z-index: 2;
+}
+
+.num-12 {
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1px;
+}
+.num-3 {
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.num-6 {
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.num-9 {
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 크로노미터 각인 텍스트 */
+.brand-text {
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #8c6023;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.sub-text {
+    position: absolute;
+    bottom: 74px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #715228;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   4. 시계 바늘 (선장 크로노미터 블루 스틸 & 황동 핸즈)
+   ========================================================================== */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    pointer-events: none;
+}
+
+/* 시침 (Hour Hand - 앤틱 블루 스틸) */
+.hour-hand {
+    width: 8px;
+    height: 70px;
+    margin-left: -4px;
+    transform-origin: 50% 100%;
+    /* 열처리 블루 스틸 (Royal Navy Heat-Blued Steel) 명암 */
+    background: linear-gradient(to right, #1d3557 48%, #0d1b2a 52%);
+    border-radius: 4px 4px 1px 1px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    filter: drop-shadow(0 5px 6px rgba(40, 20, 5, 0.6));
+    z-index: 10;
+}
+
+/* 시침 끝의 클래식 브레게 하트/스페이드 링 장식 */
+.hour-hand::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid #1d3557;
+    background: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 분침 (Minute Hand - 날렵한 블루 스틸 랜싯 핸드) */
+.min-hand {
+    width: 5px;
+    height: 102px;
+    margin-left: -2.5px;
+    transform-origin: 50% 100%;
+    background: linear-gradient(to right, #24426b 48%, #0f1c2e 52%);
+    border-radius: 3px 3px 1px 1px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 6px 8px rgba(40, 20, 5, 0.65));
+    z-index: 11;
+}
+
+/* 분침 중심 라인 */
+.min-hand::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #24426b;
+    background: transparent;
+}
+
+/* 초침 (Second Hand - 앤틱 황동 골드 초침) */
+.sec-hand {
+    width: 2.5px;
+    height: 136px;
+    margin-left: -1.25px;
+    bottom: calc(50% - 24px);
+    transform-origin: 50% 112px;
+    /* 황동 빛깔 앤틱 골드 */
+    background: linear-gradient(to bottom, #d4af37 0%, #b8860b 75%, #664911 100%);
+    border-radius: 2px 2px 1px 1px;
+    filter: drop-shadow(0 3px 5px rgba(50, 25, 5, 0.6));
+    z-index: 12;
+}
+
+/* 초침 카운터웨이트 앤틱 링 */
+.sec-hand::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 11px;
+    height: 11px;
+    background: #d4af37;
+    border: 1px solid #7c5806;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 중심 축 나침반 피벗 캡 (Center Pivot Nut) */
+.center-nut {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff5d1 0%, #e1be6f 25%, #8f651e 65%, #3d2806 100%);
+    border: 1.5px solid #5a3d07;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.8),
+        0 0 2px rgba(255, 245, 200, 0.9);
+    z-index: 20;
+}
+
+.center-nut::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1f1204;
+}
+
+/* 볼록한 돋보기형 사파이어 돔 글래스 반사광 (Convex Dome Glass Reflection) */
+.glass-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.45) 0%,
+        rgba(255, 255, 255, 0.16) 30%,
+        rgba(255, 255, 255, 0.0) 52%
+    );
+    pointer-events: none;
+    z-index: 25;
+}
+
+/* ==========================================================================
+   5. 조작 버튼 (선박 황동 텔레그래프 푸시 버튼)
+   ========================================================================== */
+.button-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 12px 28px;
+    border-radius: 50px;
+    /* 묵직한 오크 마운트 소켓 */
+    background: linear-gradient(180deg, #1d0f07 0%, #2c160a 100%);
+    box-shadow:
+        inset 0 4px 9px rgba(0, 0, 0, 0.9),
+        0 2px 3px rgba(255, 215, 0, 0.15);
+    border: 2px solid #543319;
+}
+
+/* 기계식 황동 푸시 버튼 공통 */
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 13px 32px;
+    border-radius: 36px;
+    position: relative;
+    user-select: none;
+    transition: all 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* STOP 버튼 (닻을 내려라 / 짙은 실링 왁스 버건디 레드 버튼) */
+#stop {
+    background: linear-gradient(180deg, #b91c1c 0%, #850f0f 40%, #5c0707 70%, #3b0303 100%);
+    color: #ffdede;
+    border: 2px solid #a3722b; /* 황동 테두리 */
+    box-shadow:
+        0 7px 0 #280303,
+        0 14px 20px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(185, 28, 28, 0.4),
+        inset 0 2px 3px rgba(255, 200, 200, 0.5),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.95),
+        0 0 6px rgba(255, 180, 180, 0.4);
+}
+
+#stop:hover {
+    filter: brightness(1.15);
+    box-shadow:
+        0 7px 0 #280303,
+        0 16px 24px rgba(0, 0, 0, 0.85),
+        0 0 24px rgba(220, 38, 38, 0.65),
+        inset 0 2px 3px rgba(255, 220, 220, 0.7);
+}
+
+#stop:active {
+    transform: translateY(5px);
+    box-shadow:
+        0 2px 0 #280303,
+        0 5px 10px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(220, 38, 38, 0.8),
+        inset 0 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* GO 버튼 (전속 전진 / 대양 항해 딥 에메랄드 왁스 버튼) */
+#go {
+    background: linear-gradient(180deg, #2d6a4f 0%, #1b4332 40%, #133325 70%, #081c14 100%);
+    color: #e2fced;
+    border: 2px solid #a3722b; /* 황동 테두리 */
+    box-shadow:
+        0 7px 0 #04120c,
+        0 14px 20px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(45, 106, 79, 0.4),
+        inset 0 2px 3px rgba(200, 255, 220, 0.5),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.95),
+        0 0 6px rgba(180, 255, 210, 0.4);
+}
+
+#go:hover {
+    filter: brightness(1.15);
+    box-shadow:
+        0 7px 0 #04120c,
+        0 16px 24px rgba(0, 0, 0, 0.85),
+        0 0 24px rgba(45, 106, 79, 0.65),
+        inset 0 2px 3px rgba(220, 255, 230, 0.7);
+}
+
+#go:active {
+    transform: translateY(5px);
+    box-shadow:
+        0 2px 0 #04120c,
+        0 5px 10px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(45, 106, 79, 0.8),
+        inset 0 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   반응형 화면 지원 (가로 화면 및 모바일 최적화)
+   ========================================================================== */
+
+/* 1. 가로 화면 (PC / 태블릿 / 와이드 디스플레이) - 세로 붕 뜸 방지 및 가로 데스크 일체화 */
+@media (min-width: 768px) {
+    .container {
+        max-width: 880px;
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "clock analog"
+            "buttons analog";
+        align-items: center;
+        justify-items: center;
+        column-gap: 50px;
+        row-gap: 30px;
+        padding: 46px 56px;
+        border-radius: 44px;
+        /* 와이드 화면에서 지도 위에 우아하게 펼쳐지는 데스크 패드 안착감 */
+        box-shadow:
+            0 16px 45px rgba(35, 18, 6, 0.45),
+            0 4px 12px rgba(30, 15, 5, 0.35),
+            0 0 0 10px rgba(75, 42, 20, 0.35),
+            0 0 0 13px rgba(184, 134, 11, 0.45),
+            inset 0 2px 4px rgba(255, 230, 160, 0.35),
+            inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .container::after {
+        top: -30px;
+        left: -30px;
+        right: -30px;
+        bottom: -30px;
+        border-radius: 56px;
+        box-shadow: 0 0 85px 35px rgba(45, 25, 10, 0.35);
+    }
+
+    .clock {
+        grid-area: clock;
+        width: 100%;
+        margin: 0;
+    }
+
+    .analog-clock {
+        grid-area: analog;
+        width: 330px;
+        height: 330px;
+        margin: auto;
+    }
+
+    .button-panel {
+        grid-area: buttons;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* 2. 모바일 가로 모드 (높이가 낮은 가로 화면) 스크롤 방지 최적화 */
+@media (max-height: 560px) and (orientation: landscape) {
+    body {
+        padding: 15px;
+    }
+    .container {
+        padding: 20px 32px;
+        gap: 16px;
+        column-gap: 32px;
+        row-gap: 16px;
+        border-radius: 28px;
+    }
+    .analog-clock {
+        width: 230px;
+        height: 230px;
+        padding: 10px;
+    }
+    .marker {
+        transform-origin: 50% 96px;
+        height: 8px;
+    }
+    .hour-hand {
+        height: 50px;
+    }
+    .min-hand {
+        height: 72px;
+    }
+    .sec-hand {
+        height: 98px;
+        transform-origin: 50% 80px;
+    }
+    #time {
+        font-size: 2rem;
+    }
+    button {
+        padding: 9px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* 3. 모바일 세로 화면 */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+    .analog-clock {
+        width: 270px;
+        height: 270px;
+        padding: 12px;
+    }
+    .marker {
+        transform-origin: 50% 114px;
+    }
+    .hour-hand {
+        height: 58px;
+    }
+    .min-hand {
+        height: 86px;
+    }
+    .sec-hand {
+        height: 114px;
+        transform-origin: 50% 94px;
+    }
+    #time {
+        font-size: 2.2rem;
+    }
+    button {
+        padding: 11px 24px;
+        font-size: 1rem;
+    }
+}

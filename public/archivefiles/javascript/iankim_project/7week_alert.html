@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7주차_alert</title>
+    <!-- 최신 웹폰트 Pretendard 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --accent-pink: #ec4899;
+            --accent-cyan: #06b6d4;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --bg-dark: #090d16;
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.25) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.5) 0px, transparent 80%);
+            color: var(--text-main);
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Alert 박스 (PDF p.7) */
+        .alert-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--primary);
+            color: var(--text-main);
+            padding: 20px 24px;
+            border-radius: 16px;
+            display: none; /* 기본 숨김 상태 */
+            box-shadow: 
+                0 20px 40px -15px rgba(0, 0, 0, 0.6),
+                0 0 25px 0 rgba(99, 102, 241, 0.25);
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 480px;
+            width: 100%;
+            animation: alertShow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            position: relative;
+            z-index: 100;
+        }
+
+        @keyframes alertShow {
+            0% {
+                opacity: 0;
+                transform: translateY(-16px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .alert-box p {
+            font-size: 15px;
+            font-weight: 600;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-box p::before {
+            content: "🔔";
+            font-size: 18px;
+        }
+
+        .alert-box button {
+            background: rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .alert-box button:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 텍스트 디스플레이 영역: h2 태그들 (PDF p.2~6) */
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #f1f5f9;
+            text-align: center;
+            letter-spacing: -0.02em;
+            transition: color 0.35s ease, font-size 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2:empty {
+            min-height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #hello1 {
+            color: #e2e8f0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        #hello2 {
+            color: #38bdf8;
+            text-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+        }
+
+        #hello3 {
+            color: #a78bfa;
+            text-shadow: 0 2px 10px rgba(167, 139, 250, 0.3);
+        }
+
+        /* 버튼 컨테이너 및 버튼 스타일링 */
+        .btn-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 600px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button.btn-action {
+            padding: 13px 22px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            outline: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        button.btn-action:hover {
+            transform: translateY(-2px);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.4);
+        }
+
+        button.btn-action:active {
+            transform: translateY(0) scale(0.97);
+        }
+
+        /* 1번: Alert 열기 버튼 */
+        .btn-alert {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            box-shadow: 0 8px 25px -5px var(--primary-glow) !important;
+        }
+
+        .btn-alert:hover {
+            box-shadow: 0 12px 30px -5px rgba(99, 102, 241, 0.6) !important;
+            background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%) !important;
+        }
+
+        /* 2, 3번: hello1 조작 */
+        .btn-hello1 {
+            border-left: 3px solid #38bdf8 !important;
+        }
+        .btn-hello1:hover {
+            background: rgba(56, 189, 248, 0.15) !important;
+        }
+
+        /* 4, 6, 7번: hello2 조작 */
+        .btn-hello2 {
+            border-left: 3px solid #f43f5e !important;
+        }
+        .btn-hello2:hover {
+            background: rgba(244, 63, 94, 0.15) !important;
+        }
+
+        /* 5번: hello3 조작 */
+        .btn-hello3 {
+            border-left: 3px solid #a855f7 !important;
+        }
+        .btn-hello3:hover {
+            background: rgba(168, 85, 247, 0.15) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Alert 박스 UI (PDF p.7: 미리 디자인 해 놓고 숨김) -->
+    <div class="alert-box" id="alert">
+        <p>Alert 박스</p>
+        <button type="button" onclick="closeAlert();">닫기</button>
+    </div>
+
+    <!-- 7week_과제.pdf에 등장하는 핵심 h2 요소들 (초기 로딩 시 안녕하세요, 감사는 숨김) -->
+    <h2 id="hello1"></h2>
+    <h2 id="hello2"></h2>
+    <h2 id="hello3">성공회</h2>
+
+    <!-- 실습 기능 버튼 패널: 각 기능 이름으로 지정 -->
+    <div class="btn-panel">
+        <!-- 1번째 버튼: Alert 모달 열기 (PDF p.7) -->
+        <button type="button" class="btn-action btn-alert" onclick="showAlert();">Alert 열기</button>
+
+        <!-- 2번째 버튼: 안녕하세요 출력 (PDF p.2) -->
+        <button type="button" class="btn-action btn-hello1" onclick="showHello();">안녕하세요 출력</button>
+
+        <!-- 3번째 버튼: innerHTML 사용하여 '안녕'으로 변경 (PDF p.2) -->
+        <button type="button" class="btn-action btn-hello1" onclick="changeToHi();">안녕으로 변경</button>
+
+        <!-- 4번째 버튼: 감사 출력 (PDF p.3) -->
+        <button type="button" class="btn-action btn-hello2" onclick="showThanks();">감사 출력</button>
+
+        <!-- 5번째 버튼: 글자 색상 Red 변경 (PDF p.5 응용 작업3) -->
+        <button type="button" class="btn-action btn-hello2" onclick="changeColorRed();">글자 색상 Red 변경</button>
+
+        <!-- 6번째 버튼: 글자 크기 72px 변경 (PDF p.6 응용 작업4) -->
+        <button type="button" class="btn-action btn-hello2" onclick="changeFontSize72();">글자 크기 72px 변경</button>
+
+        <!-- 7번째 버튼: '성공회' 내용 변경 (PDF p.4 응용 작업2) -->
+        <button type="button" class="btn-action btn-hello3" onclick="changeSungkonghoe();">성공회 내용 변경</button>
+    </div>
+
+    <script>
+        // PDF 7주차 2페이지: Strict Mode
+        'use strict';
+
+        /**
+         * 7week_과제.pdf 실습 내용 반영:
+         */
+
+        // 1. Alert 모달 열기/닫기 (PDF 2탄 p.7)
+        function showAlert() {
+            const alertBox = document.getElementById('alert');
+            alertBox.style.display = 'flex';
+        }
+
+        function closeAlert() {
+            const alertBox = document.getElementById('alert');
+            alertBox.style.display = 'none';
+        }
+
+        // 2. 2번째 버튼: 안녕하세요 출력 (PDF 2탄 p.2)
+        function showHello() {
+            document.getElementById('hello1').innerHTML = '안녕하세요';
+        }
+
+        // 3. 3번째 버튼: innerHTML 사용하여 안녕으로 변경 (PDF 2탄 p.2)
+        function changeToHi() {
+            document.getElementById('hello1').innerHTML = '안녕';
+        }
+
+        // 4. 4번째 버튼: 감사 출력 (PDF 2탄 p.3 응용 작업1)
+        function showThanks() {
+            document.getElementById('hello2').innerHTML = '감사';
+        }
+
+        // 5. 5번째 버튼: 글자 색상 Red 변경 (PDF 2탄 p.5 응용 작업3)
+        function changeColorRed() {
+            const el = document.getElementById('hello2');
+            if (!el.innerHTML) el.innerHTML = '감사';
+            el.style.color = 'red';
+        }
+
+        // 6. 6번째 버튼: fontsize 72px 변경 (PDF 2탄 p.6 응용 작업4)
+        function changeFontSize72() {
+            const el = document.getElementById('hello2');
+            if (!el.innerHTML) el.innerHTML = '감사';
+            el.style.fontSize = '72px';
+        }
+
+        // 7. 7번째 버튼: '성공회' 내용 변경 (PDF 2탄 p.4 응용 작업2)
+        function changeSungkonghoe() {
+            document.getElementById('hello3').innerHTML = '성공회대학교';
+        }
+    </script>
+</body>
+
+</html>
