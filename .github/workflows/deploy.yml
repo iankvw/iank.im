@@ -1,23 +1,24 @@
-name: Production-grade CI-CD Deployment Pipeline
+name: Production Deployment Pipeline
 
 on:
   push:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
-  # ==================================================
-  # [STAGE 1] Build & Bundling Optimization
-  # ==================================================
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     steps:
-      - name: Fetch Source Code Repository
+      # ==================================================
+      # [STEP 1] 소스 코드 체크아웃 및 Node.js 빌드 환경 구성
+      # ==================================================
+      - name: Check Out Repository
         uses: actions/checkout@v4
 
-      - name: Initialize Node.js Development Environment
+      - name: Initialize Node.js Environment
         uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -28,29 +29,10 @@ jobs:
           npm ci
           npm run build
 
-      - name: Upload and Persist Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-files
-          path: dist/
-          retention-days: 1 
-
-  # ==================================================
-  # [STAGE 2] Automated Canary Environment Deployment
-  # ==================================================
-  deploy-canary:
-    needs: build
-    runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-    steps:
-      - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
-          path: dist/
-
-      - name: Inject Cloudflare Zero Trust Client and SSH Key
+      # ==================================================
+      # [STEP 2] Cloudflare Zero Trust SSH 설정 및 터널 주입
+      # ==================================================
+      - name: Configure Cloudflare Zero Trust Client and SSH Identity
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 3
@@ -70,89 +52,29 @@ jobs:
             
             truncate -s 0 ~/.ssh/config
             cat >> ~/.ssh/config << 'EOF'
-            Host ${{ secrets.CANARY_HOST }}
+            Host ${{ secrets.AMPERE_HOST }}
               IdentityFile ~/.ssh/id_ed25519
               StrictHostKeyChecking no
               ProxyCommand /usr/local/bin/cloudflared access ssh --id "${{ secrets.CF_ACCESS_CLIENT_ID }}" --secret "${{ secrets.CF_ACCESS_CLIENT_SECRET }}" --hostname %h
             EOF
 
-      - name: Transmit Artifacts to Canary Infrastructure Via Cloudflare Tunnel
+      # ==================================================
+      # [STEP 3] 빌드 산출물 동기화 (rsync via Cloudflare Tunnel)
+      # ==================================================
+      - name: Synchronize Dist Artifacts to Ampere Production Host
         uses: nick-fields/retry@v3
         with:
-          timeout_minutes: 60
+          timeout_minutes: 30
           max_attempts: 2
           retry_on: error
-          command: rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@${{ secrets.CANARY_HOST }}:/home/ubuntu/docker/iank.im/
+          command: rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@${{ secrets.AMPERE_HOST }}:/home/ubuntu/docker/iank.im/
 
-  # ==================================================
-  # [STAGE 3] Orchestrated Production Multi-Server Deployment (Manual Approval Gate Enabled)
-  # ==================================================
-  deploy-production:
-    needs: deploy-canary
-    runs-on: ubuntu-latest
-    environment: production
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-    strategy:
-      matrix:
-        server:
-          - id: ampere
-            secret_name: AMPERE_HOST
-
-    steps:
-      - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
-          path: dist/
-
-      - name: Inject Cloudflare Zero Trust Client and SSH Key
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 3
-          max_attempts: 3
-          retry_on: error
-          command: |
-            sudo rm -f /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock
-            curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-            sudo dpkg -i cloudflared.deb || (sudo apt-get install -f -y && sudo dpkg -i cloudflared.deb)
-            
-            mkdir -p ~/.ssh
-            cat << 'EOF' > ~/.ssh/id_ed25519
-            ${{ secrets.SSH_KEY }}
-            EOF
-            chmod 700 ~/.ssh
-            chmod 600 ~/.ssh/id_ed25519
-            
-            truncate -s 0 ~/.ssh/config
-            cat >> ~/.ssh/config << EOF
-            Host $TARGET_HOST
-              IdentityFile ~/.ssh/id_ed25519
-              StrictHostKeyChecking no
-              ProxyCommand /usr/local/bin/cloudflared access ssh --id "${{ secrets.CF_ACCESS_CLIENT_ID }}" --secret "${{ secrets.CF_ACCESS_CLIENT_SECRET }}" --hostname %h
-            EOF
-        env:
-          TARGET_HOST: ${{ secrets[matrix.server.secret_name] }}
-
-      - name: Parallel Deployment and Syncing to Production Servers
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 60
-          max_attempts: 2
-          retry_on: error
-          command: rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@$TARGET_HOST:/home/ubuntu/docker/iank.im/
-        env:
-          TARGET_HOST: ${{ secrets[matrix.server.secret_name] }}
-
-      # 최종 배포까지 성공했을 때 알림 발송
-      - name: Notify Discord on Success
+      # ==================================================
+      # [STEP 4] 디스코드 배포 성공 웹훅 전송
+      # ==================================================
+      - name: Transmit Discord Notification on Deployment Success
         if: success()
         run: |
-          git init
-          git remote add origin https://github.com/${{ github.repository }}.git
-          git fetch --depth=1 origin ${{ github.ref_name }}
-          git reset --hard FETCH_HEAD
-          
           SHORT_SHA=$(git rev-parse --short HEAD)
           COMMIT_MSG=$(git log -1 --format=%s)
 
