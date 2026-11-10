@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털시계만들기</title>
+    <link rel="stylesheet" href="./css/style02.css">
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <h1 id="time"></h1>
+        </div>
+
+        <!-- 아날로그 시계 영역 -->
+        <div class="analog-clock">
+            <div class="dial">
+                <!-- 12개 시계 눈금 -->
+                <div class="marker m1"></div>
+                <div class="marker m2"></div>
+                <div class="marker m3"></div>
+                <div class="marker m4"></div>
+                <div class="marker m5"></div>
+                <div class="marker m6"></div>
+                <div class="marker m7"></div>
+                <div class="marker m8"></div>
+                <div class="marker m9"></div>
+                <div class="marker m10"></div>
+                <div class="marker m11"></div>
+                <div class="marker m12"></div>
+
+                <!-- 대항해시대 마린 크로노미터 로마자 숫자 -->
+                <span class="num num-12">XII</span>
+                <span class="num num-3">III</span>
+                <span class="num num-6">VI</span>
+                <span class="num num-9">IX</span>
+
+                <!-- 해양 크로노미터 각인 라벨 -->
+                <div class="brand-text">MARINE CHRONOMETER</div>
+                <div class="sub-text">LONDON • 1775</div>
+            </div>
+
+            <!-- 시계 바늘 -->
+            <div class="hand hour-hand" id="hour-hand"></div>
+            <div class="hand min-hand" id="min-hand"></div>
+            <div class="hand sec-hand" id="sec-hand"></div>
+
+            <!-- 중심 축 / 메탈 너트 -->
+            <div class="center-nut"></div>
+
+            <!-- 사파이어 글래스 반사광 효과 -->
+            <div class="glass-reflection"></div>
+        </div>
+
+        <!-- 조작 버튼 영역 -->
+        <div class="button-panel">
+            <button id="stop">STOP</button>
+            <button id="go">GO</button>
+        </div>
+    </div>
+    <script src="./js/clock.js"></script>
+</body>
+</html>

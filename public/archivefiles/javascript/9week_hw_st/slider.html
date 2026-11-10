@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 슬라이더</title>
+    <link rel="stylesheet" href="./css/style01.css">
+</head>
+<body>
+    <div class="slider-wrapper">
+        <!-- 메인 헤더 타이틀 -->
+        <header class="main-header">
+            <h1 class="main-title">NAUTICAL EXPEDITION ARCHIVE</h1>
+            <p class="sub-title">대항해시대 탐험 기록첩 • 반려견 및 대양 항해 슬라이더</p>
+        </header>
+
+        <!-- 슬라이더 2종 컨테이너 -->
+        <div class="sliders-container">
+            <!-- 1. 강아지 사진 슬라이더 -->
+            <section class="slider-card" id="dog-slider">
+                <div class="card-header">
+                    <div class="title-group">
+                        <span class="badge">EXPEDITION MASCOT</span>
+                        <h2 class="card-title">탐험대 충견 기록</h2>
+                    </div>
+                    <span class="slide-counter" id="dog-counter">1 / 6</span>
+                </div>
+
+                <div class="image-frame">
+                    <!-- 슬라이드 트랙 (부드러운 좌우 슬라이딩 효과) -->
+                    <div class="slider-track" id="dog-track">
+                        <img src="./img/dog1.jpg" alt="탐험대 강아지 1">
+                        <img src="./img/dog2.jpg" alt="탐험대 강아지 2">
+                        <img src="./img/dog3.jpg" alt="탐험대 강아지 3">
+                        <img src="./img/dog4.jpg" alt="탐험대 강아지 4">
+                        <img src="./img/dog5.jpg" alt="탐험대 강아지 5">
+                        <img src="./img/dog6.jpg" alt="탐험대 강아지 6">
+                    </div>
+                    <div class="frame-glass"></div>
+                    <div class="corner-ornament tl"></div>
+                    <div class="corner-ornament tr"></div>
+                    <div class="corner-ornament bl"></div>
+                    <div class="corner-ornament br"></div>
+                </div>
+
+                <div class="control-panel">
+                    <button class="btn btn-prev" id="dog-prev" disabled>PREV</button>
+                    <button class="btn btn-play" id="dog-play">PLAY</button>
+                    <button class="btn btn-next" id="dog-next">NEXT</button>
+                </div>
+            </section>
+
+            <!-- 2. 바다 사진 슬라이더 -->
+            <section class="slider-card" id="sea-slider">
+                <div class="card-header">
+                    <div class="title-group">
+                        <span class="badge">THE SEVEN SEAS</span>
+                        <h2 class="card-title">미지의 대양 탐사</h2>
+                    </div>
+                    <span class="slide-counter" id="sea-counter">1 / 6</span>
+                </div>
+
+                <div class="image-frame">
+                    <!-- 슬라이드 트랙 (부드러운 좌우 슬라이딩 효과) -->
+                    <div class="slider-track" id="sea-track">
+                        <img src="./img/sea1.jpg" alt="대양 바다 1">
+                        <img src="./img/sea2.jpg" alt="대양 바다 2">
+                        <img src="./img/sea3.jpg" alt="대양 바다 3">
+                        <img src="./img/sea4.jpg" alt="대양 바다 4">
+                        <img src="./img/sea5.jpg" alt="대양 바다 5">
+                        <img src="./img/sea6.jpg" alt="대양 바다 6">
+                    </div>
+                    <div class="frame-glass"></div>
+                    <div class="corner-ornament tl"></div>
+                    <div class="corner-ornament tr"></div>
+                    <div class="corner-ornament bl"></div>
+                    <div class="corner-ornament br"></div>
+                </div>
+
+                <div class="control-panel">
+                    <button class="btn btn-prev" id="sea-prev" disabled>PREV</button>
+                    <button class="btn btn-play" id="sea-play">PLAY</button>
+                    <button class="btn btn-next" id="sea-next">NEXT</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="./js/slider.js"></script>
+</body>
+</html>

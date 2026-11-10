@@ -1,0 +1,464 @@
+/* ==========================================================================
+   대항해시대(Age of Discovery) 이미지 슬라이더 스타일링
+   Antique Nautical Dual Image Slider & Captain's Archive
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=IM+Fell+English+SC&family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Cinzel', 'IM Fell English SC', serif;
+    user-select: none;
+    overflow-x: hidden;
+    position: relative;
+    /* 대항해시대 고지도 양피지 배경 (clock과 일치) */
+    background: radial-gradient(ellipse at 50% 45%, #eedfc1 0%, #dabf92 38%, #b3915e 70%, #63431f 92%, #2c1a0a 100%);
+    color: #e5a752;
+}
+
+/* 고지도 해도의 항로선(Rhumb Lines) 및 경위도 격자 오버레이 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle at 50% 50%, transparent 0%, transparent 180px, rgba(120, 85, 45, 0.12) 181px, transparent 182px, transparent 340px, rgba(120, 85, 45, 0.1) 341px, transparent 342px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(100, 70, 35, 0.07) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(100, 70, 35, 0.07) 60px),
+        repeating-conic-gradient(from 0deg, transparent 0deg, transparent 22.4deg, rgba(120, 80, 35, 0.08) 22.5deg, transparent 22.6deg);
+    opacity: 0.95;
+    z-index: 0;
+}
+
+/* 지도 주변부 타버린 양피지 비네팅(Vignette) 효과 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    box-shadow: inset 0 0 120px rgba(35, 20, 8, 0.8), inset 0 0 200px rgba(20, 10, 4, 0.9);
+    z-index: 1;
+}
+
+/* 전체 래퍼 */
+.slider-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   1. 헤더 타이틀 영역 (대항해시대 앤틱 골드 엠보스 레터링)
+   ========================================================================== */
+.main-header {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.main-title {
+    margin: 0;
+    font-size: 2.3rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e5a752;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 16px rgba(229, 167, 82, 0.5),
+        0 -1px 0 rgba(255, 235, 180, 0.4);
+}
+
+.sub-title {
+    margin: 8px 0 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #4a2e15;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   2. 슬라이더 컨테이너 (가로 화면에서 2열 배치)
+   ========================================================================== */
+.sliders-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. 슬라이더 카드 (선장실 오크 원목 콘솔 데스크)
+   ========================================================================== */
+.slider-card {
+    position: relative;
+    flex: 1 1 440px;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 34px 38px;
+    border-radius: 36px;
+    /* 고지도 양피지와 자연스럽게 블렌딩되는 마호가니/오크 원목 질감 */
+    background: linear-gradient(145deg, rgba(65, 36, 20, 0.96) 0%, rgba(45, 23, 11, 0.97) 55%, rgba(27, 13, 6, 0.98) 100%);
+    backdrop-filter: blur(4px);
+    /* 앤틱 황동 테두리 (Antique Brass Frame) */
+    border: 3px solid #b8860b;
+    /* 배경 지도에 착 달라붙는 밀착 안착 그림자 (Grounded Contact Shadow) */
+    box-shadow:
+        0 14px 35px rgba(35, 18, 6, 0.45),
+        0 4px 10px rgba(30, 15, 5, 0.35),
+        0 0 0 8px rgba(75, 42, 20, 0.35),
+        0 0 0 10px rgba(184, 134, 11, 0.45),
+        inset 0 2px 4px rgba(255, 230, 160, 0.35),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 주변부 앰비언트 세피아 블렌딩 섀도우 */
+.slider-card::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 48px;
+    box-shadow: 0 0 60px 20px rgba(45, 25, 10, 0.28);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 내부 모서리 장식 점선 */
+.slider-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px dashed rgba(212, 175, 55, 0.35);
+    border-radius: 28px;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   4. 카드 헤더 & 카운터 (원목 양피지 뱃지)
+   ========================================================================== */
+.card-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #b8860b;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #e5a752;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* 슬라이드 카운터 배지 (1 / 6) */
+.slide-counter {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffd885;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #1f1007 0%, #30170a 100%);
+    border: 1.5px solid #8c6023;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(255, 230, 160, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   5. 이미지 프레임 (대항해시대 고풍스러운 명화 액자 & 슬라이드 트랙)
+   ========================================================================== */
+.image-frame {
+    width: 100%;
+    height: 280px;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden; /* 좌우 슬라이드 프레임 바깥 이미지 숨김 */
+    /* 앤틱 골드 & 황동 액자 림 */
+    background: #140a04;
+    border: 4px solid #b8860b;
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.8),
+        inset 0 0 25px rgba(0, 0, 0, 0.85),
+        0 0 0 4px #573319;
+}
+
+/* 좌우 슬라이드 트랙 (6장의 이미지가 정확히 이어지는 600% 너비 트랙) */
+.slider-track {
+    display: flex;
+    width: 600%; /* 6장의 이미지 = 600% 너비 */
+    height: 100%;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slider-track img {
+    width: calc(100% / 6); /* 600% 트랙의 1/6 = 프레임 너비의 100% */
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* 액자 사파이어 글래스 반사광 */
+.frame-glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.08) 28%,
+        rgba(255, 255, 255, 0) 50%
+    );
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* 액자 4개 모서리 황동 장식 브래킷 */
+.corner-ornament {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: #ffd885;
+    border-style: solid;
+    pointer-events: none;
+    z-index: 4;
+}
+.corner-ornament.tl { top: 6px; left: 6px; border-width: 2px 0 0 2px; }
+.corner-ornament.tr { top: 6px; right: 6px; border-width: 2px 2px 0 0; }
+.corner-ornament.bl { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; }
+.corner-ornament.br { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
+
+/* ==========================================================================
+   6. 조작 버튼 패널 (선박 황동 텔레그래프 푸시 버튼)
+   ========================================================================== */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 12px 24px;
+    border-radius: 50px;
+    /* 오크 마운트 소켓 베이스 */
+    background: linear-gradient(180deg, #1d0f07 0%, #2c160a 100%);
+    box-shadow:
+        inset 0 4px 9px rgba(0, 0, 0, 0.9),
+        0 2px 3px rgba(255, 215, 0, 0.15);
+    border: 2px solid #543319;
+}
+
+/* 기계식 푸시 버튼 공통 */
+.btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    position: relative;
+    user-select: none;
+    transition: all 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 이전(PREV) 및 다음(NEXT) 버튼 (앤틱 브론즈 메탈) */
+.btn-prev, .btn-next {
+    background: linear-gradient(180deg, #855b25 0%, #5e3f16 40%, #432a0c 70%, #291703 100%);
+    color: #ffeed1;
+    border: 2px solid #b8860b;
+    box-shadow:
+        0 6px 0 #1b0e02,
+        0 12px 16px rgba(0, 0, 0, 0.75),
+        inset 0 2px 3px rgba(255, 240, 190, 0.4),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+.btn-prev:hover:not(:disabled), .btn-next:hover:not(:disabled) {
+    filter: brightness(1.15);
+    box-shadow:
+        0 6px 0 #1b0e02,
+        0 14px 20px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(212, 175, 55, 0.5),
+        inset 0 2px 3px rgba(255, 245, 210, 0.6);
+}
+
+.btn-prev:active:not(:disabled), .btn-next:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px 0 #1b0e02,
+        0 4px 8px rgba(0, 0, 0, 0.8),
+        inset 0 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* [요구사항] 버튼 비활성화 상태 (첫 사진 이전 불가, 마지막 사진 다음 불가) */
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.38;
+    filter: grayscale(0.85);
+    transform: translateY(3px);
+    box-shadow:
+        0 2px 0 #150902,
+        inset 0 2px 5px rgba(0, 0, 0, 0.85);
+    color: #8c7356;
+    border-color: #573a14;
+    pointer-events: none;
+}
+
+/* 재생(PLAY) 버튼 (기본: 대양 딥 에메랄드 왁스 버튼) */
+.btn-play {
+    background: linear-gradient(180deg, #2d6a4f 0%, #1b4332 40%, #133325 70%, #081c14 100%);
+    color: #e2fced;
+    border: 2px solid #a3722b;
+    box-shadow:
+        0 6px 0 #04120c,
+        0 12px 18px rgba(0, 0, 0, 0.8),
+        0 0 14px rgba(45, 106, 79, 0.4),
+        inset 0 2px 3px rgba(200, 255, 220, 0.5),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 6px rgba(180, 255, 210, 0.4);
+    min-width: 105px;
+}
+
+.btn-play:hover {
+    filter: brightness(1.15);
+    box-shadow:
+        0 6px 0 #04120c,
+        0 14px 22px rgba(0, 0, 0, 0.85),
+        0 0 22px rgba(45, 106, 79, 0.65),
+        inset 0 2px 3px rgba(220, 255, 230, 0.7);
+}
+
+.btn-play:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px 0 #04120c,
+        0 4px 8px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(45, 106, 79, 0.8),
+        inset 0 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* 재생 중 상태 (STOP으로 전환: 짙은 실링 왁스 버건디 레드 버튼) */
+.btn-play.playing {
+    background: linear-gradient(180deg, #b91c1c 0%, #850f0f 40%, #5c0707 70%, #3b0303 100%);
+    color: #ffdede;
+    box-shadow:
+        0 6px 0 #280303,
+        0 12px 18px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(185, 28, 28, 0.45),
+        inset 0 2px 3px rgba(255, 200, 200, 0.5),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 6px rgba(255, 180, 180, 0.4);
+}
+
+.btn-play.playing:hover {
+    box-shadow:
+        0 6px 0 #280303,
+        0 14px 22px rgba(0, 0, 0, 0.85),
+        0 0 24px rgba(220, 38, 38, 0.7),
+        inset 0 2px 3px rgba(255, 220, 220, 0.7);
+}
+
+.btn-play.playing:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px 0 #280303,
+        0 4px 8px rgba(0, 0, 0, 0.8),
+        0 0 18px rgba(220, 38, 38, 0.8),
+        inset 0 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   7. 반응형 화면 최적화
+   ========================================================================== */
+@media (max-width: 960px) {
+    .sliders-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .slider-card {
+        max-width: 480px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-wrapper {
+        padding: 24px 12px;
+    }
+    .main-title {
+        font-size: 1.7rem;
+    }
+    .slider-card {
+        padding: 24px 18px;
+        gap: 16px;
+    }
+    .image-frame {
+        height: 220px;
+    }
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+    .control-panel {
+        gap: 12px;
+        padding: 10px 16px;
+    }
+}
+
