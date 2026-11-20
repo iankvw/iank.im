@@ -57,80 +57,19 @@
         <div class="drawer-section-label">주차별 과제 목록</div>
 
         <nav class="drawer-nav">
-            <ul class="drawer-list">
+            <ul class="drawer-list"></ul>
+
+            <!-- 주차별 과제 항목 템플릿 (js/index_java.js의 assignments 배열을 기반으로 렌더링) -->
+            <template id="drawer-item-template">
                 <li>
-                    <a href="/archivefiles/javascript/0918/bargain.html" target="_blank" class="drawer-item">
+                    <a href="" target="_blank" class="drawer-item">
                         <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                             <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
                         </svg>
-                        <span>3주차_과제</span>
+                        <span></span>
                     </a>
                 </li>
-                <li>
-                    <a href="./4week_tr.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>4주차_tr</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./5week_if.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>5주차_If문과제</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./5week_switch.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>5주차_switch문과제</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/archivefiles/javascript/1016/6week_for_hw.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>6주차_for문과제</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./7week_alert.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>7주차_alert</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./7week_menu.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>7주차_menu</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/archivefiles/javascript/9week_hw_st/clock.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>9주차_clock</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/archivefiles/javascript/9week_hw_st/slider.html" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
-                        </svg>
-                        <span>9주차_slider</span>
-                    </a>
-                </li>
-            </ul>
+            </template>
         </nav>
     </aside>
 
@@ -148,7 +87,7 @@
                 <button type="button" id="close-clock-btn" class="modal-close-btn" aria-label="닫기">&times;</button>
             </div>
             <div class="modal-body">
-                <iframe src="/archivefiles/javascript/9week_hw_st/clock.html" title="시계 과제 프레임"></iframe>
+                <iframe src="https://iank.im/archivefiles/javascript/9week_hw_st/clock.html" title="시계 과제 프레임"></iframe>
             </div>
         </div>
     </div>

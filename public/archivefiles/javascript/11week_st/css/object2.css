@@ -1,0 +1,7 @@
+#display {
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}

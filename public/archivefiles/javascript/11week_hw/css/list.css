@@ -1,0 +1,387 @@
+/* list.css - 2000년대 밝은 메모지 스큐어모피즘 + 최신 애니메이션 */
+
+form::after {
+  display: block;
+}
+
+#itemList {
+  background: #ffffff;
+}
+
+ul {
+  position: relative;
+  margin: 0;
+  padding: 8px 0 14px;
+  list-style: none;
+  min-height: 150px;
+  /* 2000년대 밝은 아이보리-화이트 노트패드 종이 + 왼쪽 붉은 세로 이중 여백선 */
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 44px,
+      rgba(235, 134, 134, 0.38) 44px,
+      rgba(235, 134, 134, 0.38) 45px,
+      transparent 45px,
+      transparent 48px,
+      rgba(235, 134, 134, 0.28) 48px,
+      rgba(235, 134, 134, 0.28) 49px,
+      transparent 49px
+    ),
+    linear-gradient(180deg, rgba(238, 245, 253, 0.45) 0%, #ffffff 28px);
+}
+
+/* 항목이 없을 때 밝은 양각(embossed) 안내 문구 */
+ul:empty::before {
+  content: "아직 챙길 물건이 없습니다. 위 입력창에 준비물을 추가해 보세요!";
+  display: block;
+  padding: 54px 28px 54px 66px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #8b9eb3;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 22px 14px 66px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2b3e54;
+  border-bottom: 1px solid #e4ecf5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    background-color 0.24s ease,
+    box-shadow 0.28s ease,
+    transform 0.35s var(--spring-smooth);
+}
+
+/* 2000년대 입체 글로시 블루 압정/체크 링 마커 */
+ul li::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #599be6;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #98cbff 42%, #3d8ef2 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    0 2px 4px rgba(49, 108, 184, 0.24);
+  transition: transform 0.35s var(--spring-bounce), filter 0.25s ease;
+}
+
+/* 짝수 번째 항목 은은한 줄무늬 노트 효과 */
+ul li:nth-child(even) {
+  background-color: rgba(242, 247, 253, 0.68);
+}
+
+ul li:hover {
+  background-color: rgba(226, 241, 255, 0.78);
+  box-shadow:
+    inset 4px 0 0 #318cf7,
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 8px rgba(45, 98, 168, 0.08);
+}
+
+ul li:hover::before {
+  transform: translateY(-50%) scale(1.16);
+}
+
+/* 최신 CSS :has() - 완료/삭제 버튼 호버 시 해당 행을 부드러운 색으로 예고 */
+ul li:has(.check:hover) {
+  background-color: rgba(230, 250, 239, 0.78);
+  box-shadow:
+    inset 4px 0 0 #2db86a,
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+ul li:has(.close:hover) {
+  background-color: rgba(255, 236, 236, 0.85);
+  box-shadow:
+    inset 4px 0 0 #ee5959,
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.item-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  line-height: 1.45;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+  text-decoration: line-through;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1.8px;
+  transition:
+    color 0.32s ease,
+    opacity 0.32s ease,
+    text-decoration-color 0.32s ease,
+    transform 0.36s var(--spring-bounce);
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* 2000년대 글로시 민트-에메랄드 젤 완료(v) 버튼 */
+.check {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  border: 1px solid #96b8a6;
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #278d54;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #eef8f2 48%,
+    #dceee4 51%,
+    #edf7f1 100%
+  );
+  box-shadow:
+    0 2px 5px rgba(42, 118, 76, 0.14),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(102, 158, 126, 0.22);
+  transition:
+    transform 0.38s var(--spring-bounce),
+    box-shadow 0.22s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.check::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 2px;
+  height: 44%;
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.12) 100%);
+  pointer-events: none;
+}
+
+.check:hover {
+  transform: translateY(-1px) scale(1.12);
+  border-color: #36a968;
+  box-shadow:
+    0 5px 12px rgba(45, 168, 98, 0.24),
+    inset 0 1px 1px rgba(255, 255, 255, 0.98);
+}
+
+.check:active {
+  transform: translateY(1px) scale(0.92);
+}
+
+/* 완료(v) 선택 상태: 옅은 색 + 취소선 + 활성화된 글로시 에메랄드 버튼 */
+ul li.checked {
+  background-color: rgba(244, 247, 251, 0.72);
+}
+
+ul li.checked::before {
+  opacity: 0.45;
+  filter: saturate(0.25);
+}
+
+ul li.checked .item-text {
+  color: #9aa9ba;
+  opacity: 0.8;
+  text-decoration-color: #8fa1b6;
+  transform: translateX(2px);
+}
+
+ul li.checked .check {
+  border-color: #218c4f;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(16, 92, 48, 0.65);
+  background: linear-gradient(
+    180deg,
+    #86eab0 0%,
+    #34c06e 48%,
+    #1fa357 51%,
+    #4cd183 100%
+  );
+  box-shadow:
+    0 3px 8px rgba(34, 162, 88, 0.28),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 2px rgba(15, 98, 50, 0.35);
+  animation: checkPop 0.42s var(--spring-bounce);
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0.86); }
+  60% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+
+/* 2000년대 글로시 코랄-레드 젤 삭제 버튼 */
+.close {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  border: 1px solid #cb3838;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(140, 24, 24, 0.65);
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(
+    180deg,
+    #ffa4a4 0%,
+    #f55757 48%,
+    #dc3535 51%,
+    #f26a6a 100%
+  );
+  box-shadow:
+    0 3px 7px rgba(214, 58, 58, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.88),
+    inset 0 -1px 2px rgba(145, 20, 20, 0.35);
+  transition:
+    transform 0.38s var(--spring-bounce),
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+.close::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 2px;
+  height: 44%;
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.08) 100%);
+  pointer-events: none;
+}
+
+.close:hover {
+  transform: translateY(-1px) scale(1.12);
+  filter: brightness(1.06);
+  box-shadow:
+    0 6px 14px rgba(220, 56, 56, 0.34),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+.close:active {
+  transform: translateY(1px) scale(0.92);
+  filter: brightness(0.96);
+  box-shadow:
+    0 1px 3px rgba(214, 58, 58, 0.2),
+    inset 0 2px 4px rgba(135, 18, 18, 0.45);
+}
+
+/* 새로 추가된 항목: 스프링 물리 진입 + 햇살 광택 플래시 */
+ul li.new-item {
+  animation:
+    skeuoItemIn 0.56s var(--spring-bounce) both,
+    skeuoRowFlash 0.85s ease-out both;
+}
+
+/* 삭제되는 항목: 입체 슬라이드 아웃 */
+ul li.removing {
+  pointer-events: none;
+  animation: skeuoItemOut 0.25s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes skeuoItemIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes skeuoRowFlash {
+  0% {
+    background-color: rgba(168, 214, 255, 0.52);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes skeuoItemOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(34px) scale(0.95);
+  }
+}
+
+/* View Transitions API 그룹 애니메이션: 남은 항목들이 부드럽게 재배치됨 */
+::view-transition-group(*) {
+  animation-duration: 0.34s;
+  animation-timing-function: var(--spring-smooth);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 520px) {
+  ul {
+    background-image:
+      linear-gradient(
+        90deg,
+        transparent 34px,
+        rgba(235, 134, 134, 0.38) 34px,
+        rgba(235, 134, 134, 0.38) 35px,
+        transparent 35px,
+        transparent 38px,
+        rgba(235, 134, 134, 0.28) 38px,
+        rgba(235, 134, 134, 0.28) 39px,
+        transparent 39px
+      ),
+      linear-gradient(180deg, rgba(238, 245, 253, 0.45) 0%, #ffffff 28px);
+  }
+  ul:empty::before {
+    padding: 44px 18px 44px 52px;
+    font-size: 0.9rem;
+  }
+  ul li {
+    padding: 13px 16px 13px 52px;
+  }
+  ul li::before {
+    left: 13px;
+  }
+}

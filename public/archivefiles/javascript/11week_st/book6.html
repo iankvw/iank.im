@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book06_객체</title>
+    <!-- 6-2-6 (285p) lodash 라이브러리 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+    <script>
+        // ==========================================
+        // 6-1-1. 메소드 내부에서 this 키워드 사용하기
+        // ==========================================
+        /*
+        const pet = {
+            name: '구름',
+            eat: function (food) {
+                alert(this.name + '은/는 ' + food + '을/를 먹습니다.');
+            }
+        };
+        pet.eat('밥');
+        */
+
+        // ==========================================
+        // 6-1-2. 동적으로 객체 속성 추가하기
+        // ==========================================
+        /*
+        const student = {};
+        student.이름 = '윤인성';
+        student.취미 = '악기';
+        student.장래희망 = '생명공학자';
+
+        console.log(JSON.stringify(student, null, 2));
+        */
+
+        // ==========================================
+        // 6-1-3. 동적으로 객체 속성 제거하기
+        // ==========================================
+        /*
+        const student = {};
+        student.이름 = '윤인성';
+        student.취미 = '악기';
+        student.장래희망 = '생명공학자';
+
+        delete student.장래희망;
+        console.log(JSON.stringify(student, null, 2));
+        */
+
+        // ==========================================
+        // 6-1-4. 메소드 간단 선언 구문 & 화살표 함수와 this
+        // ==========================================
+        /*
+        const pet = {
+            name: '구름',
+            eat(food) {
+                alert(this.name + '은/는 ' + food + '을/를 먹습니다.');
+            }
+        };
+        pet.eat('밥');
+
+        const test = {
+            a: function () {
+                console.log(this);
+            },
+            b: () => {
+                console.log(this);
+            }
+        };
+        test.a();
+        test.b();
+        */
+
+        // ==========================================
+        // 6-2-5. Math.random() 랜덤한 숫자 만들기
+        // ==========================================
+        /*
+        const num = Math.random();
+
+        console.log('# 랜덤한 숫자');
+        console.log('0-1 사이의 랜덤한 숫자:', num);
+        console.log('');
+
+        console.log('# 랜덤한 숫자 범위 확대');
+        console.log('0~10 사이의 랜덤한 숫자:', num * 10);
+        console.log('0~50 사이의 랜덤한 숫자:', num * 50);
+        console.log('');
+
+        console.log('# 랜덤한 숫자 범위 이동');
+        console.log('-5~5 사이의 랜덤한 숫자:', num * 10 - 5);
+        console.log('-25~25 사이의 랜덤한 숫자:', num * 50 - 25);
+        console.log('');
+
+        console.log('# 랜덤한 정수 숫자');
+        console.log('-5~5 사이의 랜덤한 정수 숫자:', Math.floor(num * 10 - 5));
+        console.log('-25~25 사이의 랜덤한 정수 숫자:', Math.floor(num * 50 - 25));
+        */
+
+        // ==========================================
+        // 6-2-6. lodash 라이브러리의 sortBy() 메소드 (285p)
+        // ==========================================
+        /*
+        const books = [{
+            name: '혼자 공부하는 파이썬',
+            price: 18000,
+            publisher: '한빛미디어'
+        }, {
+            name: 'HTML5 웹 프로그래밍 입문',
+            price: 26000,
+            publisher: '한빛아카데미'
+        }, {
+            name: '머신러닝 딥러닝 실전 개발 입문',
+            price: 30000,
+            publisher: '위키북스'
+        }, {
+            name: '딥러닝을 위한 수학',
+            price: 25000,
+            publisher: '위키북스'
+        }];
+
+        const output = _.sortBy(books, (book) => book.price);
+        console.log(JSON.stringify(output, null, 2));
+        */
+
+        // ==========================================
+        // 6-3-1. 객체 내부에 속성이 있는지 확인하기
+        // ==========================================
+        /*
+        const object = {
+            name: '혼자 공부하는 파이썬',
+            price: 18000,
+            publisher: '한빛미디어'
+        };
+
+        if (object.name !== undefined) {
+            console.log('name 속성이 있습니다.');
+        } else {
+            console.log('name 속성이 없습니다.');
+        }
+
+        if (object.author !== undefined) {
+            console.log('author 속성이 있습니다.');
+        } else {
+            console.log('author 속성이 없습니다.');
+        }
+        */
+
+        // ==========================================
+        // 6-3-2. 기본 속성 지정하기
+        // ==========================================
+        /*
+        const object = {
+            name: '혼자 공부하는 파이썬',
+            price: 18000,
+            publisher: '한빛미디어'
+        };
+
+        object.name = object.name !== undefined ? object.name : '제목 미정';
+        object.author = object.author !== undefined ? object.author : '저자 미상';
+
+        console.log(JSON.stringify(object, null, 2));
+        */
+
+        // ==========================================
+        // 6-3-3. 배열 기반의 다중 할당
+        // ==========================================
+        /*
+        let [a, b] = [1, 2];
+        console.log(a, b);
+
+        [a, b] = [b, a];
+        console.log(a, b);
+
+        let arrayA = [1, 2, 3, 4, 5];
+        const [x, y, z] = arrayA;
+        console.log(x, y, z);
+        */
+
+        // ==========================================
+        // 6-3-4. 객체 기반의 다중 할당
+        // ==========================================
+        /*
+        const object = {
+            name: '혼자 공부하는 파이썬',
+            price: 18000,
+            publisher: '한빛미디어'
+        };
+
+        const { name, price } = object;
+        console.log('# 속성 이름 그대로 꺼내서 출력하기');
+        console.log(name, price);
+        console.log('');
+
+        const { name: a, price: b } = object;
+        console.log('# 다른 이름으로 속성 꺼내서 출력하기');
+        console.log(a, b);
+        */
+
+        // ==========================================
+        // 6-3-5. 배열의 얕은 복사(참조 복사)
+        // ==========================================
+        /*
+        const 물건_200301 = ['우유', '식빵'];
+        const 물건_200302 = 물건_200301;
+        물건_200302.push('고구마');
+        물건_200302.push('토마토');
+
+        console.log(물건_200301);
+        console.log(물건_200302);
+        */
+
+        // ==========================================
+        // 6-3-6. 전개 연산자를 사용한 배열의 깊은 복사
+        // ==========================================
+        /*
+        const 물건_200301 = ['우유', '식빵'];
+        const 물건_200302 = [...물건_200301];
+        물건_200302.push('고구마');
+        물건_200302.push('토마토');
+
+        console.log(물건_200301);
+        console.log(물건_200302);
+        */
+
+        // ==========================================
+        // 6-3-7. 전개 연산자를 사용한 배열 요소 추가
+        // ==========================================
+        /*
+        const 물건_200301 = ['우유', '식빵'];
+        const 물건_200302 = ['고구마', ...물건_200301, '토마토'];
+
+        console.log(물건_200301);
+        console.log(물건_200302);
+        */
+
+        // ==========================================
+        // 6-3-8. 객체의 얕은 복사(참조 복사)
+        // ==========================================
+        /*
+        const 구름 = {
+            이름: '구름',
+            나이: 6,
+            종족: '강아지'
+        };
+        const 별 = 구름;
+        별.이름 = '별';
+        별.나이 = 1;
+
+        console.log(JSON.stringify(구름));
+        console.log(JSON.stringify(별));
+        */
+
+        // ==========================================
+        // 6-3-9. 전개 연산자를 사용한 객체 복사
+        // ==========================================
+        /*
+        const 구름 = {
+            이름: '구름',
+            나이: 6,
+            종족: '강아지'
+        };
+        const 별 = { ...구름 };
+        별.이름 = '별';
+        별.나이 = 1;
+
+        console.log(JSON.stringify(구름));
+        console.log(JSON.stringify(별));
+        */
+
+        // ==========================================
+        // 6-3-10. 전개 연산자를 사용한 객체 요소 추가
+        // ==========================================
+        
+        const 구름 = {
+            이름: '구름',
+            나이: 6,
+            종족: '강아지'
+        };
+        const 별 = {
+            ...구름,
+            이름: '별',
+            나이: 1,
+            예방접종: true
+        };
+
+        console.log(JSON.stringify(구름));
+        console.log(JSON.stringify(별));
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>D-Day</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+	<link href="css/d-day.css" rel="stylesheet">
+</head>
+<body>
+	<main class="desk">
+		<section class="container post-it" aria-label="기념일 포스트잇 메모">
+			<div class="tape" aria-hidden="true"></div>
+			<div class="day1">
+				<div class="editable-row">
+					<h3 id="memoTitle" class="editable-title" tabindex="0" role="button" title="클릭하여 제목 변경">입학한지</h3>
+					<input type="text" id="titleInput" class="inline-input title-input" maxlength="20" aria-label="기념일 제목 입력" hidden>
+				</div>
+				<p id="accent" class="accent">0일</p>
+				<div class="editable-row date-row">
+					<span id="startDateText" class="editable-date" tabindex="0" role="button" title="클릭하여 기념일 날짜 변경">2022년 3월 2일</span>
+					<input type="date" id="dateInput" class="inline-input date-input" aria-label="기념일 날짜 선택" hidden>
+				</div>
+			</div>
+			<div class="bar">기념일 계산</div>
+			<ul class="day2">
+				<li>
+					<span class="item-title">100일</span>
+					<span class="item-date" id="date100"></span>
+				</li>
+				<li>
+					<span class="item-title">200일</span>
+					<span class="item-date" id="date200"></span>
+				</li>
+				<li>
+					<span class="item-title">1년</span>
+					<span class="item-date" id="date365"></span>
+				</li>
+				<li>
+					<span class="item-title">500일</span>
+					<span class="item-date" id="date500"></span>
+				</li>
+			</ul>
+		</section>
+	</main>
+	<script src="js/date.js"></script>
+</body>
+</html>

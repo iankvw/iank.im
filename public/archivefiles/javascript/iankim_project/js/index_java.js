@@ -1,3 +1,19 @@
+// 주차별 과제 목록 데이터
+const assignments = [
+    { name: "3주차_과제", url: "https://iank.im/archivefiles/javascript/0918/bargain.html" },
+    { name: "4주차_tr", url: "./4week_tr.html" },
+    { name: "5주차_If문과제", url: "./5week_if.html" },
+    { name: "5주차_switch문과제", url: "./5week_switch.html" },
+    { name: "6주차_for문과제", url: "https://iank.im/archivefiles/javascript/1016/6week_for_hw.html" },
+    { name: "7주차_alert", url: "./7week_alert.html" },
+    { name: "7주차_menu", url: "./7week_menu.html" },
+    { name: "9주차_clock", url: "https://iank.im/archivefiles/javascript/9week_hw_st/clock.html" },
+    { name: "9주차_slider", url: "https://iank.im/archivefiles/javascript/9week_hw_st/slider.html" },
+    { name: "10주차_기념일계산", url: "./date_hw.html" },
+    { name: "11주차_array", url: "https://iank.im/archivefiles/javascript/11week_hw/array_hw.html" },
+    { name: "11주차_교재", url: "https://iank.im/archivefiles/javascript/11week_st/book6.html" }
+];
+
 /**
  * 0-255 사이의 난수(Random Number)를 생성하여 무작위 RGB 색상 코드를 반환하는 함수
  * @returns {string} rgb(r, g, b) 형식의 색상 문자열
@@ -10,6 +26,23 @@ function randomColor() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // 네비게이션 드로어 과제 목록 렌더링 (<template> 복제)
+    const drawerList = document.querySelector(".drawer-list");
+    const itemTemplate = document.querySelector("#drawer-item-template");
+
+    if (drawerList && itemTemplate) {
+        assignments.forEach((item) => {
+            const clone = itemTemplate.content.cloneNode(true);
+            const link = clone.querySelector("a");
+            const label = clone.querySelector("span");
+
+            link.href = item.url;
+            label.textContent = item.name;
+
+            drawerList.appendChild(clone);
+        });
+    }
+
     // 동적 타이틀 스팬 생성 및 색상 적용
     const title = ["a", "v", "a", "s", "c", "r", "i", "p", "t"];
     const targetTitle = document.querySelector("#javascript-title");
