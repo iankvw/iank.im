@@ -3,15 +3,43 @@
 
 <head>
     <meta charset="utf-8">
-    <title>김이언의홈페이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김이언의홈페이지 | 초거대 로열 골드 JAVASCRIPT 대진화</title>
+    <!-- 화려한 한글 디스플레이 웹폰트 (시스템 폰트 폴백 포함) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
     <!-- 외부 스타일시트(External Style Sheet) 참조 링크 -->
-    <link rel="stylesheet" href="./css/index_java.css">
+    <link rel="stylesheet" href="./css/index_java.css?v=5">
     <!-- 외부 스크립트(External Script) 참조 링크 -->
-    <script src="./js/index_java.js" defer></script>
+    <script src="./js/index_java.js?v=4" defer></script>
 </head>
 
 <body>
-    <!-- 상단 앱 바 (좌측 메뉴 토글 버튼 & 우측 시계 보기, 로그인 버튼) -->
+    <!-- 고정 배경, 회전 광선, 투명 폭죽, 배경 별가루 캔버스 레이어 -->
+    <div class="royal-bg-layer" aria-hidden="true">
+        <img src="./img/bg_pachinko_palace.png" class="bg-palace" alt="">
+        <div class="bg-sunburst"></div>
+        <img src="./img/fx_fireworks_glow.png?v=2" class="bg-fireworks fw-left" alt="" data-parallax="0.02">
+        <img src="./img/fx_fireworks_glow.png?v=2" class="bg-fireworks fw-right" alt="" data-parallax="-0.02">
+        <div class="bg-vignette"></div>
+        <canvas id="pachinko-particles"></canvas>
+    </div>
+
+    <!-- 상단 속보 무지개 전광판 티커 -->
+    <div class="top-marquee-bar" aria-hidden="true">
+        <div class="marquee-track">
+            <span>★ 긴급속보 ★ 김이언(202214038) JAVASCRIPT 초거대 과제 홈페이지 역사상 가장 위대한 대진화!!</span>
+            <span>★ 새로고침(F5) 시 페이지가 처음부터 다시 로드됩니다!! ★</span>
+            <span>★ 황금 고블린 대박 강림!! ★ 가독성 10,000%↑ ★ 성능 향상 5,000%↑ ★</span>
+            <span>★ 마우스로 클릭하면 해당 주차 과제로 즉시 이동!! ★ 필요 시 창을 닫았다가 나중에 다시 열 수 있습니다!! ★</span>
+            <span>★ 전 세계 10억+ 브라우저 완벽 호환!! ★ HTML5·CSS3·JS 풀가동!! ★</span>
+            <span>★ 긴급속보 ★ 김이언(202214038) JAVASCRIPT 초거대 과제 홈페이지 역사상 가장 위대한 대진화!!</span>
+            <span>★ 새로고침(F5) 시 페이지가 처음부터 다시 로드됩니다!! ★</span>
+        </div>
+    </div>
+
+    <!-- 상단 앱 바 (모바일 전용 햄버거 / 공식 배포 배지 / 초정밀 시계 / VIP 로그인) -->
     <header class="top-app-bar">
         <div class="top-bar-left">
             <button type="button" id="open-drawer-btn" class="icon-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-drawer">
@@ -19,71 +47,320 @@
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
                 </svg>
             </button>
+            <div class="official-pill">
+                <span class="pill-crown">👑</span>
+                <span>공식 정식 배포 · ROYAL &amp; GOLDEN GOBLIN EDITION</span>
+            </div>
+            <span class="mini-status-chip">🖱️ 마우스·키보드 100% 지원!</span>
         </div>
 
-        <!-- 우측 상단 버튼 래퍼 영역 (시계 모달 열기 버튼 & 로그인 버튼) -->
+        <div class="top-center-badge" aria-hidden="true">
+            <span class="gold-text-sm">2026 초거대 JAVASCRIPT 대진화 포털</span>
+        </div>
+
+        <!-- 우측 상단 버튼 래퍼 영역 -->
         <div class="button-wrapper">
             <button type="button" id="open-clock-btn" class="top-action-btn clock-btn">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
                     <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
                 </svg>
-                <span>시계 보기</span>
+                <span>초정밀 시계 보기</span>
             </button>
-            <a href="" target="_blank" class="top-action-btn login-btn">로그인</a>
+            <a href="" target="_blank" class="top-action-btn login-btn">VIP 로그인</a>
         </div>
     </header>
 
-    <!-- 좌측 네비게이션 드로어 백드롭 오버레이 -->
+    <!-- 모바일용 좌측 네비게이션 드로어 백드롭 오버레이 -->
     <div id="drawer-backdrop" class="drawer-backdrop"></div>
 
-    <!-- 구글 머티리얼 디자인 좌측 네비게이션 드로어 -->
-    <aside id="nav-drawer" class="nav-drawer" aria-hidden="true">
-        <div class="drawer-header">
-            <div class="drawer-brand">
-                <span class="brand-dot blue"></span>
-                <span class="brand-dot red"></span>
-                <span class="brand-dot yellow"></span>
-                <span class="brand-dot green"></span>
-                <span class="drawer-title">과제 바로가기</span>
-            </div>
-            <button type="button" id="close-drawer-btn" class="icon-btn" aria-label="메뉴 닫기">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-                </svg>
-            </button>
-        </div>
+    <!-- PC 전체 화면 3열 역동적 스테이지 -->
+    <main class="royal-stage">
+        <!-- 1열: 좌측 날개 (PC에서는 외곽 사각 테두리 없이 배경과 어우러진 웨이브 과제 보드 / 모바일에서는 슬라이드 드로어) -->
+        <aside id="nav-drawer" class="nav-drawer royal-left-wing" aria-hidden="false">
+            <div class="left-crest-header">
+                <img src="./img/goddess_crown_left.png" class="wing-sprite sprite-goddess-left" alt="황금 왕관 여신" data-parallax="0.03">
+                <img src="./img/gold_trophy_badge.png" class="wing-sprite sprite-trophy" alt="역대급 과제 대상 트로피" data-parallax="-0.02">
 
-        <div class="drawer-divider"></div>
-        <div class="drawer-section-label">주차별 과제 목록</div>
-
-        <nav class="drawer-nav">
-            <ul class="drawer-list"></ul>
-
-            <!-- 주차별 과제 항목 템플릿 (js/index_java.js의 assignments 배열을 기반으로 렌더링) -->
-            <template id="drawer-item-template">
-                <li>
-                    <a href="" target="_blank" class="drawer-item">
-                        <svg class="drawer-item-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+                <div class="drawer-header">
+                    <div class="drawer-brand">
+                        <span class="brand-dot blue"></span>
+                        <span class="brand-dot red"></span>
+                        <span class="brand-dot yellow"></span>
+                        <span class="brand-dot green"></span>
+                        <span class="drawer-title">주차별 초거대 과제</span>
+                    </div>
+                    <button type="button" id="close-drawer-btn" class="icon-btn" aria-label="메뉴 닫기">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
                         </svg>
-                        <span></span>
-                    </a>
-                </li>
-            </template>
-        </nav>
-    </aside>
+                    </button>
+                </div>
 
-    <!-- 동적 텍스트 렌더링 대상 컨테이너 -->
-    <h2 id="javascript-title"><span style="color:#4285f4;font-size: 100px">J</span></h2>
-    
-    <!-- 검색창 입력 폼 -->
-    <h3><input type="text" id="search" placeholder="Google 검색 또는 URL 입력"></h3>
+                <div class="winged-ribbon-wrap">
+                    <img src="./img/gold_wings_accent.svg" class="wings-bg-deco" alt="" aria-hidden="true">
+                    <div class="drawer-ribbon-banner">
+                        <span data-assignment-bind="top-banner">★ 핵심 과제 하이라이트 TOP 12 ★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="drawer-section-row">
+                <span class="drawer-section-label">황금 고블린 &amp; 교수님 보증</span>
+                <span class="comic-sticker sticker-pink tilt-right">필수 체크!!</span>
+                <span class="comic-sticker sticker-cyan tilt-left">개발자 아니어도 체험 가능!!</span>
+            </div>
+
+            <nav class="drawer-nav" aria-label="주차별 과제 목록">
+                <ul class="drawer-list"></ul>
+
+                <!-- 주차별 과제 항목 템플릿 (js/index_java.js의 assignments 배열을 기반으로 역동적 셰브론 웨이브 렌더링) -->
+                <template id="drawer-item-template">
+                    <li class="drawer-wave-li">
+                        <a href="" target="_blank" class="drawer-item">
+                            <span class="rank-badge">01</span>
+                            <svg class="drawer-item-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+                            </svg>
+                            <span class="assignment-name"></span>
+                            <span class="hot-tag">HOT!</span>
+                        </a>
+                    </li>
+                </template>
+            </nav>
+
+            <!-- 좌측 하단 황금 고블린 & 당연 안내 사다리꼴 명판 -->
+            <div class="left-goblin-footer">
+                <div class="trapezoid-notice-plaque">
+                    <ul class="mini-check-list">
+                        <li><span class="chk">✔</span> 과제 클릭 시 새 탭에서 즉시 열립니다!</li>
+                        <li><span class="chk">✔</span> <span data-assignment-bind="week-free">1~11주차 전 과정 100% 무료 열람!</span></li>
+                        <li><span class="chk">✔</span> 필요 시 창을 닫았다가 다시 열 수 있습니다!</li>
+                    </ul>
+                </div>
+                <div class="goblin-king-wrap">
+                    <img src="./img/goblin_king_left.png" class="sprite-goblin-left" alt="황금 고블린 왕" data-parallax="0.04">
+                    <span class="comic-sticker sticker-gold goblin-bubble">과제 클릭 시 A+ 대박!!</span>
+                    <span class="comic-sticker sticker-lime goblin-bubble-2" data-assignment-bind="week-hype">1~11주차 체감 크기 역대급!!</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 2열: 중앙 잭팟 히어로 스테이지 -->
+        <section class="royal-center">
+            <!-- 상단 피라미드 왕관 + 수호 사자/백호 + 투명 마법 오라 어셈블리 -->
+            <div class="hero-crest-assembly">
+                <img src="./img/fx_crystal_aura.png?v=2" class="center-aura" alt="" aria-hidden="true">
+                <img src="./img/roaring_lion_gold.png" class="crest-guardian lion-left" alt="포효하는 황금 사자" data-parallax="-0.03">
+                <img src="./img/crown_laurel_crest.png" class="crest-crown-main" alt="황금 왕관 엠블럼" data-parallax="0.02">
+                <img src="./img/roaring_tiger_white.png" class="crest-guardian tiger-right" alt="포효하는 백호" data-parallax="0.03">
+
+                <span class="comic-sticker sticker-cyan hero-sticker-1">와... 미쳤다!! ⭐</span>
+                <span class="comic-sticker sticker-yellow hero-sticker-2">이거 진짜 실화?!</span>
+                <span class="comic-sticker sticker-red hero-sticker-3">황금 고블린 강림!!</span>
+                <span class="comic-sticker sticker-lime hero-sticker-4">F5 누르면 새로고침됨!!</span>
+            </div>
+
+            <div class="winged-ribbon-wrap center-ribbon-wings">
+                <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-wide" alt="" aria-hidden="true">
+                <div class="gold-ruby-ribbon">
+                    <span>★ 역사상 가장 위대한 자바스크립트 과제 ★</span>
+                </div>
+            </div>
+
+            <!-- 동적 텍스트 렌더링 대상 컨테이너 (js/index_java.js가 a,v,a,s,c,r,i,p,t 스팬 추가) -->
+            <div class="title-glow-stage">
+                <h2 id="javascript-title"><span style="color:#4285f4;font-size: 100px">J</span></h2>
+            </div>
+
+            <div class="sub-ribbon-gold">
+                <span>김이언의 초거대 JAVASCRIPT 대진화 홈페이지!!</span>
+            </div>
+
+            <!-- 왕실 황금 바로크 액자 안내 명판 -->
+            <div class="royal-baroque-box hero-hype-plaque">
+                <p class="hero-hype-copy">
+                    지금, 당신의 브라우저가 <strong>황금 고블린의 축복</strong>과 함께 새로운 차원으로 진화합니다!<br>
+                    이 페이지를 보는 동안에도 <strong>마우스와 키보드를 계속 사용할 수 있으며</strong>, 검색창에 글자를 입력하면 즉시 검색됩니다.
+                    <strong>전기와 인터넷이 연결</strong>되어 있을 때 가장 완벽하게 작동합니다!
+                </p>
+            </div>
+
+            <!-- 검색창 입력 폼 + 양옆 치비 마스코트 -->
+            <div class="search-arena">
+                <img src="./img/chibi_robot_hype.png" class="mascot-chibi chibi-left" alt="메가폰 AI 로봇 마스코트" data-parallax="-0.035">
+
+                <div class="search-console-box">
+                    <div class="search-glow-frame">
+                        <h3><input type="text" id="search" placeholder="Google 검색 또는 URL 입력"></h3>
+                    </div>
+                    <div class="winged-cta-wrap">
+                        <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-cta" alt="" aria-hidden="true">
+                        <button type="button" id="search-submit-btn" class="jackpot-cta-btn">
+                            <span>🔥 지금 바로 검색 · 대박 출발! (강력 추천!!) 🔥</span>
+                        </button>
+                    </div>
+                    <div class="search-obvious-tips">
+                        <span class="tip-pill">💡 글자를 지우고 다시 입력할 수 있습니다!</span>
+                        <span class="tip-pill">🌐 Enter 키로도 검색 실행 가능!</span>
+                    </div>
+                </div>
+
+                <img src="./img/chibi_goblin_bunny.png" class="mascot-chibi chibi-right" alt="황금 고블린 요정 마스코트" data-parallax="0.035">
+            </div>
+
+            <!-- 6종 팔각 보석 기능 카드 스트립 (직사각형 탈피 비스듬한 팔각 실루엣) -->
+            <div class="feature-cards-grid" aria-label="핵심 기능 하이라이트">
+                <div class="gem-card gem-purple">
+                    <div class="gem-icon">⚡</div>
+                    <div class="gem-title">JS 엔진</div>
+                    <div class="gem-desc">동적 DOM<br>100% 완벽</div>
+                </div>
+                <div class="gem-card gem-gold">
+                    <div class="gem-icon">👹</div>
+                    <div class="gem-title">황금 고블린</div>
+                    <div class="gem-desc">행운 버프<br>777%↑</div>
+                </div>
+                <button type="button" class="gem-card gem-cyan gem-action" data-action="clock">
+                    <div class="gem-icon">⏰</div>
+                    <div class="gem-title">초정밀 시계</div>
+                    <div class="gem-desc">클릭 시<br>즉시 모달!</div>
+                </button>
+                <div class="gem-card gem-pink">
+                    <div class="gem-icon">📚</div>
+                    <div class="gem-title" data-assignment-bind="top-card">TOP 12 과제</div>
+                    <div class="gem-desc">좌측 보드<br>원클릭 이동</div>
+                </div>
+                <div class="gem-card gem-blue">
+                    <div class="gem-icon">🚀</div>
+                    <div class="gem-title">초고속 검색</div>
+                    <div class="gem-desc">구글·URL<br>즉시 연결</div>
+                </div>
+                <div class="gem-card gem-green">
+                    <div class="gem-icon">👑</div>
+                    <div class="gem-title">로열 디자인</div>
+                    <div class="gem-desc">초호화<br>로열 골드 UI</div>
+                </div>
+            </div>
+
+            <!-- 날개 달린 사다리꼴 피버 콘솔 -->
+            <div class="winged-fever-wrap">
+                <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-fever" alt="" aria-hidden="true">
+                <div class="fever-console">
+                    <div class="fever-status-row">
+                        <span class="fever-label">황금 고블린 &amp; 로열 피버 게이지</span>
+                        <span class="fever-percent">777% MAX!!</span>
+                        <span class="fever-ok-badge">정상 여부 확인 ✔</span>
+                    </div>
+                    <div class="fever-bar-track">
+                        <div class="fever-bar-fill"></div>
+                    </div>
+                    <div class="fever-micro-telemetry">
+                        <span>● HTML5 표준 확인 중...</span>
+                        <span>● 마우스 커서 정상 인식</span>
+                        <span>● 키보드 연결 양호</span>
+                        <span>● 클릭 대기 중...</span>
+                    </div>
+                    <button type="button" id="fever-jackpot-btn" class="fever-trigger-btn">
+                        <span class="fever-btn-icon">🎰</span>
+                        <span id="fever-btn-text">황금 고블린 대박 피버 터뜨리기!!</span>
+                        <span class="fever-btn-icon">🪙</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 하단 사다리꼴 2중 안심·안내 명판 (하단 여백 밀착 채움) -->
+            <div class="dual-angled-plaques">
+                <div class="angled-plaque plaque-left">
+                    <strong>🛡️ 안심 접속 안내</strong>
+                    <span>✔ ESC 키로 열린 시계 창 닫기 가능 · ✔ 스크롤로 하단 확인 가능!</span>
+                </div>
+                <div class="angled-plaque plaque-right">
+                    <strong>⏳ 이용 팁 (Please Wait!)</strong>
+                    <span>✔ 필요 시 시계 창을 닫았다가 나중에 다시 열 수 있습니다!</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3열: 우측 날개 (외곽 사각 박스 없이 왕실 카르투슈 + 바로크 액자 + 슬롯 + 꽉 찬 스티커) -->
+        <aside class="royal-right-wing">
+            <div class="right-top-showcase">
+                <img src="./img/goddess_crown_left.png" class="wing-sprite sprite-goddess-right" alt="축복의 여신" data-parallax="-0.025">
+                <div class="super-seal-badge">
+                    <div class="seal-inner">
+                        <span class="seal-sub">SUPER PREMIUM</span>
+                        <strong class="seal-main">100%<br>공식·안전</strong>
+                        <span class="seal-foot">A+ CERTIFIED</span>
+                    </div>
+                </div>
+                <span class="comic-sticker sticker-cyan right-top-sticker">전 세계 동시 접속 가능!!</span>
+            </div>
+
+            <!-- 왕실 바로크 카르투슈 메달 속 황금 보물 고블린 -->
+            <div class="cartouche-stage">
+                <img src="./img/royal_cartouche_crest.svg" class="cartouche-bg-svg" alt="" aria-hidden="true">
+                <img src="./img/goblin_treasure_right.png" class="sprite-goblin-right" alt="보물상자 황금 고블린" data-parallax="-0.04">
+                <div class="quote-burst-card">
+                    “이것은 단순한 과제가 아닙니다.<br><strong>새로운 시대의 시작입니다!</strong>”
+                </div>
+            </div>
+
+            <!-- 왕실 황금 바로크 액자 스펙 체크리스트 -->
+            <div class="royal-baroque-box spec-checklist-card">
+                <div class="spec-card-header">★ 압도적 업그레이드 스펙 ★</div>
+                <ul class="spec-list">
+                    <li><span class="chk-circle">✔</span> 보안·가독성 <strong>10,000%↑</strong></li>
+                    <li><span class="chk-circle">✔</span> 성능·반응속도 <strong>5,000%↑</strong></li>
+                    <li><span class="chk-circle">✔</span> 황금 고블린 축복 <strong>777배↑</strong></li>
+                    <li><span class="chk-circle">✔</span> <strong>ESC 키</strong>로 즉시 창 닫기 탑재!</li>
+                    <li><span class="chk-circle">✔</span> 클릭 시 <strong>즉시 이동</strong> 초혁신 링크!</li>
+                    <li><span class="chk-circle">✔</span> 교수님 A+ 강력 추천!!</li>
+                </ul>
+            </div>
+
+            <!-- 날개 달린 베벨 미니 슬롯머신 -->
+            <div class="slot-machine-card">
+                <div class="slot-header">🎰 오늘의 학점·행운 대박 운세 🎰</div>
+                <div class="slot-reels">
+                    <div class="slot-reel" id="slot-reel-1">A+</div>
+                    <div class="slot-reel" id="slot-reel-2">🪙</div>
+                    <div class="slot-reel" id="slot-reel-3">7</div>
+                </div>
+                <div class="slot-result" id="slot-result">버튼을 눌러 대박 운세를 확인하세요!!</div>
+                <button type="button" id="spin-slot-btn" class="slot-spin-btn">🎰 무료 대박 뽑기!! 🎰</button>
+            </div>
+
+            <!-- 꽉 찬 코믹 리액션 스티커 모음 -->
+            <div class="sticker-cluster">
+                <span class="comic-sticker sticker-yellow tilt-left">헐...!! 퀄리티 실화냐?!</span>
+                <span class="comic-sticker sticker-pink tilt-right">드디어 JS 27시대!! ㄷㄷㄷ</span>
+                <span class="comic-sticker sticker-cyan tilt-left">ESC 누르면 창 닫힘!! (혁신)</span>
+                <span class="comic-sticker sticker-lime tilt-right">스크롤 내리면 푸터 보임!!</span>
+                <span class="comic-sticker sticker-red tilt-left">안 누르면 무조건 손해!!</span>
+                <span class="comic-sticker sticker-gold tilt-right">황금 고블린 잭팟 개꿀!!</span>
+                <span class="comic-sticker sticker-yellow tilt-left">오늘 밤 과제 완성 가자!!</span>
+            </div>
+        </aside>
+    </main>
+
+    <!-- 하단 날개 보물 레일 & 왕실 황금 명판 푸터 -->
+    <div class="treasure-floor-wrap" aria-hidden="true">
+        <img src="./img/fx_fireworks_glow.png?v=2" class="treasure-floor-glow" alt="">
+        <div class="treasure-rail">
+            <img src="./img/gold_trophy_badge.png" class="treasure-mini-trophy" alt="">
+            <div class="treasure-gems-parade">
+                <span>🪙</span><span>💎</span><span>👑</span><span>🪙</span><span>✨</span>
+                <span>🏆</span><span>🪙</span><span>💎</span><span>👑</span><span>🪙</span>
+                <span>✨</span><span>💎</span><span>👑</span><span>🪙</span>
+            </div>
+            <img src="./img/gold_trophy_badge.png" class="treasure-mini-trophy" alt="">
+        </div>
+    </div>
 
     <!-- 시계 보기 모달(Modal Window) 레이아웃 -->
     <div id="clock-modal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content royal-baroque-box">
             <div class="modal-header">
-                <span class="modal-title">9주차 실습 - 시계</span>
+                <span class="modal-title">⏰ 9주차 실습 - 초정밀 황금 시계</span>
                 <button type="button" id="close-clock-btn" class="modal-close-btn" aria-label="닫기">&times;</button>
             </div>
             <div class="modal-body">
@@ -92,14 +369,29 @@
         </div>
     </div>
 
+    <!-- 실시간 피드백 토스트 알림 -->
+    <div id="pachinko-toast" class="pachinko-toast" role="status" aria-live="polite"></div>
+
     <!-- 페이지 하단 카피라이트/정보 푸터 -->
-    <footer>
-        <div>
-            <span>자바스크립트 과제</span>
-            <span>|</span>
-            <span>202214038 김이언</span>
+    <footer class="winged-footer-wrap">
+        <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-footer" alt="" aria-hidden="true">
+        <div class="footer-box">
+            <div class="footer-nameplate">
+                <span>자바스크립트 과제</span>
+                <span>|</span>
+                <span>202214038 김이언</span>
+            </div>
+            <div class="footer-sub-badges">
+                <span>✔ 공식 배포</span>
+                <span>✔ 안전성 검증 완료</span>
+                <span>✔ 황금 고블린 &amp; 로열 골드 에디션</span>
+                <span>✔ 브라우저 정상 작동 확인됨</span>
+            </div>
         </div>
     </footer>
+
+    <!-- 최상단(z-index: 1200) 잭팟 코인·폭죽 버스트 캔버스 -->
+    <canvas id="fx-burst-canvas" aria-hidden="true"></canvas>
 </body>
 
 </html>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="goldFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffce0"/>
+      <stop offset="20%" stop-color="#ffe473"/>
+      <stop offset="48%" stop-color="#cc7a00"/>
+      <stop offset="75%" stop-color="#fff2a6"/>
+      <stop offset="100%" stop-color="#7a3e00"/>
+    </linearGradient>
+    <linearGradient id="goldBevel" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6e3400"/>
+      <stop offset="38%" stop-color="#ffd700"/>
+      <stop offset="68%" stop-color="#fffbe6"/>
+      <stop offset="100%" stop-color="#a85c00"/>
+    </linearGradient>
+    <linearGradient id="goldDarkGroove" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b1900"/>
+      <stop offset="50%" stop-color="#7a3d00"/>
+      <stop offset="100%" stop-color="#2b1100"/>
+    </linearGradient>
+    <radialGradient id="rubyGem" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffb3d1"/>
+      <stop offset="45%" stop-color="#ff0055"/>
+      <stop offset="100%" stop-color="#52001b"/>
+    </radialGradient>
+    <radialGradient id="sapphireGem" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#aef2ff"/>
+      <stop offset="45%" stop-color="#0088ff"/>
+      <stop offset="100%" stop-color="#001d5c"/>
+    </radialGradient>
+    <g id="corner-ornament">
+      <!-- Heavy sculpted corner baroque acanthus frame -->
+      <path d="M4,82 C2,42 12,14 40,4 C26,24 28,42 46,38 C38,18 54,4 82,4 C60,16 50,32 60,50 C42,46 28,60 4,82 Z"
+            fill="url(#goldFrame)" stroke="#3b1800" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Secondary lush leaf layer -->
+      <path d="M12,72 C14,38 38,14 72,12 C56,24 46,36 46,48 C34,48 24,58 12,72 Z"
+            fill="url(#goldBevel)" stroke="#fff8cc" stroke-width="1.4"/>
+      <!-- Corner floral baroque medallion -->
+      <circle cx="32" cy="32" r="20" fill="url(#goldFrame)" stroke="#3b1800" stroke-width="2.5"/>
+      <circle cx="32" cy="32" r="15" fill="url(#goldDarkGroove)" stroke="#ffe885" stroke-width="1.5"/>
+      <circle cx="32" cy="32" r="12" fill="none" stroke="#fffbe0" stroke-width="1.6" stroke-dasharray="3 2.5"/>
+      <circle cx="32" cy="32" r="8" fill="url(#rubyGem)" stroke="#fff2a6" stroke-width="1.6"/>
+      <!-- Flanking sapphire & gold studs -->
+      <circle cx="64" cy="24" r="5.5" fill="url(#sapphireGem)" stroke="#fff2a6" stroke-width="1.3"/>
+      <circle cx="24" cy="64" r="5.5" fill="url(#sapphireGem)" stroke="#fff2a6" stroke-width="1.3"/>
+      <circle cx="52" cy="46" r="4" fill="#fff8cc" stroke="#4a2200" stroke-width="1.2"/>
+      <circle cx="46" cy="52" r="4" fill="#fff8cc" stroke="#4a2200" stroke-width="1.2"/>
+    </g>
+  </defs>
+
+  <!-- Thick 44px sculpted perimeter rails (stretchable middle region 78..222) -->
+  <!-- Top rail (y=6..50) -->
+  <rect x="68" y="6" width="164" height="44" fill="url(#goldFrame)" stroke="#3b1800" stroke-width="2.5"/>
+  <rect x="68" y="13" width="164" height="30" fill="url(#goldDarkGroove)"/>
+  <rect x="68" y="17" width="164" height="22" fill="url(#goldBevel)" stroke="#fff8cc" stroke-width="1.4"/>
+  <path d="M72,28 Q90,18 108,28 T144,28 T180,28 T216,28 L228,28" fill="none" stroke="#6b3400" stroke-width="2.5"/>
+  <line x1="72" y1="11" x2="228" y2="11" stroke="#fffbe0" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <line x1="72" y1="45" x2="228" y2="45" stroke="#fffbe0" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <circle cx="150" cy="28" r="6" fill="url(#rubyGem)" stroke="#fffbe0" stroke-width="1.5"/>
+
+  <!-- Bottom rail (y=250..294) -->
+  <rect x="68" y="250" width="164" height="44" fill="url(#goldFrame)" stroke="#3b1800" stroke-width="2.5"/>
+  <rect x="68" y="257" width="164" height="30" fill="url(#goldDarkGroove)"/>
+  <rect x="68" y="261" width="164" height="22" fill="url(#goldBevel)" stroke="#fff8cc" stroke-width="1.4"/>
+  <path d="M72,272 Q90,262 108,272 T144,272 T180,272 T216,272 L228,272" fill="none" stroke="#6b3400" stroke-width="2.5"/>
+  <line x1="72" y1="255" x2="228" y2="255" stroke="#fffbe0" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <line x1="72" y1="289" x2="228" y2="289" stroke="#fffbe0" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <circle cx="150" cy="272" r="6" fill="url(#rubyGem)" stroke="#fffbe0" stroke-width="1.5"/>
+
+  <!-- Left rail (x=6..50) -->
+  <rect x="6" y="68" width="44" height="164" fill="url(#goldFrame)" stroke="#3b1800" stroke-width="2.5"/>
+  <rect x="13" y="68" width="30" height="164" fill="url(#goldDarkGroove)"/>
+  <rect x="17" y="68" width="22" height="164" fill="url(#goldBevel)" stroke="#fff8cc" stroke-width="1.4"/>
+  <path d="M28,72 Q18,90 28,108 T28,144 T28,180 T28,216 L28,228" fill="none" stroke="#6b3400" stroke-width="2.5"/>
+  <line x1="11" y1="72" x2="11" y2="228" stroke="#fffbe0" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <line x1="45" y1="72" x2="45" y2="228" stroke="#fffbe0" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <circle cx="28" cy="150" r="6" fill="url(#sapphireGem)" stroke="#fffbe0" stroke-width="1.5"/>
+
+  <!-- Right rail (x=250..294) -->
+  <rect x="250" y="68" width="44" height="164" fill="url(#goldFrame)" stroke="#3b1800" stroke-width="2.5"/>
+  <rect x="257" y="68" width="30" height="164" fill="url(#goldDarkGroove)"/>
+  <rect x="261" y="68" width="22" height="164" fill="url(#goldBevel)" stroke="#fff8cc" stroke-width="1.4"/>
+  <path d="M272,72 Q262,90 272,108 T272,144 T272,180 T272,216 L272,228" fill="none" stroke="#6b3400" stroke-width="2.5"/>
+  <line x1="255" y1="72" x2="255" y2="228" stroke="#fffbe0" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <line x1="289" y1="72" x2="289" y2="228" stroke="#fffbe0" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <circle cx="272" cy="150" r="6" fill="url(#sapphireGem)" stroke="#fffbe0" stroke-width="1.5"/>
+
+  <!-- Inner gilded frame rim -->
+  <rect x="50" y="50" width="200" height="200" fill="none" stroke="#ffd700" stroke-width="4"/>
+  <rect x="54" y="54" width="192" height="192" fill="none" stroke="#3b1800" stroke-width="2"/>
+
+  <!-- 4 Heavy Baroque Corner Medallions -->
+  <use href="#corner-ornament"/>
+  <use href="#corner-ornament" transform="translate(300,0) scale(-1,1)"/>
+  <use href="#corner-ornament" transform="translate(0,300) scale(1,-1)"/>
+  <use href="#corner-ornament" transform="translate(300,300) scale(-1,-1)"/>
+</svg>

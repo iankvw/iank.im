@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김이언의홈페이지 | 12주차 TRY-CATCH 여행 준비물 체크리스트</title>
+    <!-- index_java와 통일된 디스플레이 한글 웹폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+    <!-- 전용 스타일시트 및 스크립트 -->
+    <link rel="stylesheet" href="./css/try_hw.css">
+    <script src="./js/try_hw.js" defer></script>
+</head>
+
+<body>
+    <!-- 고정 배경, 회전 광선, 투명 폭죽, 배경 별가루 캔버스 레이어 -->
+    <div class="royal-bg-layer" aria-hidden="true">
+        <img src="./img/bg_pachinko_palace.png" class="bg-palace" alt="">
+        <div class="bg-sunburst"></div>
+        <img src="./img/fx_fireworks_glow.png?v=2" class="bg-fireworks fw-left" alt="" data-parallax="0.02">
+        <img src="./img/fx_fireworks_glow.png?v=2" class="bg-fireworks fw-right" alt="" data-parallax="-0.02">
+        <div class="bg-vignette"></div>
+        <canvas id="bg-particles"></canvas>
+    </div>
+
+    <!-- 상단 속보 무지개 전광판 티커 -->
+    <div class="top-marquee-bar" aria-hidden="true">
+        <div class="marquee-track">
+            <span>★ 긴급속보 ★ 12주차 예외처리(TRY-CATCH) 여행 준비물 체크리스트 초거대 진화!!</span>
+            <span>★ 빈 칸·중복·30자 초과 입력 시 catch 블록이 즉시 차단!! ★</span>
+            <span>★ 준비물을 입력하고 버튼을 누르면 목록과 배열에 실시간 추가됩니다!! ★</span>
+            <span>★ 황금 고블린과 함께하는 완벽한 여행 준비!! ★ F5 누르면 목록이 초기화됩니다!! ★</span>
+            <span>★ 긴급속보 ★ 12주차 예외처리(TRY-CATCH) 여행 준비물 체크리스트 초거대 진화!!</span>
+            <span>★ 빈 칸·중복·30자 초과 입력 시 catch 블록이 즉시 차단!! ★</span>
+        </div>
+    </div>
+
+    <!-- 상단 앱 바 -->
+    <header class="top-app-bar">
+        <div class="top-bar-left">
+            <a href="./index_java.html" class="top-action-btn home-btn">← 메인 포털로</a>
+            <div class="official-pill">
+                <span class="pill-crown">👑</span>
+                <span>12주차 예외처리 · TRY-CATCH EDITION</span>
+            </div>
+        </div>
+
+        <div class="top-center-badge" aria-hidden="true">
+            <span class="gold-text-sm">2026 초정밀 TRY-CATCH 여행 준비물 시스템</span>
+        </div>
+
+        <div class="button-wrapper">
+            <span id="item-count-pill" class="count-pill">🎒 준비물: 0개</span>
+            <button type="button" id="clear-all-btn" class="top-action-btn danger-btn">🗑️ 전체 비우기</button>
+        </div>
+    </header>
+
+    <!-- PC 전체 화면 3열 역동적 스테이지 -->
+    <main class="royal-stage">
+        <!-- 1열: 좌측 날개 (TRY-CATCH 방어 규칙 + 황금 고블린 왕) -->
+        <aside class="royal-left-wing">
+            <div class="left-crest-header">
+                <img src="./img/goddess_crown_left.png" class="wing-sprite sprite-goddess-left" alt="황금 왕관 여신" data-parallax="0.03">
+                <img src="./img/gold_trophy_badge.png" class="wing-sprite sprite-trophy" alt="예외처리 대상 트로피" data-parallax="-0.02">
+
+                <div class="wing-title-wrap">
+                    <span class="wing-title-gold">예외처리 철벽 방어</span>
+                </div>
+
+                <div class="winged-ribbon-wrap">
+                    <img src="./img/gold_wings_accent.svg" class="wings-bg-deco" alt="" aria-hidden="true">
+                    <div class="drawer-ribbon-banner">
+                        <span>★ TRY-CATCH 철벽 방어 규칙 ★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="royal-baroque-box rules-card">
+                <div class="rules-header">⚡ 실시간 예외 감지 목록 ⚡</div>
+                <ul class="rules-list">
+                    <li><span class="chk-circle">✔</span> 빈 칸 입력 시 → <strong>Error 발생 &amp; 차단!</strong></li>
+                    <li><span class="chk-circle">✔</span> 중복 준비물 입력 시 → <strong>Error 발생 &amp; 차단!</strong></li>
+                    <li><span class="chk-circle">✔</span> 30자 초과 입력 시 → <strong>Error 발생 &amp; 차단!</strong></li>
+                    <li><span class="chk-circle">✔</span> 정상 입력 시 → <strong>배열 추가 + 코인 폭발!</strong></li>
+                </ul>
+            </div>
+
+            <div class="trapezoid-notice-plaque">
+                <ul class="mini-check-list">
+                    <li><span class="chk">✔</span> 모든 추가·체크·삭제가 try-catch로 보호됨!</li>
+                    <li><span class="chk">✔</span> finally 블록에서 입력창 포커스를 자동 복원!</li>
+                    <li><span class="chk">✔</span> 필요 시 목록을 비웠다가 다시 추가 가능!</li>
+                </ul>
+            </div>
+
+            <div class="goblin-king-wrap">
+                <img src="./img/goblin_king_left.png" class="sprite-goblin-left" alt="황금 고블린 왕" data-parallax="0.04">
+                <span class="comic-sticker sticker-gold goblin-bubble">빈 칸 넣으면 catch 발동!!</span>
+                <span class="comic-sticker sticker-lime goblin-bubble-2">중복 물건은 바로 잡는다!!</span>
+            </div>
+        </aside>
+
+        <!-- 2열: 중앙 메인 체크리스트 스테이지 -->
+        <section class="royal-center">
+            <!-- 상단 왕관 + 수호 사자/백호 + 투명 마법 오라 (리본과 겹침 없음) -->
+            <div class="hero-crest-assembly">
+                <img src="./img/fx_crystal_aura.png?v=2" class="center-aura" alt="" aria-hidden="true">
+                <img src="./img/roaring_lion_gold.png" class="crest-guardian lion-left" alt="포효하는 황금 사자" data-parallax="-0.03">
+                <img src="./img/crown_laurel_crest.png" class="crest-crown-main" alt="황금 왕관 엠블럼" data-parallax="0.02">
+                <img src="./img/roaring_tiger_white.png" class="crest-guardian tiger-right" alt="포효하는 백호" data-parallax="0.03">
+
+                <span class="comic-sticker sticker-cyan hero-sticker-1">try { 성공!! } ⭐</span>
+                <span class="comic-sticker sticker-yellow hero-sticker-2">catch (err) { 방어!! }</span>
+                <span class="comic-sticker sticker-red hero-sticker-3">황금 고블린 여행!!</span>
+                <span class="comic-sticker sticker-lime hero-sticker-4">finally { 포커스 복구! }</span>
+            </div>
+
+            <div class="winged-ribbon-wrap center-ribbon-wings">
+                <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-wide" alt="" aria-hidden="true">
+                <div class="gold-ruby-ribbon">
+                    <span>★ 12주차 예외처리(TRY-CATCH) 초거대 체크리스트 ★</span>
+                </div>
+            </div>
+
+            <!-- 기존 try_hw.html의 .container 뼈대를 두꺼운 바로크 황금 액자로 확장 -->
+            <div class="container royal-baroque-box">
+                <h1>🎒 여행 준비물 체크리스트</h1>
+                <p class="lead-copy">여행에 필요한 물건을 추가해 보세요! (오류 입력 시 <strong>try-catch</strong>가 즉시 작동합니다)</p>
+
+                <!-- 입력 폼 + 양옆 치비 마스코트 -->
+                <div class="input-arena">
+                    <img src="./img/chibi_robot_hype.png" class="mascot-chibi chibi-left" alt="메가폰 AI 로봇 마스코트" data-parallax="-0.03">
+
+                    <div class="input-console-box">
+                        <div class="input-glow-frame">
+                            <input type="text" id="item" placeholder="준비물을 입력하세요" autofocus>
+                        </div>
+                        <div class="winged-cta-wrap">
+                            <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-cta" alt="" aria-hidden="true">
+                            <button type="button" id="add-btn" class="jackpot-cta-btn" onclick="addItem()">목록에 추가</button>
+                        </div>
+                        <div class="input-obvious-tips">
+                            <span class="tip-pill">💡 Enter 키를 눌러도 목록에 추가됩니다!</span>
+                            <span class="tip-pill">🛡️ 오류 발생 시 아래 메시지창에 즉시 표시됩니다!</span>
+                        </div>
+                    </div>
+
+                    <img src="./img/chibi_goblin_bunny.png" class="mascot-chibi chibi-right" alt="황금 고블린 요정 마스코트" data-parallax="0.03">
+                </div>
+
+                <!-- try / catch 상태 및 에러 메시지 출력 영역 -->
+                <p id="message" role="status" aria-live="polite"></p>
+
+                <h3 class="section-ribbon">챙길 물건 목록</h3>
+                <ul id="list"></ul>
+
+                <h3 class="section-ribbon array-ribbon">현재 배열</h3>
+                <p id="array">[]</p>
+            </div>
+        </section>
+
+        <!-- 3열: 우측 날개 (카르투슈 메달 + 체험 가이드 + 코믹 스티커) -->
+        <aside class="royal-right-wing">
+            <div class="right-top-showcase">
+                <img src="./img/goddess_crown_left.png" class="wing-sprite sprite-goddess-right" alt="축복의 여신" data-parallax="-0.025">
+                <div class="super-seal-badge">
+                    <div class="seal-inner">
+                        <span class="seal-sub">SUPER SAFE</span>
+                        <strong class="seal-main">100%<br>TRY-CATCH</strong>
+                        <span class="seal-foot">ERROR PROOF</span>
+                    </div>
+                </div>
+                <span class="comic-sticker sticker-cyan right-top-sticker">오류 0% 철통 방어!!</span>
+            </div>
+
+            <div class="cartouche-stage">
+                <img src="./img/royal_cartouche_crest.svg" class="cartouche-bg-svg" alt="" aria-hidden="true">
+                <img src="./img/goblin_treasure_right.png" class="sprite-goblin-right" alt="보물상자 황금 고블린" data-parallax="-0.04">
+                <div class="quote-burst-card">
+                    “이것은 단순한 체크리스트가 아닙니다.<br><strong>예외처리의 정점입니다!</strong>”
+                </div>
+            </div>
+
+            <div class="angled-guide-plaque">
+                <div class="guide-title">⚡ 예외처리 직접 체험 가이드 ⚡</div>
+                <ol class="guide-steps">
+                    <li>① 아무것도 안 쓰고 <strong>[목록에 추가]</strong> 클릭!</li>
+                    <li>② 같은 물건을 <strong>두 번 입력</strong>해서 중복 차단 확인!</li>
+                    <li>③ 항목 우측 <strong>✓ 완료 · X 삭제</strong> 버튼 클릭!</li>
+                </ol>
+            </div>
+
+            <div class="sticker-cluster">
+                <span class="comic-sticker sticker-yellow tilt-left">와... 에러 메시지도 화려하다!!</span>
+                <span class="comic-sticker sticker-pink tilt-right">✓ 누르면 취소선 생김!!</span>
+                <span class="comic-sticker sticker-cyan tilt-left">X 누르면 즉시 삭제됨!!</span>
+                <span class="comic-sticker sticker-lime tilt-right">F5 누르면 목록 초기화됨!!</span>
+                <span class="comic-sticker sticker-red tilt-left">여권·보조배터리 챙기자!!</span>
+                <span class="comic-sticker sticker-gold tilt-right">황금 고블린 여행 대박!!</span>
+            </div>
+        </aside>
+    </main>
+
+    <!-- 페이지 하단 명판 푸터 -->
+    <footer class="winged-footer-wrap">
+        <img src="./img/gold_wings_accent.svg" class="wings-bg-deco wings-footer" alt="" aria-hidden="true">
+        <div class="footer-box">
+            <div class="footer-nameplate">
+                <span>자바스크립트 12주차 과제 (try-catch)</span>
+                <span>|</span>
+                <span>202214038 김이언</span>
+            </div>
+            <div class="footer-sub-badges">
+                <span>✔ try · catch · finally 완비</span>
+                <span>✔ 실시간 배열 동기화</span>
+                <span>✔ 황금 고블린 &amp; 로열 골드 에디션</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 최상단(z-index: 1200) 잭팟 코인·폭죽 버스트 캔버스 -->
+    <canvas id="fx-burst-canvas" aria-hidden="true"></canvas>
+</body>
+
+</html>

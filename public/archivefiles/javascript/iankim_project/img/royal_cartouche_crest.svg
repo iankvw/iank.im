@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420" width="360" height="420">
+  <defs>
+    <linearGradient id="cGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbe0"/>
+      <stop offset="25%" stop-color="#ffd700"/>
+      <stop offset="55%" stop-color="#b86b00"/>
+      <stop offset="80%" stop-color="#ffe680"/>
+      <stop offset="100%" stop-color="#6b3700"/>
+    </linearGradient>
+    <radialGradient id="velvetBlue" cx="50%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#351478"/>
+      <stop offset="55%" stop-color="#170848"/>
+      <stop offset="100%" stop-color="#090222"/>
+    </radialGradient>
+    <radialGradient id="cRuby" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffa6cb"/>
+      <stop offset="45%" stop-color="#ff0055"/>
+      <stop offset="100%" stop-color="#52001b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer scalloped baroque gold silhouette -->
+  <path d="M180,14 C205,28 228,22 246,44 C272,46 286,70 308,88 C326,112 318,144 334,174 C346,196 346,224 334,246 C318,276 326,308 308,332 C286,350 272,374 246,376 C228,398 205,392 180,406 C155,392 132,398 114,376 C88,374 74,350 52,332 C34,308 42,276 26,246 C14,224 14,196 26,174 C42,144 34,112 52,88 C74,70 88,46 114,44 C132,22 155,28 180,14 Z"
+        fill="url(#cGold)" stroke="#3d1b00" stroke-width="4"/>
+
+  <!-- Filigree dotted inner ring -->
+  <path d="M180,32 C202,44 220,40 236,58 C258,60 272,82 290,98 C306,118 300,148 314,176 C324,196 324,224 314,244 C300,272 306,302 290,322 C272,338 258,360 236,362 C220,380 202,376 180,388 C158,376 140,380 124,362 C102,360 88,338 70,322 C54,302 60,272 46,244 C36,224 36,196 46,176 C60,148 54,118 70,98 C88,82 102,60 124,58 C140,40 158,44 180,32 Z"
+        fill="#2e1000" stroke="#fff6b7" stroke-width="2" stroke-dasharray="3 4"/>
+
+  <!-- Royal velvet interior field -->
+  <path d="M180,46 C200,56 216,54 230,70 C250,74 260,94 276,108 C288,128 284,154 296,180 C304,198 304,222 296,240 C284,266 288,292 276,312 C260,326 250,346 230,350 C216,366 200,364 180,374 C160,364 144,366 130,350 C110,346 100,326 84,312 C72,292 76,266 64,240 C56,222 56,198 64,180 C76,154 72,128 84,108 C100,94 110,74 130,70 C144,54 160,56 180,46 Z"
+        fill="url(#velvetBlue)" stroke="url(#cGold)" stroke-width="5"/>
+
+  <!-- Top and bottom baroque crown scrollwork -->
+  <path d="M142,48 C154,28 168,18 180,6 C192,18 206,28 218,48 C202,42 190,44 180,54 C170,44 158,42 142,48 Z" fill="url(#cGold)" stroke="#3d1b00" stroke-width="2"/>
+  <path d="M142,372 C154,392 168,402 180,414 C192,402 206,392 218,372 C202,378 190,376 180,366 C170,376 158,378 142,372 Z" fill="url(#cGold)" stroke="#3d1b00" stroke-width="2"/>
+
+  <!-- Cardinal jewel medallions -->
+  <circle cx="180" cy="36" r="9" fill="url(#cRuby)" stroke="#fffbe0" stroke-width="2"/>
+  <circle cx="180" cy="384" r="9" fill="url(#cRuby)" stroke="#fffbe0" stroke-width="2"/>
+  <circle cx="38" cy="210" r="8" fill="url(#cRuby)" stroke="#fffbe0" stroke-width="2"/>
+  <circle cx="322" cy="210" r="8" fill="url(#cRuby)" stroke="#fffbe0" stroke-width="2"/>
+</svg>

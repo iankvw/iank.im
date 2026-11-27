@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="420" height="120">
+  <defs>
+    <linearGradient id="wingGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbe0"/>
+      <stop offset="30%" stop-color="#ffd700"/>
+      <stop offset="65%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#8f4900"/>
+    </linearGradient>
+    <linearGradient id="wingHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#ffe066"/>
+      <stop offset="100%" stop-color="#b86b00"/>
+    </linearGradient>
+    <radialGradient id="shieldRuby" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ff9ec4"/>
+      <stop offset="50%" stop-color="#ff004c"/>
+      <stop offset="100%" stop-color="#520018"/>
+    </radialGradient>
+    <g id="single-wing">
+      <!-- Upper sweeping feathers -->
+      <path d="M180,58 C135,28 72,6 10,16 C35,34 65,42 105,46 C55,44 26,44 6,54 C40,64 78,64 118,62 C72,68 42,74 22,86 C58,88 98,82 140,74 C104,86 78,96 58,108 C96,104 138,90 180,74 Z"
+            fill="url(#wingGold)" stroke="#4a2200" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Inner bright feather ridge -->
+      <path d="M174,56 C138,34 86,20 34,24 C66,38 98,46 138,52 C98,54 66,56 44,62 C82,66 122,64 166,64 Z"
+            fill="url(#wingHighlight)" opacity="0.85"/>
+    </g>
+  </defs>
+
+  <!-- Left & Right symmetrical golden wings -->
+  <use href="#single-wing"/>
+  <use href="#single-wing" transform="translate(420,0) scale(-1,1)"/>
+
+  <!-- Central royal emblem shield -->
+  <polygon points="210,16 238,44 228,88 210,104 192,88 182,44" fill="url(#wingGold)" stroke="#4a2200" stroke-width="2.5"/>
+  <polygon points="210,28 228,48 220,82 210,92 200,82 192,48" fill="url(#shieldRuby)" stroke="#fffbe0" stroke-width="1.5"/>
+</svg>
